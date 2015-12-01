@@ -174,6 +174,5 @@ class ActionDispatch::IntegrationTest
 end
 
 class ActiveSupport::TestCase
-  fixtures :all
   include CategoryItemsSetup
 end

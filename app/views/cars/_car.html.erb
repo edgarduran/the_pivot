@@ -4,18 +4,16 @@
       <%= image_tag car.image.url, class: "activator" %>
     </div>
     <div class="card-content" id="car_<%= car.id %>">
-      <span class="card-title car-title activator grey-text text-darken-4"><%= car.make.upcase %> <%= car.model.upcase %><i class="material-icons right">more_vert</i></span>
+      <span class="card-title car-title activator grey-text text-darken-4"><%= car.full_name %><i class="material-icons right">more_vert</i></span>
       <p>Price: $<%= car.daily_price %></p>
-      <%= link_to 'View Car', car_path(car), class: "btn" %>
+      <%= link_to car.full_name, car_path(car), class: "btn" %>
       <%= link_to "Add To Cart", cart_cars_path(car_id: car.id), method: :post, class: "add-to-cart" %>
     </div>
     <div class="card-reveal">
       <span class="card-title grey-text text-darken-4">Description: <i class="material-icons right">close</i></span>
       <p><%= car.description.capitalize %></p>
       <p>Price: $<%= car.daily_price %></p>
-      <p>Model: <%= car.model %></p>
-      <p>Make: <%= car.make %></p>
-      <p><%= car.store.name %></p>
+      <p><%= link_to car.store.name, store_cars_path(store: car.store.slug) %></p>
     </div>
   </div>
 </div>

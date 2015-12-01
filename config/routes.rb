@@ -16,4 +16,8 @@ Rails.application.routes.draw do
   end
   post '/admin/dashboard', to: 'admin/dashboard#daily_deal'
   resources :orders, only: [:index, :show, :create, :update]
+
+  namespace :stores, path: ":store", as: :store do
+    resources :cars, only: [:index]
+  end
 end

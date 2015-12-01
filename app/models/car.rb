@@ -18,4 +18,8 @@ class Car < ActiveRecord::Base
   def self.current_featured
     Car.first
   end
+
+  def full_name
+    "#{year} #{make} #{model}"
+  end
 end
