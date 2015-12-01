@@ -4,13 +4,6 @@ require 'rails/test_help'
 require 'capybara/rails'
 require 'mocha/mini_test'
 
-class ActiveSupport::TestCase
-  # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
-  fixtures :all
-
-  # Add more helper methods to be used by all tests here...
-end
-
 module CategoryItemsSetup
   def create_categories_and_items
     @category     = Category.create(title: 'Snowboards')
@@ -166,20 +159,25 @@ module CategoryItemsSetup
   end
 
   def create_featured_car
-    @featured_item = Item.create({ name: 'gnar possum',
+    @featured_item = Item.create({ name: 'El Camino',
                                    description: 'a snowboard for shredding gnar',
                                    price: 1000,
-                                   brand: 'Jibberish',
+                                   brand: "Dave's Cars",
                                    image: File.open('app/assets/images/gnar_possum.jpg')
-                          })
+                                  })
   end
 end
 
 class ActionDispatch::IntegrationTest
   include Capybara::DSL
-
+  include CategoryItemsSetup
 
   def teardown
     reset_session!
   end
+end
+
+class ActiveSupport::TestCase
+  fixtures :all
+  include CategoryItemsSetup
 end

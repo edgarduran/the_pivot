@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class OrderItemTest < ActiveSupport::TestCase
-  
   test 'items are asscociated wit an order' do
     create_items
     order = Order.new(current_status: 'completed')
