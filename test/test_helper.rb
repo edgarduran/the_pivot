@@ -27,13 +27,17 @@ module CategoryItemsSetup
                 category_id: @category_two.id)
   end
 
-  def create_items
-    Item.create(name: 'gnar possum',
-                description: 'a snowboard for shredding gnar pow',
-                price: 1000)
-    Item.create(name: 'gwar possum',
-                description: 'a snowboard for gwar concerts',
-                price: 15)
+  def create_cars(num)
+    num.times do |i|
+      Car.create( make: "Chevy#{i}",
+                  model: "El Camino#{i}",
+                  year: "196#{i}",
+                  daily_price: 100 + i,
+                  weekly_price: 600 + i,
+                  description: "Dave met his wife ##{i} in this car.",
+                  image: File.open('app/assets/images/gnar_possum.jpg')
+                )
+    end
   end
 
   def create_items_and_order
@@ -156,17 +160,6 @@ module CategoryItemsSetup
     fill_in 'Username', with: 'admin'
     fill_in 'Password', with: 'password'
     click_button 'Login'
-  end
-
-  def create_featured_car
-    Car.create( make: "Chevy",
-                model: "El Camino",
-                year: "1964",
-                daily_price: 100,
-                weekly_price: 600,
-                description: "Dave met his wife in this car.",
-                image: File.open('app/assets/images/gnar_possum.jpg')
-              )
   end
 end
 

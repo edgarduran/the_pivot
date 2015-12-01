@@ -6,7 +6,7 @@
         <li>
           <li>
             <%= form_tag(cars_path, :method => "get", id: "seach-form") do %>
-             <%= text_field_tag :search, params[:search], placeholder: "Search Items" %>
+             <%= text_field_tag :search, params[:search], placeholder: "Search Cars" %>
              <% end %>
           </li>
           <% if current_user && current_admin? %>
@@ -24,9 +24,9 @@
           <li><a href="/categories/boots">Boots</a></li>
           <li><a href="/categories/bindings">Bindings</a></li>
           <li class="divider"></li>
-          <li><a href="/items">All Items</a></li>
+          <li><a href="/cars">All Cars</a></li>
         </ul>
-        <li><a class="dropdown-button" data-activates="dropdown1">Items<i class="material-icons right">arrow_drop_down</i></a></li>
+        <li><a class="dropdown-button" data-activates="dropdown1">Cars<i class="material-icons right">arrow_drop_down</i></a></li>
         <li><a id="go-to-cart" href="/cart"><span class="material-icons cart-icon">shopping_cart</span>
         <span class="badge cart-count"><%= @cart.total %></span></a></li>
       </ul>
