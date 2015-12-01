@@ -1,9 +1,8 @@
 require 'test_helper'
 
 class GuestCreatesAccountTest < ActionDispatch::IntegrationTest
-  include CategoryItemsSetup
   test 'guest can create an account' do
-    create_featured_item
+    create_featured_car
     visit '/'
     click_link 'Login'
     click_link 'Create an account'
