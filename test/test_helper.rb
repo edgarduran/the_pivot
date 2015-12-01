@@ -159,12 +159,14 @@ module CategoryItemsSetup
   end
 
   def create_featured_car
-    @featured_item = Item.create({ name: 'El Camino',
-                                   description: 'a snowboard for shredding gnar',
-                                   price: 1000,
-                                   brand: "Dave's Cars",
-                                   image: File.open('app/assets/images/gnar_possum.jpg')
-                                  })
+    Car.create( make: "Chevy",
+                model: "El Camino",
+                year: "1964",
+                daily_price: 100,
+                weekly_price: 600,
+                description: "Dave met his wife in this car.",
+                image: File.open('app/assets/images/gnar_possum.jpg')
+              )
   end
 end
 

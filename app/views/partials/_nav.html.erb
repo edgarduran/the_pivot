@@ -5,7 +5,7 @@
       <ul class="right hide-on-med-and-down">
         <li>
           <li>
-            <%= form_tag(items_path, :method => "get", id: "seach-form") do %>
+            <%= form_tag(cars_path, :method => "get", id: "seach-form") do %>
              <%= text_field_tag :search, params[:search], placeholder: "Search Items" %>
              <% end %>
           </li>
