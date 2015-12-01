@@ -11,13 +11,6 @@ class ActiveSupport::TestCase
   # Add more helper methods to be used by all tests here...
 end
 
-class ActionDispatch::IntegrationTest
-  include Capybara::DSL
-
-  def teardown
-    reset_session!
-  end
-end
 module CategoryItemsSetup
   def create_categories_and_items
     @category     = Category.create(title: 'Snowboards')
@@ -172,12 +165,21 @@ module CategoryItemsSetup
     click_button 'Login'
   end
 
-  def create_featured_item
+  def create_featured_car
     @featured_item = Item.create({ name: 'gnar possum',
                                    description: 'a snowboard for shredding gnar',
                                    price: 1000,
                                    brand: 'Jibberish',
                                    image: File.open('app/assets/images/gnar_possum.jpg')
                           })
+  end
+end
+
+class ActionDispatch::IntegrationTest
+  include Capybara::DSL
+  include CategoryItemsSetup
+
+  def teardown
+    reset_session!
   end
 end
