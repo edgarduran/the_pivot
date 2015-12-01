@@ -28,15 +28,16 @@ module CategoryItemsSetup
   end
 
   def create_cars(num)
+    store = Store.create(name: "Dave's Cars")
     num.times do |i|
-      Car.create( make: "Chevy#{i}",
-                  model: "El Camino#{i}",
-                  year: "196#{i}",
-                  daily_price: 100 + i,
-                  weekly_price: 600 + i,
-                  description: "Dave met his wife ##{i} in this car.",
-                  image: File.open('app/assets/images/gnar_possum.jpg')
-                )
+      store.cars.create( make: "Chevy#{i}",
+                         model: "El Camino#{i}",
+                         year: "196#{i}",
+                         daily_price: 100 + i,
+                         weekly_price: 600 + i,
+                         description: "Dave met his wife ##{i} in this car.",
+                         image: File.open('app/assets/images/gnar_possum.jpg')
+                       )
     end
   end
 

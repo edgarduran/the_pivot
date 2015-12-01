@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 
-  resources :cart_items, only: [:create, :destroy, :update]
+  resources :cart_cars, only: [:create, :destroy, :update]
   resources :cars, only: [:index, :show]
   resources :categories, only: [:show, :index], param: :slug
   resources :users, only: [:new, :create, :show, :edit, :update]

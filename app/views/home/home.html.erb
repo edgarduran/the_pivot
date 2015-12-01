@@ -2,49 +2,8 @@
       $('.slider').slider({full_width: true});
     });
 </script>
-<div class="slider">
-  <ul class="slides">
-    <li>
-      <%= image_tag "home1.jpeg" %>
-      <div class="caption center-align">
-        <h1 class="black-text light">Your Dream Car for a Day</h1>
-        <br>
-        <br>
-        <br>
-        <br>
-        <% if current_admin? %>
-          <%= link_to "View Cars", cars_path, class:"btn large" %>
-        <% else %>
-          <%= link_to "View Cars", cars_path, class:"btn large" %>
-        <% end %>
-      </div>
-    </li>
-    <li>
-      <%= image_tag "home2.jpeg" %>
-      <div class="caption left-align">
-        <h1 class="black-text light">Your Dream Car for a Day</h1>
-        <br>
-        <%= link_to "View Cars", cars_path, class:"btn large" %>
-      </div>
-    </li>
-    <li>
-      <%= image_tag "home3.jpeg" %>
-      <div class="caption right-align black-text">
-        <h1 class="black-text light">Your Dream Car for a Day</h1>
-        <br>
-        <%= link_to "View Cars", cars_path, class:"btn large" %>
-      </div>
-    </li>
-    <li>
-      <%= image_tag "home4.jpeg" %>
-      <div class="caption center-align black-text">
-        <h1 class="black-text light">Your Dream Car for a Day</h1>
-        <br>
-        <%= link_to "View Cars", cars_path, class:"btn large" %>
-      </div>
-    </li>
-  </ul>
-</div>
+<h1 class="black-text light">Your Dream Car for a Day</h1>
+<%= link_to "View Cars", cars_path, class:"btn large" %>
 
 <div class="container">
   <h2>Testimonial:</h2>

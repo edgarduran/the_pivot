@@ -4,26 +4,24 @@ class VisitorCanViewCarsTest < ActionDispatch::IntegrationTest
   test 'a user can view cars index' do
     create_cars(2)
 
-    visit root
+    visit "/"
 
-    within_css(".btn") do
-      click_button "View Cars"
-    end
+    click_link "View Cars"
 
     assert_equal cars_path, current_path
 
-    within_css("h1") do
+    within("h1") do
       assert page.has_content?('Cars')
     end
 
-    within_css("li:first") do
+    within("##{Car.first.id}") do
       assert page.has_content?('Chevy0')
       assert page.has_content?('El Camino0')
       assert page.has_content?('$100')
       assert page.has_content?("Dave's Cars")
     end
 
-    within_css("li:last") do
+    within("##{Car.last.id}") do
       assert page.has_content?('Chevy1')
       assert page.has_content?('El Camino1')
       assert page.has_content?('$101')
