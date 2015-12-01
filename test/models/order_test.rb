@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class OrderTest < ActiveSupport::TestCase
-  include CategoryItemsSetup
+  
   test 'an order can have one item' do
     user = User.create(username: 'Matt', password: 'password')
     item = Item.create(name: 'gnar possum',

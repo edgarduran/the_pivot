@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class UserCanViewPastOrdersTest < ActionDispatch::IntegrationTest
-  include CategoryItemsSetup
   test 'user can view one past order' do
     create_categories_and_items
     current_user = User.create(username: 'Matt', password: 'gnargnar')

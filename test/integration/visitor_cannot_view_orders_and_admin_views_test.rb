@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class VisitorCannotViewOrdersAndAdminViewsTest < ActionDispatch::IntegrationTest
-  include CategoryItemsSetup
   test 'an unauthenticated user cannot view any orders' do
     create_categories_items_user_order_and_login
 

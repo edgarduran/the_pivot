@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class AnExistingUserCanCheckOutToPlaceAnOrderTest < ActionDispatch::IntegrationTest
-  include CategoryItemsSetup
   test 'a visitor must log in before checking out' do
     create_categories_and_items
     add_items_to_cart

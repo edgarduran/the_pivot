@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class CategoryTest < ActiveSupport::TestCase
-  include CategoryItemsSetup
+  
 
   test 'a category with all attributes is valid' do
     category = Category.new(title: 'Snowboards')

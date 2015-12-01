@@ -1,5 +1,4 @@
 class RegisteredUserLoginTest < ActionDispatch::IntegrationTest
-  include CategoryItemsSetup
   test 'a registered user can login' do
     login_a_user
 

@@ -177,7 +177,7 @@ end
 
 class ActionDispatch::IntegrationTest
   include Capybara::DSL
-  include CategoryItemsSetup
+
 
   def teardown
     reset_session!

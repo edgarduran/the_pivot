@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class AdminCanTransitionOrderStatusTest < ActionDispatch::IntegrationTest
-  include CategoryItemsSetup
   test 'admin can transition order status from ordered to cancel test' do
     admin_order_setup('completed')
 
