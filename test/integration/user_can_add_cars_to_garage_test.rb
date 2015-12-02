@@ -21,19 +21,29 @@ class UserCanAddCarsToGarageTest < ActionDispatch::IntegrationTest
     assert page.has_content?('1960 CHEVY0 EL CAMINO0')
     assert page.has_content?('100')
   end
+
+  test 'user can visit car show page from index' do
+    create_cars(1)
+    car = Car.first
+    visit cars_path
+
+    click_link "#{car.full_name}"
+
+    assert_equal store_car_path(car, store:Store.first.slug), current_path
+  end
+
   test 'user can add item to cart from show page' do
-    skip
-    click_link 'View Car'
+    create_cars(1)
+    visit store_car_path(Car.first, store:Store.first.slug)
+
     click_link 'Add to my Garage'
 
-    within('.garage-count') do
+    within('.cart-count') do
       assert page.has_content?('1')
     end
   end
 
-
   test 'visitor can view cart with multiple items' do
-    skip
     create_cars(2)
     visit cars_path
 
@@ -45,13 +55,11 @@ class UserCanAddCarsToGarageTest < ActionDispatch::IntegrationTest
       click_link 'Add to my Garage'
     end
 
-    click_link 'go-to-garage'
-    assert_equal current_path, garage_path
-    assert page.has_content?('Chevy0')
-    assert page.has_content?('El Camino0')
+    click_link 'go-to-cart'
+    assert_equal current_path, cart_path
+    assert page.has_content?('1960 CHEVY0 EL CAMINO0')
     assert page.has_content?('100')
-    assert page.has_content?('Chevy1')
-    assert page.has_content?('El Camino2')
-    assert page.has_content?('100')
+    assert page.has_content?('1961 CHEVY1 EL CAMINO1')
+    assert page.has_content?('101')
   end
 end
