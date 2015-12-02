@@ -6,6 +6,6 @@ class HomePageTest < ActionDispatch::IntegrationTest
     create_featured_item
     visit '/'
 
-    assert page.has_content?('Welcome to GnarPow')
+    assert page.has_content?('Drive Your Dream Car for a Day')
   end
 end
