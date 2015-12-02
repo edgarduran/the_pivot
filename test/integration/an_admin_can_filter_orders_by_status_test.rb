@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class AnAdminCanFilterOrdersByStatusTest < ActionDispatch::IntegrationTest
-  include CategoryItemsSetup
   test 'admin can view paid orders' do
     admin = User.create(username: 'admin',
                         password: 'password',

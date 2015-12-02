@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class VisitorCannotViewOrdersAndAdminViewsTest < ActionDispatch::IntegrationTest
-  include CategoryItemsSetup
   test 'an unauthenticated user cannot view any orders' do
     create_categories_items_user_order_and_login
 
@@ -65,7 +64,6 @@ class VisitorCannotViewOrdersAndAdminViewsTest < ActionDispatch::IntegrationTest
 
   test 'an unauthenticated user cannot view admin dashboard' do
     admin = User.create(username: 'admin', password: 'admin_password', role: 1)
-    create_featured_item
     visit '/'
     click_link('Login')
 

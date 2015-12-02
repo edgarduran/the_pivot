@@ -1,8 +1,6 @@
 require 'test_helper'
 
 class CannotViewAnotherUsersOrderTest < ActionDispatch::IntegrationTest
-  include CategoryItemsSetup
-
   test 'a registered user cannot view another users orders' do
     create_categories_items_user_order_and_login
     old_user = User.first

@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class AdminDashboardTest < ActionDispatch::IntegrationTest
-  include CategoryItemsSetup
   test 'logged in admin sees dashboard page' do
     admin = User.create(username: 'admin',
                         password: 'password',

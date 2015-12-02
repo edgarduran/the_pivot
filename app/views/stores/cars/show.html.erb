@@ -1,0 +1,14 @@
+<h1><%= @car.full_name %></h1>
+<h2>For rent by <%= link_to @car.store.name, store_cars_path(store: @car.store.slug) %></h2>
+<h3>
+  Daily price: $<%= @car.daily_price %> <br>
+  Weekly price: $<%= @car.weekly_price %>
+</h3>
+
+<%= image_tag @car.image.url %>
+<p class="description">
+  <%= @car.description.capitalize %>
+</p>
+
+<%= link_to "Add To Cart", cart_cars_path(car_id: @car.id),
+                           method: :post, class: "btn center-align" %>

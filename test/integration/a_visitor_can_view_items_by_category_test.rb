@@ -1,10 +1,8 @@
 require 'test_helper'
 
 class AVisitorCanViewItemsByCategoryTest < ActionDispatch::IntegrationTest
-  include CategoryItemsSetup
-
   test 'a visitor can visit category page to see all items in category' do
-    create_categories_and_items
+    create_categories_and_cars
 
     visit category_path(@category.slug)
 

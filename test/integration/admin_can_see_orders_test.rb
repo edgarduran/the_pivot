@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class AdminCanSeeOrdersTest < ActionDispatch::IntegrationTest
-  include CategoryItemsSetup
+  
   test 'logged in admin sees dashboard page with orders' do
     admin = User.create(username: 'admin',
                         password: 'password',

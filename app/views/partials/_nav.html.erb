@@ -16,16 +16,9 @@
         <li><%= link_to "Login", login_path %></li>
           <% end %>
         </li>
-        <!-- <ul id="dropdown1" class="dropdown-content">
-          <li><a href="/categories/snowboards">Snowboards</a></li>
-          <li><a href="/categories/apparel">Apparel</a></li>
-          <li><a href="/categories/boots">Boots</a></li>
-          <li><a href="/categories/bindings">Bindings</a></li>
-          <li class="divider"></li>
-          <li><a href="/items">All Items</a></li>
-        </ul> -->
-        <li><a class="dropdown-button" data-activates="dropdown1">View Cars</a></li>
-        <li><a id="go-to-cart" href="/cart"><span class="material-icons cart-icon">view_headline</span>
+          <li><a href="/cars">All Cars</a></li>
+        </ul>
+        <li><a id="go-to-cart" href="/cart"><span class="material-icons cart-icon">shopping_cart</span>
         <span class="badge cart-count"><%= @cart.total %></span></a></li>
       </ul>
     </div>
