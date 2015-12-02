@@ -2,7 +2,7 @@ require 'test_helper'
 
 class UserCanViewPastOrdersTest < ActionDispatch::IntegrationTest
   test 'user can view one past order' do
-    create_categories_and_items
+    create_categories_and_cars
     current_user = User.create(username: 'Matt', password: 'gnargnar')
     visit login_path
 
@@ -23,7 +23,7 @@ class UserCanViewPastOrdersTest < ActionDispatch::IntegrationTest
   end
 
   test 'user can view a list of all past orders' do
-    create_categories_and_items
+    create_categories_and_cars
     current_user = User.create(username: 'Matt', password: 'gnargnar')
     visit login_path
 

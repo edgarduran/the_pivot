@@ -5,26 +5,11 @@ require 'capybara/rails'
 require 'mocha/mini_test'
 
 module CategoryItemsSetup
-  def create_categories_and_items
-    @category     = Category.create(title: 'Snowboards')
-    @category_two = Category.create(title: 'Apparel')
+  def create_categories_and_cars
+    snowboard_category = Category.create(title: 'Snowboards')
+    apparel_category   = Category.create(title: 'Apparel')
 
-    Item.create(name: 'gnar possum',
-                description: 'a snowboard for shredding gnar pow',
-                price: 1000,
-                category_id: @category.id)
-    Item.create(name: 'gwar possum',
-                description: 'a snowboard for gwar concerts',
-                price: 15,
-                category_id: @category.id)
-    Item.create(name: 'Sweet Jacket',
-                description: 'Keeps you warm',
-                price: 240,
-                category_id: @category_two.id)
-    Item.create(name: 'Hoody',
-                description: 'Keeps you slightly warm',
-                price: 80,
-                category_id: @category_two.id)
+    create_cars(4)
   end
 
   def create_cars(num)
@@ -42,31 +27,20 @@ module CategoryItemsSetup
   end
 
   def create_items_and_order
-    @category     = Category.create(title: 'Snowboards')
-    @category_two = Category.create(title: 'Apparel')
-    item_1 = Item.create(name: 'gnar possum',
-                         description: 'a snowboard for shredding gnar pow',
-                         price: 1000,
-                         category_id: @category.id)
-    item_2 = Item.create(name: 'gwar possum',
-                         description: 'a snowboard for gwar concerts',
-                         price: 15,
-                         category_id: @category.id)
-    item_3 = Item.create(name: 'Hoody',
-                         description: 'Keeps you slightly warm',
-                         price: 80,
-                         category_id: @category_two.id)
+    category     = Category.create(title: 'Snowboards')
+    category_two = Category.create(title: 'Apparel')
+    create_cars(3)
     Order.create(current_status: 'completed')
   end
 
   def create_items_associated_with_orders
-    create_categories_and_items
+    create_categories_and_cars
     order   = Order.create(current_status: 'completed')
     order_2 = Order.create(current_status: 'completed')
     order_3 = Order.create(current_status: 'paid')
     order_4 = Order.create(current_status: 'canceled')
     order_5 = Order.create(current_status: 'ordered')
-    order_item = OrderItem.new(item_id: Item.last.id, order_id: order.id, quantity: 2)
+    order_item = OrderItem.new(car_id: Car.last.id, order_id: order.id, quantity: 2)
     order.order_items << order_item
     order.save
   end
@@ -77,27 +51,20 @@ module CategoryItemsSetup
                 email: 'matthewjrooney@gmail.com')
   end
 
-  def login_a_user
+  def login_user
     create_user
+    
     visit login_path
 
-    within('.login_form') do
-      fill_in 'Username', with: 'Matt'
-      fill_in 'Password', with: 'gnargnar'
-      click_button 'Login'
-    end
+    fill_in 'Username', with: 'Matt'
+    fill_in 'Password', with: 'gnargnar'
+    click_button 'Login'
   end
 
   def add_items_to_cart
-    item_1 = Item.create(name: 'gnar possum',
-                         description: 'a snowboard for shredding gnar pow',
-                         price: 1000)
-    item_2 = Item.create(name: 'gnar possum',
-                         description: 'a snowboard for shredding gnar pow',
-                         price: 1000)
-    item_3 = Item.create(name: 'Sweet Jacket',
-                         description: 'Keeps you warm',
-                         price: 240)
+    item_1 = Car.create
+    item_2 = Car.create
+    item_3 = Car.create
 
     visit items_path
     within("#item_#{item_1.id}") do
@@ -112,35 +79,30 @@ module CategoryItemsSetup
   end
 
   def create_categories_items_user_order_and_login
-    create_categories_and_items
+    create_categories_and_cars
     current_user = User.create(username: 'Matt', password: 'gnargnar')
     visit login_path
 
-    within('.login_form') do
-      fill_in 'Username', with: 'Matt'
-      fill_in 'Password', with: 'gnargnar'
-      click_button 'Login'
-    end
+    fill_in 'Username', with: 'Matt'
+    fill_in 'Password', with: 'gnargnar'
+    click_button 'Login'
 
     current_user_order = current_user.orders.create(current_status: 'ordered')
-    current_user_order.order_items.create(item_id: Item.first.id,
+    current_user_order.order_items.create(car_id: Car.first.id,
                                           order_id: current_user_order.id,
                                           quantity: 2)
   end
 
   def create_and_login_additional_users(num)
-    id = 0
-    num.times do
-      id += 1
-      User.create(username: "name#{id}", password: "password#{id}")
+    num.times do |i|
+      i += 1
+      User.create(username: "name#{i}", password: "password#{i}")
     end
-    visit login_path
 
-    within('.login_form') do
-      fill_in 'Username', with: "name#{id}"
-      fill_in 'Password', with: "password#{id}"
-      click_button 'Login'
-    end
+    visit login_path
+    fill_in 'Username', with: "name#{i}"
+    fill_in 'Password', with: "password#{i}"
+    click_button 'Login'
   end
 
   def admin_order_setup(status)
@@ -150,9 +112,9 @@ module CategoryItemsSetup
 
     ApplicationController.any_instance.stubs(:current_user).returns(admin)
 
-    create_categories_and_items
+    create_categories_and_cars
     order = Order.create(current_status: status)
-    order_item = OrderItem.new(item_id: Item.last.id, order_id: order.id, quantity: 2)
+    order_item = OrderItem.new(item_id: Car.last.id, order_id: order.id, quantity: 2)
     order.order_items << order_item
     order.save
 
