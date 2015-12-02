@@ -53,7 +53,7 @@ module CategoryItemsSetup
 
   def login_user
     create_user
-    
+
     visit login_path
 
     fill_in 'Username', with: 'Matt'
