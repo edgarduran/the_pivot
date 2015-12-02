@@ -1,4 +1,4 @@
-<h1><%= @item.name %></h1>
+<h1><%= @car.full_name %></h1>
 
 <div class="row center">
   <div class="col s6">
@@ -6,14 +6,15 @@
        <div class="col m12 m7">
          <div class="card">
            <div class="card-image aligh-center">
-             <%= image_tag @item.image.url %>
+             <%= image_tag @car.image.url %>
              <br>
              <br>
              <br>
-             <span class="card-title black"><%= @item.name.upcase %></span>
+             <span class="card-title black"><%= @car.full_name %></span>
            </div>
            <div class="card-content">
-             <p>Price: $<%= @item.price %></p>
+             <p>Daily Price: $<%= @car.daily_price %></p>
+             <p>Weekly Price: $<%= @car.weekly_price %></p>
            </div>
          </div>
        </div>
@@ -23,10 +24,10 @@
   <div class="col offset-s1 s5 center-align">
     <div class="center-align">
     <h3 class="grey-text center-align">Details</h3>
-    <h4>Brand: <%= @item.brand %></h4>
-    <h6><%= @item.description.capitalize %></h6>
+    <h4>Make: <%= @car.make %></h4>
+    <h6><%= @car.description.capitalize %></h6>
     <br>
-    <%= link_to "Add To Cart", cart_items_path(item_id: @item.id),
+    <%= link_to "Add To Cart", cart_cars_path(car_id: @car.id),
                                method: :post, class: "btn center-align" %>
     </div>
   </div>
