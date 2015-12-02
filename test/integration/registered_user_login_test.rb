@@ -1,3 +1,5 @@
+require "test_helper"
+
 class RegisteredUserLoginTest < ActionDispatch::IntegrationTest
   test 'a registered user can login' do
     login_user
@@ -48,6 +50,6 @@ class RegisteredUserLoginTest < ActionDispatch::IntegrationTest
 
     click_link 'Logout'
 
-    assert page.has_content?("Thanks for visiting. Keep shreddin'")
+    assert page.has_content?("You have successfully logged out.")
   end
 end
