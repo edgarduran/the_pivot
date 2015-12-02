@@ -27,7 +27,7 @@ class UserCanViewIndividualCarPageTest < ActionDispatch::IntegrationTest
       assert page.has_content?("Weekly price: $600")
     end
 
-    within("p") do
+    within("p.description") do
       assert page.has_content?("Dave met his wife #0 in this car.")
     end
   end
