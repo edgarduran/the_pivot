@@ -57,8 +57,7 @@
 }
 
 span.badge.cart-count:after {
-  content: " in cart"; }
-
+  content: " in garage"; }
 
 .cart-icon {
   margin-top: 20px;
@@ -113,7 +112,8 @@ span.badge.cart-count:after {
 }
 
 .brand-logo {
-  font-family: 'Gloria Hallelujah', cursive;
+  font-family: Arial, thin;
+  font-weight: 100;
 }
 
 .center-box {
@@ -166,6 +166,10 @@ span.badge.cart-count:after {
   text-decoration: underline;
 }
 
+.parallax-container {
+  height: 100;
+}
+
 .medium {
   height: 355px !important;
 }
@@ -176,6 +180,17 @@ span.badge.cart-count:after {
 
 .carg-image {
   height: 100px !important;
+}
+
+.html {
+    font-family: sans-serif;
+    font-weight: 500;
+  }
+
+.resize {
+  height: 20;
+  width: 20;
+  border-radius: 50%;
 }
 
 body {

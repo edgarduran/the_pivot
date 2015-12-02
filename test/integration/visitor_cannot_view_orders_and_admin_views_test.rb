@@ -30,7 +30,7 @@ class VisitorCannotViewOrdersAndAdminViewsTest < ActionDispatch::IntegrationTest
       assert page.has_content?('3')
     end
 
-    within('.left') do
+    within('.total_price') do
       assert page.has_content?('$2240')
     end
 
@@ -46,7 +46,7 @@ class VisitorCannotViewOrdersAndAdminViewsTest < ActionDispatch::IntegrationTest
       refute page.has_content?('3')
     end
 
-    within('.left') do
+    within('.total_price') do
       refute page.has_content?('$2240')
     end
   end
