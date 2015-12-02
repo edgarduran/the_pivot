@@ -33,7 +33,6 @@ class UserCanViewIndividualCarPageTest < ActionDispatch::IntegrationTest
   end
 
   test "user can access car vendor from show page" do
-    skip
     create_cars(1)
     visit store_car_path(Car.first, store: Store.first.slug)
 
