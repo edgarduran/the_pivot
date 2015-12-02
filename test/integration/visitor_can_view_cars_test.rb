@@ -34,13 +34,4 @@ class VisitorCanViewCarsTest < ActionDispatch::IntegrationTest
 
     assert_equal store_cars_path(store: Store.first.slug), current_path
   end
-
-  test "visit can navigate to individual car page from index" do
-    create_cars(1)
-    visit cars_path
-
-    click_link "1960 Chevy0 El Camino0"
-
-    assert_equal store_car_path(Car.first, store: Store.first.slug), current_path
-  end
 end
