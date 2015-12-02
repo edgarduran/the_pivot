@@ -31,8 +31,8 @@
         <td><%= @cart.count_of(car.id) %></td>
         <td>$<%= car.daily_price * @cart.count_of(car.id) %></td>
         <td><%= form_tag(cart_car_path(car), method: "patch") do %>
-         <%= label_tag :quantity %>
-         <%= number_field_tag :quantity %>
+         <%= label_tag :days %>
+         <%= number_field_tag :days %>
          <%= submit_tag "Update" %>
         <% end %>
         </td>

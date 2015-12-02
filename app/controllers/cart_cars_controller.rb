@@ -11,10 +11,10 @@ class CartCarsController < ApplicationController
   end
 
   def update
-    if params[:quantity].to_i <= 0
+    if params[:days].to_i <= 0
       destroy
     else
-      @cart.update_quantity(params)
+      @cart.update_quantity(params[:days], params[:id])
       redirect_to cart_path
     end
   end
@@ -22,7 +22,7 @@ class CartCarsController < ApplicationController
   def destroy
     car = Car.find(params[:id].to_i)
     if @cart.remove_cars(params)
-      flash[:remove] = "You have removed the car: (#{view_context.link_to(car.name, car_path(car))})   from your cart."
+      flash[:remove] = "You have removed the car: (#{view_context.link_to(car.full_name, car_path(car))})   from your cart."
     end
     redirect_to cart_path
   end
