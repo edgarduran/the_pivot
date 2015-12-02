@@ -16,7 +16,7 @@ class CategoryTest < ActiveSupport::TestCase
   end
 
   test 'a category has items' do
-    create_categories_and_items
+    create_categories_and_cars
 
     assert_equal 2, @category.items.count
     assert_equal 2, @category_two.items.count

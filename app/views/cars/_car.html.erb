@@ -6,7 +6,7 @@
     <div class="card-content" id="car_<%= car.id %>">
       <span class="card-title car-title activator grey-text text-darken-4"><%= car.full_name %><i class="material-icons right">more_vert</i></span>
       <p>Price: $<%= car.daily_price %></p>
-      <%= link_to car.full_name, car_path(car), class: "btn" %>
+      <%= link_to car.full_name, store_car_path(car, store: car.store.slug), class: "btn" %>
       <%= link_to "Add To Cart", cart_cars_path(car_id: car.id), method: :post, class: "add-to-cart" %>
     </div>
     <div class="card-reveal">

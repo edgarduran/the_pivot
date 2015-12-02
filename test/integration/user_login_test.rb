@@ -2,7 +2,7 @@ require 'test_helper'
 
 class UserLoginTest < ActionDispatch::IntegrationTest
   test 'a registered user can login' do
-    login_a_user
+    login_user
 
     assert page.has_content?('Logged in as Matt')
     assert page.has_content?('Logout')
@@ -31,13 +31,12 @@ class UserLoginTest < ActionDispatch::IntegrationTest
   end
 
   test 'authenticated user can logout' do
-    login_a_user
+    login_user
 
     assert page.has_content?('Logged in as Matt')
 
     click_link 'Logout'
 
-    assert page.has_content?("Thanks for visiting. Keep shreddin'")
+    assert page.has_content?("You have successfully logged out.")
   end
-
 end

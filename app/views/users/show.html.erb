@@ -1,9 +1,11 @@
 <div class="center">
   <h4><%= current_user.username  %>'s Profile</h4>
   <br>
+
   <h5>Profile Info</h5>
   <p>Username: <%= current_user.username %></p>
   <p>Email Address: <%= current_user.email %></p>
   <%= link_to "SHOP", cars_path, class:"btn large" %>
   <%= link_to "EDIT PROFILE", edit_user_path, class: "btn large" %>
+  <%= link_to "YOUR ORDERS", orders_path, class: "btn large" %>
 </div>

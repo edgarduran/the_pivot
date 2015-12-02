@@ -64,7 +64,6 @@ class VisitorCannotViewOrdersAndAdminViewsTest < ActionDispatch::IntegrationTest
 
   test 'an unauthenticated user cannot view admin dashboard' do
     admin = User.create(username: 'admin', password: 'admin_password', role: 1)
-    create_featured_car
     visit '/'
     click_link('Login')
 
