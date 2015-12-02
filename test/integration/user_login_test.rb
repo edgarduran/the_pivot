@@ -1,4 +1,6 @@
-class RegisteredUserLoginTest < ActionDispatch::IntegrationTest
+require 'test_helper'
+
+class UserLoginTest < ActionDispatch::IntegrationTest
   test 'a registered user can login' do
     login_a_user
 
@@ -28,19 +30,6 @@ class RegisteredUserLoginTest < ActionDispatch::IntegrationTest
     assert page.has_content?('Invalid Login')
   end
 
-  test 'a registered guest cannot login with the wrong username' do
-    create_user
-    visit login_path
-
-    within('.login_form') do
-      fill_in 'Username', with: 'GnarMan'
-      fill_in 'Password', with: 'gnargnar'
-      click_button 'Login'
-    end
-
-    assert page.has_content?('Invalid Login')
-  end
-
   test 'authenticated user can logout' do
     login_a_user
 
@@ -50,4 +39,5 @@ class RegisteredUserLoginTest < ActionDispatch::IntegrationTest
 
     assert page.has_content?("Thanks for visiting. Keep shreddin'")
   end
+
 end
