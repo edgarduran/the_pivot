@@ -33,6 +33,7 @@ class UsersController < ApplicationController
         redirect_to admin_dashboard_index_path
       else
         redirect_to @user
+        flash[:success] = "You have successfully updated your profile."
       end
     else
       flash.now[:errors] = @user.errors.full_messages.join(', ')

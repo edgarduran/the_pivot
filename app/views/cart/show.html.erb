@@ -21,22 +21,22 @@
         <th>Update Quantity</th>
       </tr>
     </thead>
-    <% @complete_cart[:items].each do |item| %>
+    <% @complete_cart[:cars].each do |car| %>
     <tbody>
       <tr>
-        <td><%= image_tag item.image.url(:thumb) %></td>
-        <td><%= item.name.capitalize %></td>
-        <td><%= item.description[0..75] %>...</td>
-        <td>$<%= item.price %></td>
-        <td><%= @cart.count_of(item.id) %></td>
-        <td>$<%= item.price * @cart.count_of(item.id) %></td>
-        <td><%= form_tag(cart_item_path(item), method: "patch") do %>
-         <%= label_tag :quantity %>
-         <%= number_field_tag :quantity %>
+        <td><%= image_tag car.image.url(:thumb) %></td>
+        <td><%= car.full_name.upcase %></td>
+        <td><%= car.description %></td>
+        <td>$<%= car.daily_price %></td>
+        <td><%= @cart.count_of(car.id) %></td>
+        <td>$<%= car.daily_price * @cart.count_of(car.id) %></td>
+        <td><%= form_tag(cart_car_path(car), method: "patch") do %>
+         <%= label_tag :days %>
+         <%= number_field_tag :days %>
          <%= submit_tag "Update" %>
         <% end %>
         </td>
-        <td class="center-align"><%= link_to "Remove Item", cart_item_path(item.id), method: :delete, id:"Remove Item" %></td>
+        <td class="center-align"><%= link_to "Remove Car", cart_car_path(car.id), method: :delete, id:"Remove Car" %></td>
       </tr>
       <% end %>
       <tr>
