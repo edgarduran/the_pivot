@@ -14,7 +14,7 @@ class CartCarsController < ApplicationController
     if params[:days].to_i <= 0
       destroy
     else
-      @cart.update_quantity(params[:days], params[:id])
+      @cart.update_days(params[:days], params[:id])
       redirect_to cart_path
     end
   end

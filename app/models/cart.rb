@@ -18,7 +18,7 @@ class Cart
     contents[car_id.to_s]
   end
 
-  def update_quantity(days, id)
+  def update_days(days, id)
     contents.select { |car, _days| car == id }
       .map do |car, _days|
       contents[car] = days.to_i
