@@ -2,7 +2,6 @@ require 'test_helper'
 
 class GuestCreatesAccountTest < ActionDispatch::IntegrationTest
   test 'guest can create an account' do
-    create_featured_car
     visit '/'
     click_link 'Login'
     click_link 'Create an account'
