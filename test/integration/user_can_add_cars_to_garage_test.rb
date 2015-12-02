@@ -7,22 +7,18 @@ class UserCanAddCarsToGarageTest < ActionDispatch::IntegrationTest
 
     click_link 'Add to my Garage'
 
-    wihin('.garage_count') do
+    within('.cart-count') do
       assert page.has_content?('1')
     end
   end
 
   test 'visitor can view garage with selected items' do
-    skip
-    create_cars(1)
-    visit cars_path
+    add_car_to_cart
 
-    click_link 'Add to my Garage'
-    click_link 'go-to-garage'
+    click_link 'go-to-cart'
 
-    assert_equal current_path, garage_path
-    assert page.has_content?('Chevy0')
-    assert page.has_content?('El Camino0')
+    assert_equal current_path, cart_path
+    assert page.has_content?('1960 CHEVY0 EL CAMINO0')
     assert page.has_content?('100')
   end
   test 'user can add item to cart from show page' do

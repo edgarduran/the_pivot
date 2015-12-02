@@ -5,6 +5,13 @@ require 'capybara/rails'
 require 'mocha/mini_test'
 
 module CategoryItemsSetup
+
+  def add_car_to_cart
+    create_cars(1)
+    visit cars_path
+
+    click_link 'Add to my Garage'
+  end
   def create_categories_and_cars
     snowboard_category = Category.create(title: 'Snowboards')
     apparel_category   = Category.create(title: 'Apparel')
@@ -53,7 +60,7 @@ module CategoryItemsSetup
 
   def login_user
     create_user
-    
+
     visit login_path
 
     fill_in 'Username', with: 'Matt'

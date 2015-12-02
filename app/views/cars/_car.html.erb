@@ -7,7 +7,7 @@
       <span class="card-title car-title activator grey-text text-darken-4"><%= car.full_name %><i class="material-icons right">more_vert</i></span>
       <p>Price: $<%= car.daily_price %></p>
       <%= link_to car.full_name, store_car_path(car, store: car.store.slug), class: "btn" %>
-      <%= link_to "Add To Cart", cart_cars_path(car_id: car.id), method: :post, class: "add-to-cart" %>
+      <%= link_to "Add to my Garage", cart_cars_path(car_id: car.id), method: :post, class: "add-to-cart" %>
     </div>
     <div class="card-reveal">
       <span class="card-title grey-text text-darken-4">Description: <i class="material-icons right">close</i></span>
