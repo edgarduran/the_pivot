@@ -49,7 +49,7 @@ class RegisteredUserCanViewPastOrderDetailsTest < ActionDispatch::IntegrationTes
     assert page.has_content?('Order Status')
     assert page.has_content?('Total')
     assert page.has_content?('Submitted on')
-    save_and_open_page
+
     within('.orders-table') do
       assert page.has_content?('1960')
       assert page.has_content?('1961')
