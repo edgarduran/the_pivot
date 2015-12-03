@@ -1,8 +1,6 @@
 require 'test_helper'
 
-class CategoryTest < ActiveSupport::TestCase
-
-
+class LocationTest < ActiveSupport::TestCase
   test 'a location with all attributes is valid' do
     location = Location.new(name: 'Five Points')
 

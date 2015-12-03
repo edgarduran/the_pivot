@@ -12,23 +12,6 @@ module CategoryItemsSetup
     click_link 'Add to my Garage'
   end
 
-  # def create_categories_items_user_order_and_login
-  #   create_categories_and_items
-  #   current_user = User.create(username: 'Matt', password: 'gnargnar')
-  #   visit login_path
-  #
-  #   within('.login_form') do
-  #     fill_in 'Username', with: 'Matt'
-  #     fill_in 'Password', with: 'gnargnar'
-  #     click_button 'Login'
-  #   end
-  #
-  #   current_user_order = current_user.orders.create(current_status: 'ordered')
-  #   current_user_order.order_items.create(item_id: Item.first.id,
-  #                                         order_id: current_user_order.id,
-  #                                         quantity: 2)
-  # end
-
   def create_categories_cars_user_order_and_login
     create_cars(1)
     current_user = User.create(username: 'Torie', password: 'password')
@@ -72,22 +55,19 @@ module CategoryItemsSetup
     Order.create(current_status: 'completed')
   end
 
-  def create_items_associated_with_orders
-    create_categories_and_cars
-    order   = Order.create(current_status: 'completed')
-    order_2 = Order.create(current_status: 'completed')
-    order_3 = Order.create(current_status: 'paid')
-    order_4 = Order.create(current_status: 'canceled')
-    order_5 = Order.create(current_status: 'ordered')
-    order_item = OrderItem.new(car_id: Car.last.id, order_id: order.id, quantity: 2)
-    order.order_items << order_item
-    order.save
-  end
-
   def create_user
     User.create(username: 'Matt',
                 password: 'gnargnar',
                 email: 'matthewjrooney@gmail.com')
+  end
+
+  def login_user
+    create_user
+    visit login_path
+
+    fill_in 'Username', with: 'Matt'
+    fill_in 'Password', with: 'gnargnar'
+    click_button 'Login'
   end
 
   def create_and_login_additional_user
@@ -98,15 +78,6 @@ module CategoryItemsSetup
     visit login_path
     fill_in 'Username', with: 'Molly'
     fill_in 'Password', with: 'password'
-    click_button 'Login'
-  end
-
-  def login_user
-    create_user
-    visit login_path
-
-    fill_in 'Username', with: 'Matt'
-    fill_in 'Password', with: 'gnargnar'
     click_button 'Login'
   end
 

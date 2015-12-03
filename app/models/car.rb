@@ -1,8 +1,8 @@
 class Car < ActiveRecord::Base
   has_attached_file :image, styles: { medium: '300x300>', thumb: '100x100>' }, default_url: 'shredding_brah2.png'
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
-  # validates :name, :description, :price, presence: true
-  # validates :price, numericality: true
+  validates :model, :make, :year, :description, :daily_price, presence: true
+  validates :daily_price, :year, numericality: true
 
   belongs_to :location
   belongs_to :store
