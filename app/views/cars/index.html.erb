@@ -20,8 +20,8 @@
           <p><%= car.description %></p>
           $<%= car.daily_price %>
         </div>
-      </div>
       <%= link_to "Add to my Garage", cart_cars_path(car_id: car.id), method: :post, class: "add-to-cart" %>
+      </div>
       <% end %>
     </div>
   </div>

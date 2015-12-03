@@ -27,7 +27,9 @@ class UserCanAddCarsToGarageTest < ActionDispatch::IntegrationTest
     car = Car.first
     visit cars_path
 
-    click_link "#{car.full_name}"
+    within(".card-content") do
+      click_link "#{car.full_name}"
+    end
 
     assert_equal store_car_path(car, store:Store.first.slug), current_path
   end
@@ -46,11 +48,11 @@ class UserCanAddCarsToGarageTest < ActionDispatch::IntegrationTest
   test 'visitor can view cart with multiple items' do
     create_cars(2)
     visit cars_path
-
-
+    
     within("##{Car.first.id}") do
       click_link 'Add to my Garage'
     end
+
     within("##{Car.last.id}") do
       click_link 'Add to my Garage'
     end
