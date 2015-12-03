@@ -93,7 +93,7 @@ module CategoryItemsSetup
   end
 
   def create_user_order
-    create_cars(2)
+    create_cars(1)
     current_user = create_user
 
     current_user_order = current_user.orders.create(current_status: 'ordered')

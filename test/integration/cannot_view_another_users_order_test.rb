@@ -7,10 +7,14 @@ class CannotViewAnotherUsersOrderTest < ActionDispatch::IntegrationTest
 
     visit "/orders"
 
-    refute page.has_content?("other users ordeer")
+    refute page.has_content?("#{Car.first.full_name}")
   end
 
   test "a non-registered user cannot view another users orders" do
-    skip
+    create_user_order
+
+    visit "/orders"
+
+    refute page.has_content?("#{Car.first.full_name}")
   end
 end
