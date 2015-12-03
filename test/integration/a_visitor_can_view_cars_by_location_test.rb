@@ -6,10 +6,10 @@ class AVisitorCanViewCarsByLocationTest < ActionDispatch::IntegrationTest
     first_car = Car.first
     third_car = Car.last
 
-    visit category_path(Location.first.slug)
+    visit location_path(Location.first.slug)
 
     assert page.has_content?('Capitol Hill')
-
+    
     within('.cars') do
       assert page.has_content?("#{first_car.full_name}")
       assert page.has_content?("#{first_car.description}")
