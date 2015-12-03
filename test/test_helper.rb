@@ -12,11 +12,39 @@ module CategoryItemsSetup
     click_link 'Add to my Garage'
   end
 
-  def create_categories_and_cars
-    snowboard_category = Category.create(title: 'Trucks')
-    apparel_category   = Category.create(title: 'Cars')
+  # def create_categories_items_user_order_and_login
+  #   create_categories_and_items
+  #   current_user = User.create(username: 'Matt', password: 'gnargnar')
+  #   visit login_path
+  #
+  #   within('.login_form') do
+  #     fill_in 'Username', with: 'Matt'
+  #     fill_in 'Password', with: 'gnargnar'
+  #     click_button 'Login'
+  #   end
+  #
+  #   current_user_order = current_user.orders.create(current_status: 'ordered')
+  #   current_user_order.order_items.create(item_id: Item.first.id,
+  #                                         order_id: current_user_order.id,
+  #                                         quantity: 2)
+  # end
 
-    create_cars(4)
+  def create_categories_cars_user_order_and_login
+    create_cars(1)
+    current_user = User.create(username: 'Torie', password: 'password')
+
+    visit login_path
+
+    within('.login_form') do
+      fill_in 'Username', with: 'Torie'
+      fill_in 'Password', with: 'password'
+      click_button 'Login'
+    end
+
+    current_user_order = current_user.orders.create(current_status: 'ordered')
+    current_user_order.order_items.create(car_id: Car.first.id,
+                                          order_id: current_user_order.id,
+                                          days: 2)
   end
 
   def create_cars(num)
@@ -112,12 +140,12 @@ module CategoryItemsSetup
   def create_and_login_additional_users(num)
     num.times do |i|
       i += 1
-      User.create(username: "name#{i}", password: "password#{i}")
+      user = User.create(username: "name#{i}", password: "password#{i}")
     end
 
     visit login_path
-    fill_in 'Username', with: "name#{i}"
-    fill_in 'Password', with: "password#{i}"
+    fill_in 'Username', with: "user.username"
+    fill_in 'Password', with: "user.password"
     click_button 'Login'
   end
 
