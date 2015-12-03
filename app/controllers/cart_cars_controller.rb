@@ -22,7 +22,7 @@ class CartCarsController < ApplicationController
   def destroy
     car = Car.find(params[:id].to_i)
     if @cart.remove_cars(params)
-      flash[:remove] = "You have removed the car: (#{view_context.link_to(car.full_name, car_path(car))})   from your cart."
+      flash[:remove] = "You have removed the car: #{view_context.link_to(car.full_name, store_car_path(car, store: car.store.slug))} from your cart."
     end
     redirect_to cart_path
   end
