@@ -1,22 +1,21 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>GnarPowOrderEmail</title>
+    <title>BMC-OrderEmail</title>
     <meta content='text/html; charset=UTF-8' http-equiv='content-type' />
   </head>
   <body>
     <h1 class="center">Hi <%= @user.username %></h1>
-    <h3>Thanks for shopping with GnarPow!</h3>
+    <h3>Thanks for shopping with Borrow-My-Carro!</h3>
     <br>
     <p>Your order has been processed. Here are the details:</p>
     <br>
     <h3>Order number: <%= @user.orders.last.id %></h3>
     <br>
-    <% @items.each do |item| %>
-      <h4><%= item.name %></h4>
-      <p><%= item.brand %></p>
-      <p><%= item.description %></p>
-      <h5>$<%= item.price %></h5>
+    <% @cars.each do |car| %>
+      <h4><%= car.full_name %></h4>
+      <p><%= car.description %></p>
+      <h5>$<%= car.daily_price %></h5>
       <br>
     <% end %>
     <h4>Order Total $<%= @user.orders.last.total_price %></h4>

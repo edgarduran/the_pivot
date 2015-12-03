@@ -15,7 +15,7 @@ class OrdersController < ApplicationController
   def create
     if session[:cart].nil? || session[:cart] == {}
       flash[:no_items] = "There's nothing in your cart."
-      redirect_to items_path
+      redirect_to cars_path
     elsif current_user && session[:cart]
       current_user.set_order(session[:cart])
       UserMailer.sample_email(current_user).deliver_now

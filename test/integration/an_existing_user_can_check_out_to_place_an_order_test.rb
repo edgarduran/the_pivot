@@ -2,8 +2,7 @@ require 'test_helper'
 
 class AnExistingUserCanCheckOutToPlaceAnOrderTest < ActionDispatch::IntegrationTest
   test 'a visitor must log in before checking out' do
-    create_categories_and_cars
-    add_items_to_cart
+    add_car_to_cart
 
     visit '/cart'
     click_link 'Check Out'
@@ -12,15 +11,12 @@ class AnExistingUserCanCheckOutToPlaceAnOrderTest < ActionDispatch::IntegrationT
     assert page.has_content?('You must be logged in to check out')
   end
 
-  test "an_existing_user_can_check_out_to_place_an_order and cart returns
-    to zero" do
-    create_user
+  test "an existing user can check out" do
     login_user
-    create_categories_and_cars
-    add_items_to_cart
+    add_car_to_cart
 
     within('.cart-count') do
-      assert page.has_content?('3')
+      assert page.has_content?('1')
     end
 
     visit '/cart'
@@ -38,14 +34,14 @@ class AnExistingUserCanCheckOutToPlaceAnOrderTest < ActionDispatch::IntegrationT
     end
   end
 
-  test 'an_existing_user_cant_check_out_with_0_items' do
+  test 'an_existing_user_cant_check_out_with_0_cars' do
     create_user
     login_user
 
     visit '/cart'
     click_link 'Check Out'
 
-    assert_equal items_path, current_path
+    assert_equal cars_path, current_path
 
     assert page.has_content?("There's nothing in your cart.")
   end
