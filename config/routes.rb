@@ -5,16 +5,21 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 
-  resources :cart_items, only: [:create, :destroy, :update]
-  resources :items, only: [:index, :show]
-  get '/deal', to: 'items#deal'
-  resources :categories, only: [:show, :index], param: :slug
+  resources :cart_cars, only: [:create, :destroy, :update]
+  resources :cars, only: [:index, :show]
+  resources :locations, only: [:show, :index], param: :slug
   resources :users, only: [:new, :create, :show, :edit, :update]
+
   namespace :admin do
     resources :items, only: [:index, :show, :new, :create, :destroy]
     resources :dashboard, only: [:show, :index]
-    resources :categories, only: [:show, :index], param: :slug
+    resources :locations, only: [:show, :index], param: :slug
   end
+  
   post '/admin/dashboard', to: 'admin/dashboard#daily_deal'
   resources :orders, only: [:index, :show, :create, :update]
+
+  namespace :stores, path: ":store", as: :store do
+    resources :cars, only: [:index, :show]
+  end
 end

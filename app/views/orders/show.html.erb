@@ -6,19 +6,19 @@
 <table class="orders-table">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Price</th>
-      <th>Quantity</th>
+      <th>Car</th>
+      <th>Daily Price</th>
+      <th>Days</th>
       <th>Subtotal</th>
     </tr>
   </thead>
   <% @order_data[:order_object].order_items.each do |order_item| %>
   <tbody>
     <tr>
-      <td><%= link_to order_item.item.name.capitalize, item_path(order_item.item.id) %></td>
-      <td>$<%= order_item.item.price %></td>
-      <td><%= order_item.quantity %></td>
-      <td>$<%= order_item.item.price * order_item.quantity %></td>
+      <td><%= link_to order_item.car.full_name, store_car_path(order_item.car.id, store: order_item.car.store.slug) %></td>
+      <td>$<%= order_item.car.daily_price %></td>
+      <td><%= order_item.days %></td>
+      <td>$<%= order_item.car.daily_price * order_item.days %></td>
     </tr>
     <% end %>
     <tr>

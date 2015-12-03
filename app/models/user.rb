@@ -8,10 +8,10 @@ class User < ActiveRecord::Base
 
   def set_order(session)
     order = orders.new(current_status: 'ordered')
-    order_items = session.each do |item_id, quantity|
-      order.order_items.new(item_id: item_id, quantity: quantity)
+    order_items = session.each do |id, days|
+      order.order_items.new(car_id: id, days: days)
     end
-    order.total_price = order.order_items.map { |order_item| Item.find(order_item.item_id).price * order_item.quantity }.sum
+    order.total_price = order.order_items.map { |order_item| Car.find(order_item.car_id).daily_price * order_item.days }.sum
     session.delete(:cart) if order.save
   end
 end

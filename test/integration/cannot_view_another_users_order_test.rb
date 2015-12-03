@@ -1,33 +1,22 @@
-require 'test_helper'
+require "test_helper"
 
 class CannotViewAnotherUsersOrderTest < ActionDispatch::IntegrationTest
-  include CategoryItemsSetup
+  def setup
+    create_user
+    create_user_order
+  end
 
-  test 'a registered user cannot view another users orders' do
-    create_categories_items_user_order_and_login
-    old_user = User.first
+  test "a registered user cannot view another users orders" do
+    create_and_login_additional_user
 
-    visit '/orders'
-    assert page.has_content?('Your Orders')
-    assert page.has_content?('ordered')
+    visit "/orders"
 
-    click_link('View Order')
-    within('.orders-table') do
-      assert page.has_content?('$2000')
-      assert page.has_content?('Gnar possum')
-    end
-    click_link('Logout')
+    refute page.has_content?("#{Car.first.full_name}")
+  end
 
-    create_and_login_additional_users(1)
-    current_user = User.last
+  test "a non-registered user cannot view another users orders" do
+    visit "/orders"
 
-    assert_equal 2, User.count
-    assert_equal 'name1', current_user.username
-    assert_equal 'Matt', old_user.username
-    assert_equal "/users/#{current_user.id}", current_path
-
-    visit '/orders'
-    refute page.has_content?('$2000')
-    refute page.has_content?('Gnar possum')
+    refute page.has_content?("#{Car.first.full_name}")
   end
 end
