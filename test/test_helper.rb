@@ -55,9 +55,19 @@ module CategoryItemsSetup
                 email: 'matthewjrooney@gmail.com')
   end
 
+  def create_and_login_additional_user
+    User.create(username: "Molly",
+                password: "password",
+                email: "molly@coolcars.com")
+
+    visit login_path
+    fill_in 'Username', with: 'Molly'
+    fill_in 'Password', with: 'password'
+    click_button 'Login'
+  end
+
   def login_user
     create_user
-
     visit login_path
 
     fill_in 'Username', with: 'Matt'
@@ -82,19 +92,14 @@ module CategoryItemsSetup
     end
   end
 
-  def create_categories_items_user_order_and_login
-    create_categories_and_cars
-    current_user = User.create(username: 'Matt', password: 'gnargnar')
-    visit login_path
-
-    fill_in 'Username', with: 'Matt'
-    fill_in 'Password', with: 'gnargnar'
-    click_button 'Login'
+  def create_user_order
+    create_cars(2)
+    current_user = create_user
 
     current_user_order = current_user.orders.create(current_status: 'ordered')
     current_user_order.order_items.create(car_id: Car.first.id,
                                           order_id: current_user_order.id,
-                                          quantity: 2)
+                                          days: 2)
   end
 
   def create_and_login_additional_users(num)

@@ -2,7 +2,7 @@ require 'test_helper'
 
 class LoggedInUserCanUpdateAcctInfoTest < ActionDispatch::IntegrationTest
   test 'user can update account info' do
-    login_a_user
+    login_user
     assert page.has_content?('Logged in as Matt')
 
     click_link "EDIT PROFILE"
