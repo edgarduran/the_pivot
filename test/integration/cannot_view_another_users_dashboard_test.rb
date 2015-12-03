@@ -13,7 +13,7 @@ class CannotViewAnotherUsersDashboardTest < ActionDispatch::IntegrationTest
 
     within('.orders-table') do
       assert page.has_content?('$200')
-      assert page.has_link?('1960 chevy0 el camino0')
+      assert page.has_link?('1960 Chevy0 El Camino0')
       assert page.has_content? "0"
     end
 
