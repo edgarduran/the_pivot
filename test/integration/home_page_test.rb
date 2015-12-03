@@ -5,7 +5,7 @@ class HomePageTest < ActionDispatch::IntegrationTest
     visit "/"
 
     assert page.has_content?('Drive Your Dream Car for a Day')
-    assert page.has_link_or_button?("Drive Your Dream")
+    assert page.has_content?("Drive Your Dream")
     assert page.has_content?("Torie")
     assert page.has_content?("Edgar")
     assert page.has_content?("David")

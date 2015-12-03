@@ -20,7 +20,10 @@ module CategoryItemsSetup
   end
 
   def create_cars(num)
-    store = Store.create(name: "Dave's Cars")
+    store     = Store.create(name: "Dave's Cars")
+    locations = [Location.create(name: 'Capitol Hill'),
+                 Location.create(name: 'Five Points')]
+
     num.times do |i|
       store.cars.create( make: "Chevy#{i}",
                          model: "El Camino#{i}",
@@ -28,7 +31,8 @@ module CategoryItemsSetup
                          daily_price: 100 + i,
                          weekly_price: 600 + i,
                          description: "Dave met his wife ##{i} in this car.",
-                         image: File.open('app/assets/images/gnar_possum.jpg')
+                         image: File.open('app/assets/images/gnar_possum.jpg'),
+                         location_id: locations[i % 2].id
                        )
     end
   end

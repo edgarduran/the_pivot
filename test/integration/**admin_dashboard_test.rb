@@ -11,6 +11,7 @@ class AdminDashboardTest < ActionDispatch::IntegrationTest
 
     assert page.has_content?('Welcome, Admin!')
   end
+
   test 'when admin logs they are redirected to dashboard page' do
     admin = User.create(username: 'admin',
                         password: 'password',
@@ -23,6 +24,7 @@ class AdminDashboardTest < ActionDispatch::IntegrationTest
     click_button 'Login'
     assert page.has_content?('Welcome, Admin!')
   end
+  
   test 'default user does not see admin dashboard' do
     user = User.create(username: 'default_user',
                        password: 'password',

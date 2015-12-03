@@ -4,7 +4,6 @@
 </script>
 
 <h1 class="thin center align">Cars</h1>
-
 <nav>
   <ul class="right hide-on-med-and-down">
     <li><a href="#!">First Sidebar Link</a></li>
@@ -16,11 +15,6 @@
   </ul>
   <a href="#" data-activates="slide-out" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
 </nav>
-
-
-
-
-
 
   <div class="row">
 
@@ -45,6 +39,8 @@
       </div>
     </div>
 
+      <%= link_to "Add to my Garage", cart_cars_path(car_id: car.id), method: :post, class: "add-to-cart" %>
+      
       <% end %>
     <div class="col s5">
       asdfsdfsdf
