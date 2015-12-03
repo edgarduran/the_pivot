@@ -11,10 +11,10 @@ module CategoryItemsSetup
 
     click_link 'Add to my Garage'
   end
-  
+
   def create_categories_and_cars
-    snowboard_category = Category.create(title: 'Snowboards')
-    apparel_category   = Category.create(title: 'Apparel')
+    snowboard_category = Category.create(title: 'Trucks')
+    apparel_category   = Category.create(title: 'Cars')
 
     create_cars(4)
   end

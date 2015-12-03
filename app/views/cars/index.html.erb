@@ -1,4 +1,24 @@
+<script> $(document).ready(function(){
+  $(".button-collapse").sideNav();
+});
+</script>
+
 <h1 class="thin center align">Cars</h1>
+
+<nav>
+  <ul class="right hide-on-med-and-down">
+    <li><a href="#!">First Sidebar Link</a></li>
+    <li><a href="#!">Second Sidebar Link</a></li>
+  </ul>
+  <ul id="slide-out" class="side-nav">
+    <li><a href="#!">First Sidebar Link</a></li>
+    <li><a href="#!">Second Sidebar Link</a></li>
+  </ul>
+  <a href="#" data-activates="slide-out" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+</nav>
+
+
+
 
 
 
@@ -23,24 +43,11 @@
           <p><%= car.description %></p>
         </div>
       </div>
-      <% end %>
     </div>
 
-    <div class="col s5">
-      <% @cars.each do |car| %>
-      <div class="card small">
-        <div class="card-image waves-effect waves-block waves-light">
-          <img class="activator" src="https://images.unsplash.com/photo-1445020569771-3f8531cf7a4b?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=e49f8ca7482a01413754982eaa3438ac" >
-        </div>
-        <div class="card-content">
-          <span class="card-title activator grey-text text-darken-4"><%= car.full_name %><i class="material-icons right">more_vert</i></span>
-          <p><a href="#">Dave's Garage</a></p>
-        </div>
-        <div class="card-reveal">
-          <span class="card-title grey-text text-darken-4"><%= car.full_name %><i class="material-icons right">close</i></span>
-          <p><%= car.description %></p>
-        </div>
-      </div>
       <% end %>
+    <div class="col s5">
+      asdfsdfsdf
+    </div>
     </div>
   </div>

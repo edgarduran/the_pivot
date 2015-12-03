@@ -1,12 +1,7 @@
-store = Store.create(name: "Dave's Cars")
+require './test/test_helper.rb'
+include CategoryItemsSetup
 
-car = store.cars.create( make: "Chevy#{i}",
-                       model: "El Camino#{i}",
-                       year: "196#{i}",
-                       daily_price: 100 + i,
-                       weekly_price: 600 + i,
-                       description: "Dave met his wife ##{i} in this car.",
-                       image: File.open('app/assets/images/gnar_possum.jpg'))
+create_cars(2)
 # Category.create([{ title: 'Apparel' }, { title: 'Snowboards' }, { title: 'Boots' }, { title: 'Bindings' }])
 #
 # apparel = Category.find_by(title: 'Apparel')
