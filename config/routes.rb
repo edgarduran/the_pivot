@@ -9,11 +9,13 @@ Rails.application.routes.draw do
   resources :cars, only: [:index, :show]
   resources :locations, only: [:show, :index], param: :slug
   resources :users, only: [:new, :create, :show, :edit, :update]
+
   namespace :admin do
     resources :items, only: [:index, :show, :new, :create, :destroy]
     resources :dashboard, only: [:show, :index]
     resources :locations, only: [:show, :index], param: :slug
   end
+  
   post '/admin/dashboard', to: 'admin/dashboard#daily_deal'
   resources :orders, only: [:index, :show, :create, :update]
 
