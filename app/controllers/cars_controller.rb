@@ -1,7 +1,7 @@
 class CarsController < ApplicationController
   def index
     @cars = Car.all
-    
+
     # if params[:search]
     #   @cars = Car.search(params[:search])
     # else
@@ -11,7 +11,7 @@ class CarsController < ApplicationController
 
   def show
     @car = Car.find(params[:id])
-    @categories = Category.all
+    @locations = Location.all
   end
 
   private

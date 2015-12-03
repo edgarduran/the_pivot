@@ -24,17 +24,18 @@
 
     <div class="col s5">
       <% @cars.each do |car| %>
-      <div class="card small">
+      <div class="card small" id= "<%= car.id %>">
         <div class="card-image waves-effect waves-block waves-light">
           <img class="activator" src="https://images.unsplash.com/photo-1445020569771-3f8531cf7a4b?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=e49f8ca7482a01413754982eaa3438ac" >
         </div>
         <div class="card-content">
-          <span class="card-title activator grey-text text-darken-4"><%= car.full_name %><i class="material-icons right">more_vert</i></span>
-          <p><a href="#">Dave's Garage</a></p>
+          <span class="card-title activator grey-text text-darken-4"><%= link_to car.full_name, store_car_path(car.id, store: car.store.slug) %><i class="material-icons right">more_vert</i></span>
+          <p><a href="#"> <%= link_to car.store.name, store_cars_path(store: car.store.slug) %> </a></p>
         </div>
         <div class="card-reveal">
-          <span class="card-title grey-text text-darken-4"><%= car.full_name %><i class="material-icons right">close</i></span>
+          <span class="card-title grey-text text-darken-4"><%= link_to car.full_name, store_car_path(car.id, store: car.store.slug) %><i class="material-icons right">close</i></span>
           <p><%= car.description %></p>
+          $<%= car.daily_price %>
         </div>
       </div>
     </div>
