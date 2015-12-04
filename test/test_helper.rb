@@ -59,9 +59,11 @@ module CategoryItemsSetup
   end
 
   def create_user
-    User.create(username: 'Matt',
-                password: 'gnargnar',
-                email: 'matthewjrooney@gmail.com')
+    user = User.create(username: 'Matt',
+                       password: 'gnargnar',
+                       email: 'matthewjrooney@gmail.com')
+
+    user.roles.create(name: 'registered_user')
   end
 
   def login_user

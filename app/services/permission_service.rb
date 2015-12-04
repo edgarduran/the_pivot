@@ -25,13 +25,17 @@ class PermissionService
       return true if controller == 'cars'        && action.in?(%w(index show))
       return true if controller == 'locations'   && action.in?(%w(index show))
       return true if controller == 'stores/cars' && action.in?(%w(index show))
-      return true if controller == 'cart/cars'   && action.in?(%w(create destroy update))
+      return true if controller == 'cart_cars'   && action.in?(%w(create destroy update))
+      return true if controller == 'cart'        && action == 'show'
+      return true if controller == 'orders'      && action.in?(%w(index show))
     else
       return true if controller == 'home'        && action == 'home'
       return true if controller == 'sessions'    && action.in?(%w(show new create))
       return true if controller == 'cars'        && action.in?(%w(index show))
       return true if controller == 'locations'   && action.in?(%w(index show))
       return true if controller == 'stores/cars' && action.in?(%w(index show))
+      return true if controller == 'cart'        && action == 'show'
+      return true if controller == 'cart_cars'   && action.in?(%w(create destroy update))
     end
   end
 
