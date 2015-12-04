@@ -65,6 +65,27 @@ module CategoryItemsSetup
     click_button 'Login'
   end
 
+  def create_platform_admin
+    admin = User.create(username: 'platform admin',
+                        password: 'password')
+    role =  Role.create(name: 'platform_admin')
+    admin.roles << role
+  end
+
+  def create_store_admin
+    admin = User.create(username: 'store admin',
+                        password: 'password')
+    role =  Role.create(name: 'store_admin')
+    admin.roles << role
+  end
+
+  def create_registered_user
+    user = User.create(username: 'user',
+                        password: 'password')
+    role =  Role.create(name: 'regitered_user')
+    user.roles << role
+  end
+
   def add_items_to_cart
     item_1 = Car.create
     item_2 = Car.create
