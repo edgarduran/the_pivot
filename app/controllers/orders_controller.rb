@@ -3,7 +3,7 @@ class OrdersController < ApplicationController
     if current_user
       @orders = current_user.orders
     else
-      render file: 'public/404' unless current_admin?
+      render file: 'public/404' #unless current_admin?
       flash[:non_user] = 'You must be logged in to view your orders'
     end
   end

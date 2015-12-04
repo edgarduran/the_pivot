@@ -11,7 +11,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body class="Site">
-  <% if current_admin? %>
+  <% if platform_admin? %>
     <%= render "partials/admin_nav" %>
   <% else %>
     <%= render "partials/nav" %>

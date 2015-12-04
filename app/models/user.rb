@@ -2,7 +2,8 @@ class User < ActiveRecord::Base
   has_secure_password
   validates :username, presence: true
 
-  enum role: %w(default admin)
+  has_many :user_roles
+  has_many :roles, through: :user_roles
 
   has_many :orders
 
@@ -13,5 +14,17 @@ class User < ActiveRecord::Base
     end
     order.total_price = order.order_items.map { |order_item| Car.find(order_item.car_id).daily_price * order_item.days }.sum
     session.delete(:cart) if order.save
+  end
+
+  def platform_admin?
+    roles.exists?(name: "platform_admin")
+  end
+
+  def store_admin?
+    roles.exists?(name: "store_admin")
+  end
+
+  def registered_user?
+    roles.exists?(name: "registered_user")
   end
 end
