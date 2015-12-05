@@ -83,6 +83,7 @@ module CategoryItemsSetup
   end
 
   def create_store_admin
+    store = Store.create(name: "Dave's Cars")
     admin = User.create(username: 'store admin',
                         password: 'password')
 

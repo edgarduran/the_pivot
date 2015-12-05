@@ -16,11 +16,6 @@ class AdminCanSeeOrdersTest < ActionDispatch::IntegrationTest
     end
   end
 
-  test "store admin sees orders for their store" do
-    skip
-    login_store_admin
-  end
-
   test "platform admin sees number of orders by status" do
     create_user
     create_user_order(2)

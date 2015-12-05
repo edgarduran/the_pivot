@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   has_many :roles, through: :user_roles
 
   has_many :orders
-
+  belongs_to :store
   after_save :add_default_user_role
 
   def set_order(session)
