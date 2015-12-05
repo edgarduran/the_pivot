@@ -4,7 +4,7 @@ class CartCarRentalDaysCanBeModifiedTest < ActionDispatch::IntegrationTest
   test 'cart cars rental days can be modified' do
     add_car_to_cart
     visit cart_path
-
+    
     fill_in 'Days', with: 3
     click_button 'Update'
 

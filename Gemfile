@@ -34,6 +34,7 @@ gem 'figaro'
 gem 'mocha'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'simplecov', :require => false, :group => :test
   gem 'byebug'
   gem 'pry'
   gem 'capybara'

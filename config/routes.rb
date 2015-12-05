@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     resources :dashboard, only: [:show, :index]
     resources :locations, only: [:show, :index], param: :slug
   end
-  
+
   post '/admin/dashboard', to: 'admin/dashboard#daily_deal'
   resources :orders, only: [:index, :show, :create, :update]
 

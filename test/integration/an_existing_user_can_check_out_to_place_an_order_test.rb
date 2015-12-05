@@ -5,6 +5,9 @@ class AnExistingUserCanCheckOutToPlaceAnOrderTest < ActionDispatch::IntegrationT
     add_car_to_cart
 
     visit '/cart'
+
+    assert_equal cart_path, current_path
+
     click_link 'Check Out'
 
     assert_equal login_path, current_path
