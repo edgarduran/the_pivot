@@ -84,15 +84,16 @@ module CategoryItemsSetup
 
   def create_store_admin
     store = Store.create(name: "Dave's Cars")
-    admin = User.create(username: 'store admin',
+    admin = User.create(username: 'storeadmin',
                         password: 'password')
 
     admin.roles.create(name: 'store_admin')
+    store.users << admin
   end
 
   def create_registered_user
     user = User.create(username: 'user',
-                        password: 'password')
+                       password: 'password')
 
     user.roles.create(name: 'regitered_user')
   end
