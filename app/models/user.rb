@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
 
   has_many :orders
 
+  after_save :add_default_user_role
+
   def set_order(session)
     order = orders.new(current_status: 'ordered')
     order_items = session.each do |id, days|
@@ -26,5 +28,9 @@ class User < ActiveRecord::Base
 
   def registered_user?
     roles.exists?(name: "registered_user")
+  end
+
+  def add_default_user_role
+    self.roles.create(name: 'registered_user')
   end
 end
