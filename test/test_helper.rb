@@ -45,13 +45,6 @@ module CategoryItemsSetup
     end
   end
 
-  def create_items_and_order
-    category     = Category.create(title: 'Snowboards')
-    category_two = Category.create(title: 'Apparel')
-    create_cars(3)
-    Order.create(current_status: 'completed')
-  end
-
   def create_user
     user = User.create(username: 'Matt',
                        password: 'gnargnar',
@@ -85,22 +78,22 @@ module CategoryItemsSetup
   def create_platform_admin
     admin = User.create(username: 'admin',
                         password: 'password')
-    role =  Role.create(name: 'platform_admin')
-    admin.roles << role
+
+    admin.roles.create(name: 'platform_admin')
   end
 
   def create_store_admin
     admin = User.create(username: 'store admin',
                         password: 'password')
-    role =  Role.create(name: 'store_admin')
-    admin.roles << role
+
+    admin.roles.create(name: 'store_admin')
   end
 
   def create_registered_user
     user = User.create(username: 'user',
                         password: 'password')
-    role =  Role.create(name: 'regitered_user')
-    user.roles << role
+
+    user.roles.create(name: 'regitered_user')
   end
 
   def add_items_to_cart
@@ -130,18 +123,6 @@ module CategoryItemsSetup
                                             order_id: current_user_order.id,
                                             days: 2)
     end
-  end
-
-  def create_and_login_additional_users(num)
-    num.times do |i|
-      i += 1
-      user = User.create(username: "name#{i}", password: "password#{i}")
-    end
-
-    visit login_path
-    fill_in 'Username', with: "user.username"
-    fill_in 'Password', with: "user.password"
-    click_button 'Login'
   end
 
   def admin_order_setup(status)
