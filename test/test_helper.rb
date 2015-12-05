@@ -83,7 +83,7 @@ module CategoryItemsSetup
   end
 
   def create_platform_admin
-    admin = User.create(username: 'platform admin',
+    admin = User.create(username: 'admin',
                         password: 'password')
     role =  Role.create(name: 'platform_admin')
     admin.roles << role

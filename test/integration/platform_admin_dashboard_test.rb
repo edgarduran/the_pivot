@@ -5,11 +5,12 @@ class PlatformAdminDashboardTest < ActionDispatch::IntegrationTest
     create_platform_admin
     visit login_path
 
-    fill_in 'Username', with: 'platform admin'
+    fill_in 'Username', with: 'admin'
     fill_in 'Password', with: 'password'
     click_button 'Login'
 
-    assert page.has_content?('Welcome, Platform admin!')
+    assert_equal "/admin/dashboard", current_path
+    assert page.has_content?('Welcome, Admin!')
   end
 
   test 'default user does not see admin dashboard' do
