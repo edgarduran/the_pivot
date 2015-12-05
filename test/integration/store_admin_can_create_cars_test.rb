@@ -1,11 +1,13 @@
 require 'test_helper'
 
-class AdminCanCreateStoreItemsTest < ActionDispatch::IntegrationTest
-  test 'admin can modify their account data' do
-    @category = Category.create(title: 'Apparel')
+class StoreAdminCanCreateCarsTest < ActionDispatch::IntegrationTest
+  test 'store admin can modify their account data' do
+    skip
+    location = Location.create(name: 'Capitol Hill')
     admin = User.create(username: 'admin',
-                        password: 'password',
-                        role:      1)
+                        password: 'password')
+
+    admin.roles.create(name: "store_admin")
 
     ApplicationController.any_instance.stubs(:current_user).returns(admin)
     visit admin_dashboard_index_path(admin)

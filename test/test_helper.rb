@@ -161,6 +161,23 @@ module CategoryItemsSetup
     fill_in 'Password', with: 'password'
     click_button 'Login'
   end
+
+  def create_platform_admin
+    admin = User.create(username: 'admin',
+                        password: 'password')
+
+    admin.roles.create(name: "platform_admin")
+  end
+
+  def login_platform_admin
+    create_platform_admin
+    
+    visit login_path
+
+    fill_in 'Username', with: 'admin'
+    fill_in 'Password', with: 'password'
+    click_button 'Login'
+  end
 end
 
 class ActionDispatch::IntegrationTest
