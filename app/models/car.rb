@@ -15,10 +15,6 @@ class Car < ActiveRecord::Base
       where('LOWER(description) ILIKE ?', "%#{query}%")
   end
 
-  def self.current_featured
-    Car.first
-  end
-
   def full_name
     "#{year} #{make} #{model}"
   end

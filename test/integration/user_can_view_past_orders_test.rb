@@ -3,7 +3,7 @@ require 'test_helper'
 class UserCanViewPastOrdersTest < ActionDispatch::IntegrationTest
   test 'user can view one past order' do
     login_user
-    create_user_order
+    create_user_order(1)
 
     visit '/orders'
 
@@ -13,7 +13,7 @@ class UserCanViewPastOrdersTest < ActionDispatch::IntegrationTest
 
   test 'user can view a list of all past orders' do
     login_user
-    create_user_order
+    create_user_order(1)
 
     order = User.first.orders.create(current_status: 'paid')
 

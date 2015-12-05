@@ -83,7 +83,7 @@ module CategoryItemsSetup
   end
 
   def create_platform_admin
-    admin = User.create(username: 'platform admin',
+    admin = User.create(username: 'admin',
                         password: 'password')
     role =  Role.create(name: 'platform_admin')
     admin.roles << role
@@ -120,14 +120,16 @@ module CategoryItemsSetup
     end
   end
 
-  def create_user_order
+  def create_user_order(num)
     create_cars(1)
     current_user = User.first
 
-    current_user_order = current_user.orders.create(current_status: 'ordered')
-    current_user_order.order_items.create(car_id: Car.first.id,
-                                          order_id: current_user_order.id,
-                                          days: 2)
+    num.times do
+      current_user_order = current_user.orders.create(current_status: 'ordered')
+      current_user_order.order_items.create(car_id: Car.first.id,
+                                            order_id: current_user_order.id,
+                                            days: 2)
+    end
   end
 
   def create_and_login_additional_users(num)
@@ -154,6 +156,23 @@ module CategoryItemsSetup
     order_item = OrderItem.new(item_id: Car.last.id, order_id: order.id, quantity: 2)
     order.order_items << order_item
     order.save
+
+    visit login_path
+
+    fill_in 'Username', with: 'admin'
+    fill_in 'Password', with: 'password'
+    click_button 'Login'
+  end
+
+  def create_platform_admin
+    admin = User.create(username: 'admin',
+                        password: 'password')
+
+    admin.roles.create(name: "platform_admin")
+  end
+
+  def login_platform_admin
+    create_platform_admin
 
     visit login_path
 

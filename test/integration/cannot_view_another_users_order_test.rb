@@ -3,7 +3,7 @@ require "test_helper"
 class CannotViewAnotherUsersOrderTest < ActionDispatch::IntegrationTest
   def setup
     create_user
-    create_user_order
+    create_user_order(1)
   end
 
   test "a registered user cannot view another users orders" do
