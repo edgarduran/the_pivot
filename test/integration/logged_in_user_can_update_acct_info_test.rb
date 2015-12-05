@@ -7,6 +7,8 @@ class LoggedInUserCanUpdateAcctInfoTest < ActionDispatch::IntegrationTest
 
     click_link "EDIT PROFILE"
 
+    assert_equal edit_user_path(User.first), current_path
+
     fill_in 'Username', with: 'Edgar'
     fill_in 'Password', with: 'newpassword'
     fill_in 'Email', with: 'new@mail.com'
