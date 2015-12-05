@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class StoreAdminCanCreateCarsTest < ActionDispatch::IntegrationTest
-  test 'store admin can modify their account data' do
+  test 'store admin can add cars to their store' do
     skip
     location = Location.create(name: 'Capitol Hill')
     admin = User.create(username: 'admin',

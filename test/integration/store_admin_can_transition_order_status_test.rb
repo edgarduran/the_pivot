@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class AdminCanTransitionOrderStatusTest < ActionDispatch::IntegrationTest
+class StoreAdminCanCreateCarsTestAdminCanTransitionOrderStatusTest < ActionDispatch::IntegrationTest
   test 'admin can transition order status from ordered to cancel test' do
     skip
     admin_order_setup('completed')

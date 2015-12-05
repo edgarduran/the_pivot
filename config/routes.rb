@@ -21,5 +21,6 @@ Rails.application.routes.draw do
 
   namespace :stores, path: ":store", as: :store do
     resources :cars, only: [:index, :show]
+    resources :dashboard, only: [:show]
   end
 end
