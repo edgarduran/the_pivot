@@ -120,14 +120,16 @@ module CategoryItemsSetup
     end
   end
 
-  def create_user_order
+  def create_user_order(num)
     create_cars(1)
     current_user = User.first
 
-    current_user_order = current_user.orders.create(current_status: 'ordered')
-    current_user_order.order_items.create(car_id: Car.first.id,
-                                          order_id: current_user_order.id,
-                                          days: 2)
+    num.times do
+      current_user_order = current_user.orders.create(current_status: 'ordered')
+      current_user_order.order_items.create(car_id: Car.first.id,
+                                            order_id: current_user_order.id,
+                                            days: 2)
+    end
   end
 
   def create_and_login_additional_users(num)
@@ -171,7 +173,7 @@ module CategoryItemsSetup
 
   def login_platform_admin
     create_platform_admin
-    
+
     visit login_path
 
     fill_in 'Username', with: 'admin'
