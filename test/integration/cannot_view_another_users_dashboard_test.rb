@@ -6,16 +6,15 @@ class CannotViewAnotherUsersDashboardTest < ActionDispatch::IntegrationTest
     old_user = User.first
 
     visit '/orders'
+
     assert page.has_content?('Your Orders')
     assert page.has_content?('ordered')
 
     click_link('View Order')
 
-    within('.orders-table') do
-      assert page.has_content?('$200')
-      assert page.has_link?('1960 Chevy0 El Camino0')
-      assert page.has_content? "0"
-    end
+    assert page.has_content?('$200')
+    assert page.has_link?('1960 Chevy0 El Camino0')
+    assert page.has_content? "0"
 
     click_link('Logout')
 
@@ -24,7 +23,7 @@ class CannotViewAnotherUsersDashboardTest < ActionDispatch::IntegrationTest
 
     assert_equal 2, User.count
     assert_equal 'Molly', current_user.username
-    assert_equal 'Torie', old_user.username
+    assert_equal 'Matt', old_user.username
     assert_equal "/users/#{current_user.id}", current_path
 
     visit '/users/1'

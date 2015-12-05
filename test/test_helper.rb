@@ -17,15 +17,9 @@ module CategoryItemsSetup
 
   def create_categories_cars_user_order_and_login
     create_cars(1)
-    current_user = User.create(username: 'Torie', password: 'password')
+    login_user
 
-    visit login_path
-
-    within('.login_form') do
-      fill_in 'Username', with: 'Torie'
-      fill_in 'Password', with: 'password'
-      click_button 'Login'
-    end
+    current_user = User.first
 
     current_user_order = current_user.orders.create(current_status: 'ordered')
     current_user_order.order_items.create(car_id: Car.first.id,
@@ -76,9 +70,11 @@ module CategoryItemsSetup
   end
 
   def create_and_login_additional_user
-    User.create(username: "Molly",
-                password: "password",
-                email: "molly@coolcars.com")
+    user = User.create(username: "Molly",
+                       password: "password",
+                       email: "molly@coolcars.com")
+
+    user.roles.create(name: 'registered_user')
 
     visit login_path
     fill_in 'Username', with: 'Molly'
