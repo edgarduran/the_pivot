@@ -25,20 +25,22 @@ class VisitorCannotViewOrdersAndAdminViewsTest < ActionDispatch::IntegrationTest
   end
 
   test "an unauthenticated user cannot view a users cart" do
-    skip
-    create_categories_items_user_order_and_login
-    add_items_to_cart
-    visit "/cart"
+    login_user
+    add_car_to_cart
 
     within(".cart-count") do
-      assert page.has_content?("3")
+      assert page.has_content?("1")
     end
 
+    visit "/cart"
+
     within(".total_price") do
-      assert page.has_content?("$2240")
+      assert page.has_content?("$100")
     end
 
     click_link("Logout")
+
+    create_and_login_additional_user
 
     within(".cart-count") do
       assert page.has_content?("0")
@@ -46,12 +48,8 @@ class VisitorCannotViewOrdersAndAdminViewsTest < ActionDispatch::IntegrationTest
 
     visit "/cart"
 
-    within(".cart-count") do
-      refute page.has_content?("3")
-    end
-
     within(".total_price") do
-      refute page.has_content?("$2240")
+      refute page.has_content?("$100")
     end
   end
 
