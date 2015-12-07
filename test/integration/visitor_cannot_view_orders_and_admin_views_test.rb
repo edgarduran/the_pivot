@@ -61,32 +61,26 @@ class VisitorCannotViewOrdersAndAdminViewsTest < ActionDispatch::IntegrationTest
     assert_equal "/", current_path
   end
 
-  test "an unauthenticated user cannot view admin dashboard" do
-    skip
-    admin = User.create(username: "admin", password: "admin_password", role: 1)
-    visit "/"
-    click_link("Login")
+  test "an unauthenticated user cannot view platform admin dashboard" do
+    create_platform_admin
 
-    fill_in "Username", with: "admin"
-    fill_in "Password", with: "admin_password"
-    click_button "Login"
+    visit admin_dashboard_path(User.last)
 
-    visit "/admin/dashboard"
+    assert_equal "/", current_path
+  end
 
-    assert page.has_content?("Welcome, Admin!")
+  test "an unauthenticated user cannot view store admin dashboard" do
+    create_store_admin
 
-    click_link("Logout")
+    visit admin_dashboard_path(User.last)
 
-    visit "/admin/dashboard"
-
-    assert page.has_content?("404")
+    assert_equal "/", current_path
   end
 
   test "a user cannot make themselves an admin" do
     login_user
-    user = User.first
 
-    visit "/admin/dashboard"
+    visit admin_dashboard_path(User.last)
 
     assert_equal "/", current_path
   end
