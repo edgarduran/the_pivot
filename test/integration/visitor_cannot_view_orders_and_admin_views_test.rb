@@ -90,7 +90,7 @@ class VisitorCannotViewOrdersAndAdminViewsTest < ActionDispatch::IntegrationTest
 
   test "a user cannot make themselves an admin" do
     skip
-    create_and_login_additional_users(1)
+    login_user
     user = User.first
 
     visit "/admin/dashboard"

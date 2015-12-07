@@ -9,6 +9,9 @@ class SessionsController < ApplicationController
       if @user.platform_admin?
         redirect_to admin_dashboard_index_path
         flash[:success] = "Logged in as #{@user.username}"
+      elsif @user.store_admin?
+        redirect_to "/#{@user.store.slug}/dashboard/#{@user.store_id}"
+        flash[:success] = "Logged in as #{@user.username}"
       else
         redirect_to @user
         flash[:success] = "Logged in as #{@user.username}"

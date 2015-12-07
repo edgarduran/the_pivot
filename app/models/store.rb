@@ -1,5 +1,6 @@
 class Store < ActiveRecord::Base
   has_many :cars
+  has_many :users
   validates :slug, presence: true, uniqueness: true
 
   before_validation :generate_slug

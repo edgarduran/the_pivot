@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class PlatformAdminDashboardTest < ActionDispatch::IntegrationTest
-  test 'when admin logs they see dashboard page' do
+  test 'when platform admin logs they see dashboard page' do
     create_platform_admin
     visit login_path
 
