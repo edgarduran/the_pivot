@@ -38,8 +38,7 @@ class VisitorCannotViewOrdersAndAdminViewsTest < ActionDispatch::IntegrationTest
       assert page.has_content?("$100")
     end
 
-    click_link("Logout")
-
+    logout_user
     create_and_login_additional_user
 
     within(".cart-count") do
@@ -54,15 +53,12 @@ class VisitorCannotViewOrdersAndAdminViewsTest < ActionDispatch::IntegrationTest
   end
 
   test "an unauthenticated user cannot view a users dashboard" do
-    skip
-    create_categories_items_user_order_and_login
-    add_items_to_cart
-    old_user = User.find_by(username: "Matt")
-    click_link("Logout")
+    create_user
+    old_user = User.first
 
     visit "/users/#{old_user.id}"
 
-    assert page.has_content?("404")
+    assert_equal "/", current_path
   end
 
   test "an unauthenticated user cannot view admin dashboard" do
@@ -87,12 +83,11 @@ class VisitorCannotViewOrdersAndAdminViewsTest < ActionDispatch::IntegrationTest
   end
 
   test "a user cannot make themselves an admin" do
-    skip
     login_user
     user = User.first
 
     visit "/admin/dashboard"
 
-    assert page.has_content?("404")
+    assert_equal "/", current_path
   end
 end
