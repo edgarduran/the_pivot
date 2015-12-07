@@ -1,0 +1,6 @@
+<% @stores.each do |store| %>
+  <%= store.name %>
+  <br>
+  <%= link_to "Approve", edit_store_path(store) %>
+  <br>
+<% end %>

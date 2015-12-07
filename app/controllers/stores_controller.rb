@@ -15,6 +15,15 @@ class StoresController < ApplicationController
     end
   end
 
+  def index
+    @stores = Store.all
+  end
+
+  def edit
+    Store.find(params[:id]).update(approved: true)
+    redirect_to stores_path
+  end
+
   private
 
     def store_params

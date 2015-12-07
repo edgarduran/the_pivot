@@ -29,11 +29,7 @@ class BusinessCreationTest < ActionDispatch::IntegrationTest
     assert page.has_content?("Try again.")
   end
 
-  # As a logged in platform admin,
-  # When I view my dashboard,
-  # Then I should be able to approve or decline a store creation request.
   test "platform admin can approve a business" do
-    skip
     create_business_approval_request
     login_platform_admin
 

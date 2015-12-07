@@ -26,5 +26,5 @@ Rails.application.routes.draw do
     resources :dashboard, only: [:show]
   end
 
-  resources :stores, only: [:new, :create]
+  resources :stores, only: [:new, :create, :index, :edit]
 end
