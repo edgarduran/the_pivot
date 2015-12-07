@@ -2,24 +2,20 @@ require 'test_helper'
 
 class StoreAdminCanCreateCarsTest < ActionDispatch::IntegrationTest
   test 'store admin can add cars to their store' do
-    skip
-    location = Location.create(name: 'Capitol Hill')
-    admin = User.create(username: 'admin',
-                        password: 'password')
+    create_store_admin
+    login_store_admin
+    locations = Location.create(name: 'Capitol Hill')
 
-    admin.roles.create(name: "store_admin")
+    click_link 'Add car to store'
+    fill_in 'Make', with: 'Geo'
+    fill_in 'Model', with: 'Metro'
+    fill_in 'Year', with: '1983'
+    fill_in 'Description', with: 'Sweet ride!'
+    fill_in 'Location', with: "Capitol Hill"
+    fill_in 'Daily price', with: 59
+    click_button 'Add Car'
 
-    ApplicationController.any_instance.stubs(:current_user).returns(admin)
-    visit admin_dashboard_index_path(admin)
-    click_link 'Add items to store'
-    fill_in 'Name', with: 'NewGear'
-    fill_in 'Brand', with: 'AwesomeBrand'
-    fill_in 'Description', with: 'Put this thing on!'
-    fill_in 'Category', with: @category.id
-    fill_in 'Price', with: '777'
-    click_button 'Create Item'
-    assert page.has_content?('Item NewGear has been added to store')
-    assert page.has_content?('NEWGEAR')
-    assert page.has_content?('777')
+    assert page.has_content?('Car 1983 Geo Metro has been added to store')
+    assert page.has_content?('Geo')
   end
 end
