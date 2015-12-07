@@ -1,5 +1,7 @@
 <h1>Admin Dashboard</h1>
 
+<%= link_to "View pending business requests", stores_path %>
+
 <h4 class="grey-text">Welcome, <%= current_user.username.capitalize %>!</h4>
 <br>
 <div class="center">
@@ -7,7 +9,6 @@
 <%= link_to "Add items to store", new_admin_item_path, class: "btn blue-grey darken-1 nudge-right" %>
 <br>
 <br>
-<%= link_to "Send Daily Deal Email to All Registered Users", "/admin/dashboard", method: :post, class: "btn"  %>
 </div>
 <h3>Overview</h3>
 <table class="by-status centered">

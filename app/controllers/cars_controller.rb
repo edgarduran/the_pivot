@@ -8,15 +8,4 @@ class CarsController < ApplicationController
     #   @cars = Car.all
     # end
   end
-
-  def show
-    @car = Car.find(params[:id])
-    @locations = Location.all
-  end
-
-  private
-
-  def car_params
-    params.require(:car).permit(:make, :model, :year, :daily_price, :weekly_price, :description, :image)
-  end
 end
