@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'stores/new'
+
   get '/', to: 'home#home'
   get '/cart', to: 'cart#show'
   get '/login', to: 'sessions#new'
@@ -23,4 +25,6 @@ Rails.application.routes.draw do
     resources :cars, only: [:index, :show]
     resources :dashboard, only: [:show]
   end
+
+  resources :stores, only: [:new, :create]
 end

@@ -37,6 +37,7 @@ class PermissionService
       return true if controller == 'cart'        && action == 'show'
       return true if controller == 'orders'      && action.in?(%w(index create show))
       return true if controller == 'users'       && action.in?(%w(show edit update))
+      return true if controller == 'stores'      && action.in?(%w(new create))
     else
       return true if controller == 'home'        && action == 'home'
       return true if controller == 'sessions'    && action.in?(%w(new create))
