@@ -43,7 +43,6 @@ class BusinessCreationTest < ActionDispatch::IntegrationTest
   end
 
   test "platform admin can decline a business" do
-    skip
     original_store_count = Store.count
 
     create_business_approval_request

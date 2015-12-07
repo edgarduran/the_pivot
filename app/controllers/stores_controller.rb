@@ -20,7 +20,12 @@ class StoresController < ApplicationController
   end
 
   def edit
-    Store.find(params[:id]).update(approved: true)
+    store = Store.find(params[:id])
+    if params[:approve] == "yes"
+      store.update(approved: true)
+    else
+      store.destroy
+    end
     redirect_to stores_path
   end
 
