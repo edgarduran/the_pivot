@@ -1,0 +1,9 @@
+<p>
+  Before you can lend a car, you must be approved. Apply here.
+</p>
+
+<%= form_for @store do |f| %>
+<%= f.label :name %>
+<%= f.text_field :name %>
+<%= f.submit "Request business approval", class: "btn" %>
+<% end %>

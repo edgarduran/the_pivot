@@ -115,12 +115,12 @@ module CategoryItemsSetup
     end
   end
 
-  def create_user_order(num)
+  def create_user_order(num, status = "ordered")
     create_cars(1)
     current_user = User.first
 
     num.times do
-      current_user_order = current_user.orders.create(current_status: 'ordered')
+      current_user_order = current_user.orders.create(current_status: status)
       current_user_order.order_items.create(car_id: Car.first.id,
                                             order_id: current_user_order.id,
                                             days: 2)
@@ -162,6 +162,15 @@ module CategoryItemsSetup
     fill_in 'Username', with: 'admin'
     fill_in 'Password', with: 'password'
     click_button 'Login'
+  end
+
+  def create_business_approval_request
+    login_user
+
+    click_link "Lend a Car"
+
+    fill_in "Name", with: "Matt's Cars"
+    click_button "Request business approval"
   end
 end
 
