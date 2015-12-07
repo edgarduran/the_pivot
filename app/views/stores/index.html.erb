@@ -1,7 +1,9 @@
 <% @stores.each do |store| %>
   <%= store.name %>
   <br>
-  <%= link_to "Approve", edit_store_path(store, approve: "yes") %> |
-  <%= link_to "Decline", edit_store_path(store) %>
+    <%= approve_store_link(store) %>
+    |
+    <%= decline_store_link(store) %>
   <br>
+    <%= activate_or_deactivate_store_link(store) %>
 <% end %>

@@ -83,7 +83,7 @@ module CategoryItemsSetup
     user = User.create(username: 'user',
                        password: 'password')
 
-    user.roles.create(name: 'regitered_user')
+    user.roles.create(name: 'registered_user')
   end
 
   def add_items_to_cart
