@@ -2,16 +2,10 @@ require 'test_helper'
 
 class AnAdminCanFilterOrdersByStatusTest < ActionDispatch::IntegrationTest
   test 'admin can view paid orders' do
-    skip
-    admin = User.create(username: 'admin',
-                        password: 'password',
-                        role:      1)
+    create_user
+    create_user_order(2)
 
-    create_items_associated_with_orders
-
-    ApplicationController.any_instance.stubs(:current_user).returns(admin)
-
-    visit admin_dashboard_index_path(admin)
+    login_platform_admin
 
     click_link('View Paid')
 
