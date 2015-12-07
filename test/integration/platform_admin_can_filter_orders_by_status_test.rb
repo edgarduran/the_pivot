@@ -3,13 +3,14 @@ require 'test_helper'
 class AnAdminCanFilterOrdersByStatusTest < ActionDispatch::IntegrationTest
   test 'admin can view paid orders' do
     create_user
-    create_user_order(2)
+    create_user_order(2, "paid")
 
     login_platform_admin
 
     click_link('View Paid')
 
     assert_equal admin_dashboard_path('paid'), current_path
+
 
     within('.orders') do
       assert page.has_content?('Placed On')
@@ -19,17 +20,11 @@ class AnAdminCanFilterOrdersByStatusTest < ActionDispatch::IntegrationTest
   end
 
   test 'admin can view canceled orders' do
-    skip
-    admin = User.create(username: 'admin',
-                        password: 'password',
-                        role:      1)
+    create_user
+    create_user_order(2, "canceled")
 
-    create_items_associated_with_orders
-
-    ApplicationController.any_instance.stubs(:current_user).returns(admin)
-
-    visit admin_dashboard_index_path(admin)
-
+    login_platform_admin
+    save_and_open_page
     click_link('View Canceled')
 
     assert_equal admin_dashboard_path('canceled'), current_path
@@ -42,17 +37,11 @@ class AnAdminCanFilterOrdersByStatusTest < ActionDispatch::IntegrationTest
   end
 
   test 'admin can view completed orders' do
-    skip
-    admin = User.create(username: 'admin',
-                        password: 'password',
-                        role:      1)
+    create_user
+    create_user_order(2, "completed")
 
-    create_items_associated_with_orders
-
-    ApplicationController.any_instance.stubs(:current_user).returns(admin)
-
-    visit admin_dashboard_index_path(admin)
-
+    login_platform_admin
+    save_and_open_page
     click_link('View Completed')
 
     assert_equal admin_dashboard_path('completed'), current_path
@@ -65,17 +54,10 @@ class AnAdminCanFilterOrdersByStatusTest < ActionDispatch::IntegrationTest
   end
 
   test 'admin can view ordered orders' do
-    skip
-    admin = User.create(username: 'admin',
-                        password: 'password',
-                        role:      1)
+    create_user
+    create_user_order(2, "ordered")
 
-    create_items_associated_with_orders
-
-    ApplicationController.any_instance.stubs(:current_user).returns(admin)
-
-    visit admin_dashboard_index_path(admin)
-
+    login_platform_admin
     click_link('View Ordered')
 
     assert_equal admin_dashboard_path('ordered'), current_path
