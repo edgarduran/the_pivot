@@ -177,6 +177,10 @@ module CategoryItemsSetup
     fill_in "Name", with: "Matt's Cars"
     click_button "Request business approval"
   end
+
+  def logout_user
+    click_link "Logout"
+  end
 end
 
 class ActionDispatch::IntegrationTest

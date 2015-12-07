@@ -25,20 +25,21 @@ class VisitorCannotViewOrdersAndAdminViewsTest < ActionDispatch::IntegrationTest
   end
 
   test "an unauthenticated user cannot view a users cart" do
-    skip
-    create_categories_items_user_order_and_login
-    add_items_to_cart
-    visit "/cart"
+    login_user
+    add_car_to_cart
 
     within(".cart-count") do
-      assert page.has_content?("3")
+      assert page.has_content?("1")
     end
+
+    visit "/cart"
 
     within(".total_price") do
-      assert page.has_content?("$2240")
+      assert page.has_content?("$100")
     end
 
-    click_link("Logout")
+    logout_user
+    create_and_login_additional_user
 
     within(".cart-count") do
       assert page.has_content?("0")
@@ -46,55 +47,41 @@ class VisitorCannotViewOrdersAndAdminViewsTest < ActionDispatch::IntegrationTest
 
     visit "/cart"
 
-    within(".cart-count") do
-      refute page.has_content?("3")
-    end
-
     within(".total_price") do
-      refute page.has_content?("$2240")
+      refute page.has_content?("$100")
     end
   end
 
   test "an unauthenticated user cannot view a users dashboard" do
-    skip
-    create_categories_items_user_order_and_login
-    add_items_to_cart
-    old_user = User.find_by(username: "Matt")
-    click_link("Logout")
+    create_user
+    old_user = User.first
 
     visit "/users/#{old_user.id}"
 
-    assert page.has_content?("404")
+    assert_equal "/", current_path
   end
 
-  test "an unauthenticated user cannot view admin dashboard" do
-    skip
-    admin = User.create(username: "admin", password: "admin_password", role: 1)
-    visit "/"
-    click_link("Login")
+  test "an unauthenticated user cannot view platform admin dashboard" do
+    create_platform_admin
 
-    fill_in "Username", with: "admin"
-    fill_in "Password", with: "admin_password"
-    click_button "Login"
+    visit admin_dashboard_path(User.last)
 
-    visit "/admin/dashboard"
+    assert_equal "/", current_path
+  end
 
-    assert page.has_content?("Welcome, Admin!")
+  test "an unauthenticated user cannot view store admin dashboard" do
+    create_store_admin
 
-    click_link("Logout")
+    visit admin_dashboard_path(User.last)
 
-    visit "/admin/dashboard"
-
-    assert page.has_content?("404")
+    assert_equal "/", current_path
   end
 
   test "a user cannot make themselves an admin" do
-    skip
     login_user
-    user = User.first
 
-    visit "/admin/dashboard"
+    visit admin_dashboard_path(User.last)
 
-    assert page.has_content?("404")
+    assert_equal "/", current_path
   end
 end
