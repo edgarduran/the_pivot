@@ -1,7 +1,16 @@
 require './test/test_helper.rb'
 include CategoryItemsSetup
 
-create_cars(2)
+User.create(username: "admin",
+            password: "password",
+            role: 1,
+            email: "admin@bmc.com")
+
+User.create(username: "user",
+            password: "password",
+            role: 0,
+            email: "user@bmc.com")
+
 # Category.create([{ title: 'Apparel' }, { title: 'Snowboards' }, { title: 'Boots' }, { title: 'Bindings' }])
 #
 # apparel = Category.find_by(title: 'Apparel')

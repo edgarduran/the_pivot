@@ -1,25 +1,31 @@
-<div class="navbar-fixed">
+<div class="navbar-fixed" style="opacity:.8;">
   <nav>
-    <div class="nav-wrapper blue-grey darken-1">
-      <a href="/" class="bold" id="here">BORROW MY CARRO<i class="material-icons left">group_work</i></a>
+    <div class="nav-wrapper grey darken-4">
+      <a href="/" class="thin white-text" id="here">BORROW MY CARRO<i class="material-icons left">group_work</i></a>
       <ul class="right hide-on-med-and-down">
         <li>
+
+
           <li>
 
-          </li>
           <% if current_user && current_admin? %>
             <li><%= link_to "Logout", logout_path, method: :delete %></li>
             <li><%= link_to "Dashboard", admin_dashboard_index_path %></li>
+            <li><%= link_to "Profile", user_path %></li>
             <% elsif current_user %>
             <li><%= link_to "Logout", logout_path, method: :delete %></li>
           <% else %>
-        <li><%= link_to "Login", login_path %></li>
+        <li><%= link_to "Login", login_path, class: "thin" %></li>
           <% end %>
         </li>
-          <li><a href="/cars">All Cars</a></li>
+          <li><a href="/cars" class="thin">Vehicles  </a></li>
+          <li><a href="/cars" class="thin">Locations</a></li>
+          <li>
+            <a href="#!" class="collection-item thin ">My Garage<span class="new badge cyan accent-4 z-depth-2">4</span></a>
+          </li>
         </ul>
-        <li><a id="go-to-cart" href="/cart"><span class="material-icons cart-icon"></span>
-        <span class="badge cart-count"><%= @cart.total %></span></a></li>
+        <!-- <li><a id="go-to-cart" href="/cart"><span class="material-icons cart-icon"></span> -->
+        <!-- <span class="badge cart-count"><%= @cart.total %></span></a></li> -->
       </ul>
     </div>
   </nav>
