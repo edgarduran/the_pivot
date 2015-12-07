@@ -129,7 +129,7 @@ module CategoryItemsSetup
 
   def create_user_order
     create_cars(1)
-    current_user = create_user
+    current_user = User.first
 
     current_user_order = current_user.orders.create(current_status: 'ordered')
     current_user_order.order_items.create(car_id: Car.first.id,

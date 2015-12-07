@@ -38,7 +38,6 @@ group :development, :test do
   gem 'pry'
   gem 'capybara'
   gem 'launchy'
-  gem 'pry'
   gem 'rubocop'
 end
 

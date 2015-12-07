@@ -9,16 +9,16 @@ class OrdersController < ApplicationController
   end
 
   def show
-    @order_data = Order.find(params[:id]).orders_hash
+    @order_data = current_user.orders.find(params[:id]).orders_hash
   end
 
   def create
     if session[:cart].nil? || session[:cart] == {}
       flash[:no_items] = "There's nothing in your cart."
-      redirect_to items_path
+      redirect_to cars_path
     elsif current_user && session[:cart]
       current_user.set_order(session[:cart])
-      UserMailer.sample_email(current_user).deliver_now
+      # UserMailer.sample_email(current_user).deliver_now
       session.delete(:cart)
       flash[:success] = 'Order was successfully placed'
       redirect_to orders_path
@@ -29,7 +29,7 @@ class OrdersController < ApplicationController
   end
 
   def update
-    Order.find(params[:id]).update_attributes(current_status: params[:order_status])
+    current_user.orders.find(params[:id]).update_attributes(current_status: params[:order_status])
     redirect_to admin_dashboard_index_path
   end
 end
