@@ -4,10 +4,9 @@
 <br>
 <div class="center">
 <%= link_to "Edit Account", edit_user_path(current_user), class:"btn indigo lighten-3 nudge-left"%>
-<%= link_to "Add items to store", new_admin_item_path, class: "btn blue-grey darken-1 nudge-right" %>
+<%= link_to "Add car to store", new_store_car_path(store: @user.store.slug), class: "btn blue-grey darken-1 nudge-right" %>
 <br>
 <br>
-<%= link_to "Send Daily Deal Email to All Registered Users", "/admin/dashboard", method: :post, class: "btn"  %>
 </div>
 <h3>Overview</h3>
 <table class="by-status centered">

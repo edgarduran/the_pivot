@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   resources :orders, only: [:index, :show, :create, :update]
 
   namespace :stores, path: ":store", as: :store do
-    resources :cars, only: [:index, :show]
+    resources :cars, only: [:index, :show, :new, :update, :create]
     resources :dashboard, only: [:show]
   end
 
