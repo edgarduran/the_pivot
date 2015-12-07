@@ -24,7 +24,6 @@ class AnAdminCanFilterOrdersByStatusTest < ActionDispatch::IntegrationTest
     create_user_order(2, "canceled")
 
     login_platform_admin
-    save_and_open_page
     click_link('View Canceled')
 
     assert_equal admin_dashboard_path('canceled'), current_path
@@ -41,7 +40,6 @@ class AnAdminCanFilterOrdersByStatusTest < ActionDispatch::IntegrationTest
     create_user_order(2, "completed")
 
     login_platform_admin
-    save_and_open_page
     click_link('View Completed')
 
     assert_equal admin_dashboard_path('completed'), current_path

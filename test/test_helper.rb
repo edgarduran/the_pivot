@@ -115,7 +115,7 @@ module CategoryItemsSetup
     end
   end
 
-  def create_user_order(num, status)
+  def create_user_order(num, status = "ordered")
     create_cars(1)
     current_user = User.first
 
@@ -166,7 +166,7 @@ module CategoryItemsSetup
 
   def create_business_approval_request
     login_user
-    
+
     click_link "Lend a Car"
 
     fill_in "Name", with: "Matt's Cars"
