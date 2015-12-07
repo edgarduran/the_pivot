@@ -19,14 +19,46 @@ class BusinessCreationTest < ActionDispatch::IntegrationTest
     refute Store.last.approved?
   end
 
+  test "user must give store name when requesting business approval" do
+    login_user
+
+    click_link "Lend a Car"
+    click_button "Request business approval"
+
+    assert_equal new_store_path, current_path
+    assert page.has_content?("Try again.")
+  end
+
   # As a logged in platform admin,
   # When I view my dashboard,
   # Then I should be able to approve or decline a store creation request.
   test "platform admin can approve a business" do
     skip
+    create_business_approval_request
+    login_platform_admin
+
+    click_link "View pending business requests"
+    assert_equal stores_path, current_path
+
+    click_link "Approve"
+
+    assert_equal stores_path, current_path
+    assert Store.last.approved?
   end
 
   test "platform admin can decline a business" do
     skip
+    original_store_count = Store.count
+
+    create_business_approval_request
+    login_platform_admin
+
+    click_link "View pending business requests"
+    assert_equal stores_path, current_path
+
+    click_link "Decline"
+
+    assert_equal stores_path, current_path
+    assert_equal 0, Store.count - original_store_count
   end
 end

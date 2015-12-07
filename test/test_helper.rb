@@ -163,6 +163,15 @@ module CategoryItemsSetup
     fill_in 'Password', with: 'password'
     click_button 'Login'
   end
+
+  def create_business_approval_request
+    login_user
+    
+    click_link "Lend a Car"
+
+    fill_in "Name", with: "Matt's Cars"
+    click_button "Request business approval"
+  end
 end
 
 class ActionDispatch::IntegrationTest
