@@ -23,6 +23,10 @@ class StoresController < ApplicationController
     store = Store.find(params[:id])
     if params[:approve] == "yes"
       store.update(approved: true)
+    elsif params[:activate] == "yes"
+      store.update(activated: true)
+    elsif params[:deactivate] == "yes"
+      store.update(activated: false)
     else
       store.destroy
     end

@@ -4,17 +4,23 @@ class PlatformAdminCanActivateAndDeactivateBusinessesTest < ActionDispatch::Inte
   test "platform admin can deactivate a store" do
     create_store_admin
     login_platform_admin
-    previous_activated_store_count = Store.where(activated = true)
+    previous_activated_store_count = Store.where("activated = true").count
 
     visit stores_path
+    assert_equal stores_path, current_path
 
-    refute page.has_content?("Activate")
+    within("div.activate-link") do
+      refute page.has_content?("Activate")
+    end
 
     click_link "Deactivate"
 
     assert_equal stores_path, current_path
-    assert page.has_content?("Activate")
-    assert_equal 1, previous_activated_store_count - Store.where(activated = true)
+    assert_equal 1, previous_activated_store_count - Store.where("activated = true").count
+    
+    within("div.activate-link") do
+      assert page.has_content?("Activate")
+    end
   end
 
   test "platform admin can activate a deactivated store" do

@@ -8,6 +8,10 @@ module StoresHelper
   end
 
   def activate_or_deactivate_store_link(store)
-
+    if store.activated?
+      link_to "Deactivate", edit_store_path(store, deactivate: "yes")
+    else
+      link_to "Activate", edit_store_path(store, activate: "yes")
+    end
   end
 end
