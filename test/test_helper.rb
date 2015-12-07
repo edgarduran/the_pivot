@@ -15,18 +15,6 @@ module CategoryItemsSetup
     click_link 'Add to my Garage'
   end
 
-  def create_categories_cars_user_order_and_login
-    create_cars(1)
-    login_user
-
-    current_user = User.first
-
-    current_user_order = current_user.orders.create(current_status: 'ordered')
-    current_user_order.order_items.create(car_id: Car.first.id,
-                                          order_id: current_user_order.id,
-                                          days: 2)
-  end
-
   def create_cars(num)
     store     = Store.create(name: "Dave's Cars")
     locations = [Location.create(name: 'Capitol Hill'),
