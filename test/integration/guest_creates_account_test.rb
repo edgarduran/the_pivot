@@ -15,4 +15,12 @@ class GuestCreatesAccountTest < ActionDispatch::IntegrationTest
     assert_equal user_path(User.first), current_path
     assert page.has_content?('Logged in as Matt')
   end
+
+  test 'guest recieves error message if username is not entered' do
+    visit new_user_path
+    click_button 'Create Account'
+
+    assert_equal new_user_path, current_path
+    assert page.has_content?('Username and password are required.')
+  end
 end
