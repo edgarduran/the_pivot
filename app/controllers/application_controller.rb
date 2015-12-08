@@ -28,7 +28,7 @@ class ApplicationController < ActionController::Base
 
   def authorize!
     unless authorized?
-      flash[:erorr] = "You are not authorized"
+      flash[:error] = "You are not authorized"
       redirect_to '/'
     end
   end

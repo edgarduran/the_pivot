@@ -61,12 +61,3 @@ class Seed
 end
 
 Seed.start
-User.create(username: "admin",
-            password: "password",
-            role: 1,
-            email: "admin@bmc.com")
-
-User.create(username: "user",
-            password: "password",
-            role: 0,
-            email: "user@bmc.com")
