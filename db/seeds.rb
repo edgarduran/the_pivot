@@ -1,5 +1,3 @@
-require_relative "../test/test_helper.rb"
-
 class Seed
   def self.start
     seed = Seed.new

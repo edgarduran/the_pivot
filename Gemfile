@@ -16,10 +16,10 @@ gem 'paperclip'
 gem 'figaro'
 gem 'faker'
 
-gem 'mocha'
 group :development, :test do
-  gem 'simplecov', :require => false, :group => :test
+  # gem 'simplecov', :require => false, :group => :test
   gem 'byebug'
+  gem 'mocha'
   gem 'pry'
   gem 'capybara'
   gem 'launchy'

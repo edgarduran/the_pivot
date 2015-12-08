@@ -2,7 +2,8 @@ require 'test_helper'
 
 class CannotViewAnotherUsersDashboardTest < ActionDispatch::IntegrationTest
   test 'a registered user cannot view another users dashboard' do
-    create_categories_cars_user_order_and_login
+    login_user
+    create_user_order(1)
     old_user = User.first
 
     visit '/orders'

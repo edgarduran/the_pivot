@@ -1,5 +1,5 @@
-require 'simplecov'
-SimpleCov.start 'rails'
+# require 'simplecov'
+# SimpleCov.start 'rails'
 
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
@@ -13,18 +13,6 @@ module CategoryItemsSetup
     visit cars_path
 
     click_link 'Add to my Garage'
-  end
-
-  def create_categories_cars_user_order_and_login
-    create_cars(1)
-    login_user
-
-    current_user = User.first
-
-    current_user_order = current_user.orders.create(current_status: 'ordered')
-    current_user_order.order_items.create(car_id: Car.first.id,
-                                          order_id: current_user_order.id,
-                                          days: 2)
   end
 
   def create_cars(num)
@@ -102,7 +90,7 @@ module CategoryItemsSetup
     user = User.create(username: 'user',
                        password: 'password')
 
-    user.roles.create(name: 'regitered_user')
+    user.roles.create(name: 'registered_user')
   end
 
   def create_and_login_additional_user
@@ -176,6 +164,15 @@ module CategoryItemsSetup
 
     fill_in "Name", with: "Matt's Cars"
     click_button "Request business approval"
+  end
+
+  def create_and_deactivate_store
+    create_store_admin
+    login_platform_admin
+
+    visit stores_path
+
+    click_link "Deactivate"
   end
 
   def logout_user
