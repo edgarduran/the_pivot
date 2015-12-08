@@ -30,7 +30,7 @@ class UserCanAddCarsToGarageTest < ActionDispatch::IntegrationTest
     within(".card-content") do
       click_link "#{car.full_name}"
     end
-    
+
     assert_equal store_car_path(car, store:Store.first.slug), current_path
   end
 

@@ -1,5 +1,5 @@
-require 'simplecov'
-SimpleCov.start 'rails'
+# require 'simplecov'
+# SimpleCov.start 'rails'
 
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
@@ -50,6 +50,49 @@ module CategoryItemsSetup
     click_button 'Login'
   end
 
+  def create_platform_admin
+    admin = User.create(username: 'admin',
+                        password: 'password')
+
+    admin.roles.create(name: "platform_admin")
+  end
+
+  def login_platform_admin
+    create_platform_admin
+
+    visit login_path
+
+    fill_in 'Username', with: 'admin'
+    fill_in 'Password', with: 'password'
+    click_button 'Login'
+  end
+
+  def create_store_admin
+    store = Store.create(name: "Dave's Cars")
+    admin = User.create(username: 'storeadmin',
+                        password: 'password')
+
+    admin.roles.create(name: 'store_admin')
+    store.users << admin
+  end
+
+  def login_store_admin
+    create_store_admin
+
+    visit login_path
+
+    fill_in 'Username', with: 'storeadmin'
+    fill_in 'Password', with: 'password'
+    click_button 'Login'
+  end
+
+  def create_registered_user
+    user = User.create(username: 'user',
+                       password: 'password')
+
+    user.roles.create(name: 'registered_user')
+  end
+
   def create_and_login_additional_user
     user = User.create(username: "Molly",
                        password: "password",
@@ -63,28 +106,6 @@ module CategoryItemsSetup
     click_button 'Login'
   end
 
-  def create_platform_admin
-    admin = User.create(username: 'admin',
-                        password: 'password')
-
-    admin.roles.create(name: 'platform_admin')
-  end
-
-  def create_store_admin
-    store = Store.create(name: "Dave's Cars")
-    admin = User.create(username: 'storeadmin',
-                        password: 'password')
-
-    admin.roles.create(name: 'store_admin')
-    store.users << admin
-  end
-
-  def create_registered_user
-    user = User.create(username: 'user',
-                       password: 'password')
-
-    user.roles.create(name: 'registered_user')
-  end
 
   def add_items_to_cart
     item_1 = Car.create
@@ -135,22 +156,6 @@ module CategoryItemsSetup
     click_button 'Login'
   end
 
-  def create_platform_admin
-    admin = User.create(username: 'admin',
-                        password: 'password')
-
-    admin.roles.create(name: "platform_admin")
-  end
-
-  def login_platform_admin
-    create_platform_admin
-
-    visit login_path
-
-    fill_in 'Username', with: 'admin'
-    fill_in 'Password', with: 'password'
-    click_button 'Login'
-  end
 
   def create_business_approval_request
     login_user
