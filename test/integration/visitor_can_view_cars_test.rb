@@ -13,17 +13,16 @@ class VisitorCanViewCarsTest < ActionDispatch::IntegrationTest
       assert page.has_content?('Cars')
     end
 
-    within("##{Car.first.id}") do
-      assert page.has_content?('1960 Chevy0 El Camino0')
-      assert page.has_content?('$100')
-      assert page.has_content?("Dave's Cars")
-    end
+    assert page.has_content?('1960 Chevy0 El Camino0')
+    assert page.has_content?('$100')
+    assert page.has_content?("Dave's Cars")
 
-    within("##{Car.last.id}") do
-      assert page.has_content?('1961 Chevy1 El Camino1')
-      assert page.has_content?('$101')
-      assert page.has_content?("Dave's Cars")
-    end
+
+
+    assert page.has_content?('1961 Chevy1 El Camino1')
+    assert page.has_content?('$101')
+    assert page.has_content?("Dave's Cars")
+
   end
 
   test "visitor can navigate to store page from index" do

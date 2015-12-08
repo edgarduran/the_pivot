@@ -10,5 +10,5 @@
   <%= @car.description.capitalize %>
 </p>
 
-<%= link_to "Add to my Garage", cart_cars_path(car_id: @car.id),
+<%= button_to "Drive", cart_cars_path(car_id: @car.id),
                            method: :post, class: "btn center-align" %>

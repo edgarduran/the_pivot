@@ -12,7 +12,7 @@ module CategoryItemsSetup
     create_cars(1)
     visit cars_path
 
-    click_link 'Add to my Garage'
+    click_button 'Drive'
   end
 
   def create_cars(num)
