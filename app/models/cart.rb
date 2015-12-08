@@ -5,53 +5,53 @@ class Cart
     @contents = initial_contents || {}
   end
 
-  def add_item(item_id)
-    contents[item_id.to_s] ||= 0
-    contents[item_id.to_s] += 1
+  def add_car(car_id)
+    contents[car_id.to_s] ||= 0
+    contents[car_id.to_s] += 1
   end
 
   def total
     contents.values.sum
   end
 
-  def count_of(item_id)
-    contents[item_id.to_s]
+  def count_of(car_id)
+    contents[car_id.to_s]
   end
 
-  def update_quantity(params)
-    contents.select { |item, _quantity| item == params[:id] }
-      .map do |item, _quantity|
-      contents[item] = params[:quantity].to_i
+  def update_days(days, id)
+    contents.select { |car, _days| car == id }
+      .map do |car, _days|
+      contents[car] = days.to_i
     end
   end
 
-  def remove_items(params)
-    contents.delete_if { |item_id, _quantity| item_id == params[:id] }
+  def remove_cars(params)
+    contents.delete_if { |car_id, _quantity| car_id == params[:id] }
   end
 
   def complete_cart
     {
-      items: items,
+      cars: cars,
       total_price: total_price
     }
   end
 
-  def items
-    item_ids = contents.keys
-    Item.find(item_ids)
+  def cars
+    car_ids = contents.keys
+    Car.find(car_ids)
   end
 
   def total_price
-    contents.map do |item_id, quantity|
-      Item.find(item_id.to_i).price * quantity
+    contents.map do |car_id, quantity|
+      Car.find(car_id.to_i).daily_price * quantity
     end
       .sum
   end
 
-  def items
-    contents.map do |item_id, count|
-      item = Item.find(item_id)
-      CartItem.new(item, count)
+  def cars
+    contents.map do |car_id, count|
+      car = Car.find(car_id)
+      CartItem.new(car, count)
     end
   end
 end

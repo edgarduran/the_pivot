@@ -1,7 +1,0 @@
-<h1>Categories</h1>
-
-<div class="row items">
-  <% @categories.each do |category| %>
-    <%= link_to "#{category.title}", category_path(category.slug), class: "btn" %>
-  <% end %>
-</div>

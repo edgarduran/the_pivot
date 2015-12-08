@@ -1,7 +1,7 @@
-<div class="navbar-fixed">
+<div class="navbar-fixed" style="opacity:.8;">
   <nav>
-    <div class="nav-wrapper light-blue darken-3">
-      <a href="/" class="brand-logo push-logo-right">GnarPow<i class="material-icons right">terrain</i></a>
+    <div class="nav-wrapper grey darken-4 thin">
+      <a href="/" class="thin white-text" id="here">BORROW MY CARRO<i class="material-icons left">group_work</i></a>
       <ul class="right hide-on-med-and-down">
         <li>
         </li>
@@ -14,7 +14,7 @@
           <li><a href="/admin/items">All Items</a></li>
         </ul>
         <li><a id="go-to-dash" href="/admin/dashboard">Dashboard</a></li>
-        <li><a class="dropdown-button" data-activates="dropdown1">Categories<i class="material-icons right">arrow_drop_down</i></a></li>
+        <li><a class="dropdown-button" data-activates="dropdown1">Locations<i class="material-icons right">arrow_drop_down</i></a></li>
           <% if current_user %>
             <li><%= link_to "Logout", logout_path, method: :delete %></li>
           <% else %>

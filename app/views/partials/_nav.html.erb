@@ -1,34 +1,24 @@
-<div class="navbar-fixed">
+<div class="navbar-fixed" style="opacity:.8;">
   <nav>
-    <div class="nav-wrapper light-blue darken-3">
-      <a href="/" class="brand-logo push-logo-right">GnarPow<i class="material-icons right">terrain</i></a>
+    <div class="nav-wrapper grey darken-4">
+      <a href="/" class="thin white-text" id="here">BORROW MY CARRO<i class="material-icons left">group_work</i></a>
       <ul class="right hide-on-med-and-down">
         <li>
-          <li>
-            <%= form_tag(items_path, :method => "get", id: "seach-form") do %>
-             <%= text_field_tag :search, params[:search], placeholder: "Search Items" %>
-             <% end %>
-          </li>
-          <% if current_user && current_admin? %>
-            <li><%= link_to "Logout", logout_path, method: :delete %></li>
-            <li><%= link_to "Dashboard", admin_dashboard_index_path %></li>
-            <% elsif current_user %>
-            <li><%= link_to "Logout", logout_path, method: :delete %></li>
+          <% if current_user && platform_admin? %>
+          <li><%= link_to "Logout", logout_path, method: :delete %></li>
+          <li><%= link_to "Dashboard", admin_dashboard_index_path %></li>
+          <li><%= link_to "Profile", user_path %></li>
+          <% elsif current_user %>
+          <li><%= link_to "Logout", logout_path, method: :delete %></li>
           <% else %>
-        <li><%= link_to "Login", login_path %></li>
+          <li><%= link_to "Login", login_path, class: "thin" %></li>
           <% end %>
         </li>
-        <ul id="dropdown1" class="dropdown-content">
-          <li><a href="/categories/snowboards">Snowboards</a></li>
-          <li><a href="/categories/apparel">Apparel</a></li>
-          <li><a href="/categories/boots">Boots</a></li>
-          <li><a href="/categories/bindings">Bindings</a></li>
-          <li class="divider"></li>
-          <li><a href="/items">All Items</a></li>
-        </ul>
-        <li><a class="dropdown-button" data-activates="dropdown1">Items<i class="material-icons right">arrow_drop_down</i></a></li>
-        <li><a id="go-to-cart" href="/cart"><span class="material-icons cart-icon">shopping_cart</span>
-        <span class="badge cart-count"><%= @cart.total %></span></a></li>
+        <li><a href="/cars" class="thin">Vehicles  </a></li>
+        <li><a href="/cars" class="thin">Locations</a></li>
+        <li>
+          <a id="go-to-cart" href="/cart" class="collection-item thin cart-count">My Garage<span class="new badge cyan accent-4 z-depth-2"><%= @cart.total %></span></a>
+        </li>
       </ul>
     </div>
   </nav>

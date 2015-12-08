@@ -4,7 +4,7 @@ class Admin::ItemsController < Admin::BaseController
   end
 
   def new
-    @item = Item.new
+    @car = Car.new
   end
 
   def create

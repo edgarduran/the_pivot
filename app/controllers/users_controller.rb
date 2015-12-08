@@ -29,10 +29,11 @@ class UsersController < ApplicationController
   def update
     @user = current_user
     if @user.update(user_params)
-      if current_admin?
+      if @user.platform_admin?
         redirect_to admin_dashboard_index_path
       else
         redirect_to @user
+        flash[:success] = "You have successfully updated your profile."
       end
     else
       flash.now[:errors] = @user.errors.full_messages.join(', ')

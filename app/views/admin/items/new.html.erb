@@ -1,15 +1,22 @@
-<%= form_for(@item, url: admin_items_path) do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  <%= f.label :brand %>
-  <%= f.text_field :brand %>
+<h1>Add New Vehicle</h1>
+<body background="https://d1a3f4spazzrp4.cloudfront.net/web-fresh/home/map-web@2x.gif">
+
+<%= form_for(@car, url: admin_items_path) do |f| %>
+  <%= f.label :Year %>
+  <%= f.text_field :year, class: "white-text" %>
+  <%= f.label :Make %>
+  <%= f.text_field :make, class: "white-text"  %>
+  <%= f.label :Model %>
+  <%= f.text_field :model, class: "white-text"  %>
   <%= f.label :description %>
-  <%= f.text_field :description %>
-  <%= f.label :category %>
-  <%= f.text_field :category %>
-  <%= f.label :price %>
-  <%= f.text_field :price %>
+  <%= f.text_field :description, class: "white-text"  %>
+  <%= f.label :daily_price %>
+  <%= f.text_field :daily_price, class: "white-text"  %>
+  <%= f.label :weekly_price %>
+  <%= f.text_field :weekly_price, class: "white-text"  %>
   <%= f.label :image %><br>
   <%= f.file_field :image %><br>
+  <br>
+  <br>
   <%= f.submit %>
 <% end %>

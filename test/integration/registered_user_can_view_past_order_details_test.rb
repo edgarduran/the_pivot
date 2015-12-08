@@ -1,22 +1,15 @@
 require 'test_helper'
 
 class RegisteredUserCanViewPastOrderDetailsTest < ActionDispatch::IntegrationTest
-  include CategoryItemsSetup
   test 'user can view past order details' do
-    create_categories_and_items
-    current_user = User.create(username: 'Matt', password: 'gnargnar')
-    visit login_path
-
-    within('.login_form') do
-      fill_in 'Username', with: 'Matt'
-      fill_in 'Password', with: 'gnargnar'
-      click_button 'Login'
-    end
+    create_cars(1)
+    login_user
+    current_user = User.first
 
     order = current_user.orders.create(current_status: 'ordered',
                                        total_price: 1335)
 
-    order.order_items.create(item_id: Item.first.id, order_id: order.id, quantity: 2)
+    order.order_items.create(car_id: Car.first.id, order_id: order.id, days: 2)
 
     visit '/orders'
 
@@ -29,29 +22,23 @@ class RegisteredUserCanViewPastOrderDetailsTest < ActionDispatch::IntegrationTes
     assert page.has_content?('Submitted on')
 
     within('.orders-table') do
-      assert page.has_content?('Gnar possum')
-      assert page.has_content?('$1000')
-      assert page.has_content?('$2000')
+      assert page.has_content?('1960 Chevy0 El Camino0')
+      assert page.has_content?('$100')
+      assert page.has_content?('$200')
       assert page.has_content?('2')
     end
   end
 
   test 'user can view past order details for multiple items' do
-    create_categories_and_items
-    current_user = User.create(username: 'Matt', password: 'gnargnar')
-    visit login_path
-
-    within('.login_form') do
-      fill_in 'Username', with: 'Matt'
-      fill_in 'Password', with: 'gnargnar'
-      click_button 'Login'
-    end
+    create_cars(2)
+    login_user
+    current_user = User.first
 
     order = current_user.orders.create(current_status: 'ordered',
                                        total_price: 1335)
 
-    order.order_items.create(item_id: Item.first.id, order_id: order.id, quantity: 2)
-    order.order_items.create(item_id: Item.last.id, order_id: order.id, quantity: 10)
+    order.order_items.create(car_id: Car.first.id, order_id: order.id, days: 2)
+    order.order_items.create(car_id: Car.last.id, order_id: order.id, days: 10)
 
     visit '/orders'
 
@@ -64,12 +51,13 @@ class RegisteredUserCanViewPastOrderDetailsTest < ActionDispatch::IntegrationTes
     assert page.has_content?('Submitted on')
 
     within('.orders-table') do
-      assert page.has_content?('Gnar possum')
-      assert page.has_content?('Hoody')
-      assert page.has_content?('$1000')
-      assert page.has_content?('$80')
-      assert page.has_content?('10')
-      assert page.has_content?('$2800')
+      assert page.has_content?('1960')
+      assert page.has_content?('1961')
+      assert page.has_content?('$100')
+      assert page.has_content?('$101')
+      assert page.has_content?('$200')
+      assert page.has_content?('$1010')
+      assert page.has_content?('$1210')
     end
   end
 end

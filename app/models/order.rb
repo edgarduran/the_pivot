@@ -1,7 +1,7 @@
 class Order < ActiveRecord::Base
   belongs_to :user
   has_many :order_items
-  has_many :items, through: :order_items
+  has_many :cars, through: :order_items
 
   validates :current_status, presence: true,
                              inclusion: { in: %w(completed ordered paid canceled) }
@@ -21,6 +21,6 @@ class Order < ActiveRecord::Base
   end
 
   def total_price
-    order_items.map { |order_item| Item.find(order_item.item_id).price * order_item.quantity }.sum
+    order_items.map { |order_item| Car.find(order_item.car_id).daily_price * order_item.days }.sum
   end
 end

@@ -1,0 +1,17 @@
+<%= form_for(@car) do |f| %>
+  <%= f.label :make %>
+  <%= f.text_field :make %>
+  <%= f.label :model %>
+  <%= f.text_field :model %>
+  <%= f.label :year %>
+  <%= f.text_field :year %>
+  <%= f.label :description %>
+  <%= f.text_field :description %>
+  <%= f.label :location %>
+  <%= f.text_field :location %>
+  <%= f.label :daily_price %>
+  <%= f.text_field :daily_price %>
+  <%= f.label :image %><br>
+  <%= f.file_field :image %><br>
+  <%= f.submit %>
+<% end %>

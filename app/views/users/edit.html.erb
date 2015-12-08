@@ -1,4 +1,5 @@
 <h2>Edit User Profile</h2>
+<body background="https://d1a3f4spazzrp4.cloudfront.net/web-fresh/home/map-web@2x.gif">
 
 
 <%= form_for(@user) do |f| %>
@@ -6,5 +7,7 @@
   <%= f.text_field :username %>
   <%= f.label :password %>
   <%= f.password_field :password %>
+  <%= f.label :email %>
+  <%= f.text_field :email, class: "white-text" %>
   <%= f.submit "Save Changes", class: "btn" %>
 <% end %>

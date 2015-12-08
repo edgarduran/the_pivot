@@ -1,88 +1,108 @@
-<script> $(document).ready(function(){
-      $('.slider').slider({full_width: true});
-    });
-</script>
-<div class="slider">
-  <ul class="slides">
-    <li>
-      <%= image_tag "home1.jpeg" %>
-      <div class="caption center-align">
-        <h1 class="black-text light">Welcome to GnarPow!</h1>
-        <br>
-        <h4 class="light black-text">Home of the gnarliest gear.</h4>
-        <br>
-        <br>
-        <br>
-        <% if current_admin? %>
-          <%= link_to "SHOP", admin_items_path, class:"btn large" %>
-        <% else %>
-          <%= link_to "SHOP", items_path, class:"btn large" %>
-        <% end %>
-      </div>
-    </li>
-    <li>
-      <%= image_tag "home2.jpeg" %>
-      <div class="caption left-align">
-        <h3></h3>
-        <h3 class="light black-text">You don't wanna get stuck <br> up here without boots...</h3>
-        <br>
-        <%= link_to "SHOP BOOTS", "/categories/boots", class:"btn large" %>
-      </div>
-    </li>
-    <li>
-      <%= image_tag "home3.jpeg" %>
-      <div class="caption right-align black-text">
-        <h3>It's cold out there...</h3>
-        <h5 class="light black-text">Get some sleeves!</h5>
-        <br>
-        <%= link_to "SHOP APPAREL", "/categories/apparel", class:"btn large" %>
-      </div>
-    </li>
-    <li>
-      <%= image_tag "home4.jpeg" %>
-      <div class="caption center-align black-text">
-        <h3>GnarPow!</h3>
-        <h5 class="light black-text">Login and get shreddin!</h5>
-        <br>
-        <%= link_to "LOGIN", login_path, class:"btn large" %>
-      </div>
-    </li>
-  </ul>
-</div>
-<div class="container">
-  <h1>Today's Gnarliest Item!</h1>
 
-  <div class="row center">
-    <div class="col s6">
-      <div class="row">
-         <div class="col m12 m7">
-           <div class="card">
-             <div class="card-image aligh-center">
-               <%= image_tag @featured_item.image.url %>
-               <span class="card-title black"><%= @featured_item.name.upcase %></span>
-             </div>
-             <div class="card-content">
-               <h5>Price: $<%= @featured_item.price %></h5>
-             </div>
-           </div>
-         </div>
-       </div>
-    </div>
-    <div class="col offset-s2 s4 center-align">
-      <div class="center-align">
-      <h3 class="grey-text center-align">Details</h3>
-      <h5>The <%= @featured_item.name.capitalize %> from <%= @featured_item.brand %></h5>
-      <h6><%= @featured_item.description.capitalize %></h6>
-      <br>
-      <% if current_admin? %>
-      <%= link_to "Notify Users", admin_dashboard_index_path, class: "btn center-align orange" %>
-      <% else %>
-        <%= link_to "View Daily Deal", '/deal', class: "btn" %>
-        <br>
-        <br>
-        <%= link_to "Add To Cart", cart_items_path(item_id: @featured_item.id), method: :post %>
-      <% end %>
+<div class="parallax-container">
+  <div class="parallax"><%= image_tag "car.jpeg" %></div>
+
+  <div class="row">
+    <div class="col s12 m12 offset-2">
+
+      <h1>___</h1>
+      <h1 class="white-text thin center-align" style="vertical-align: middle;">Drive Your Dream Car for a Day</h1>
+      <h6 class="white-text bold center-align" style="vertical-align: middle;">At BMC,
+        our goal is to give you the keys to unlock and drive your dream. Choose from a
+        wide </h6><h6 class="white-text bold center-align" style="vertical-align: middle;">selection of some of the best designed cars on the planet and arrive at your destination in style.</h6></div>
+      </div>
+      <div class="center">
+        <a class="waves-effect wave-light white-text btn-large cyan accent-4 z-depth-5"><%= button_to "Drive Your Dream", cars_path, method: :get %></a>
+      </div>
+
+      <div class="valign-wrapper">
+        <div class="valign">
+
+          <div class="row">
+            <div class="col s12 m4">
+              <h1></h1>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
+
+    <body bgcolor="#212121">
+    <!-- <body bgcolor="#545459"> -->
+      <div class="caption center-align">
+        <h3></h3>
+
+        <div class="caption center-align">
+          <h3></h3>
+
+          <div class="col s2">
+            <img class="resize circular z-depth-5 hoverable responsive-img" align="center" src="https://avatars2.githubusercontent.com/u/10576647?v=3&s=400" height=100 width=100>
+            <br>
+            <br>
+            <h6 class="light bold white-text">"I love the cars they have to offer. I've never gotten so much attention from girls before! I'm going to use Borrow My Carro EVERYDAY!"</h6>
+            <h6 class="light bold white-text">-David, member since November 2015</h6>
+          </div>
+          <br>
+        </div>
+      </body>
+
+      <div class="parallax-container">
+        <div class="parallax"><%= image_tag "car2.jpeg" %></div>
+      </div>
+
+      <div class="col s2">
+        <br>
+        <img class="resize circular z-depth-5 hoverable" align="center" src="https://avatars2.githubusercontent.com/u/8861750?v=3&s=400" height=100 width=100>
+        <br>
+        <br>
+        <h6 class="light bold white-text">"I'm obsessed with the service that BMC has to offer. Canada would never treat us so nicely! I bet this company is based in Texas.</h6><h6 class="light bold white-text"> The people from there are so incredible. I can't wait to use BMC again!"</h6>
+        <h6 class="light bold white-text">-Torie, member since February 2014</h6>
+        <br>
+      </div>
+
+      <div class="parallax-container">
+        <div class="parallax"><%= image_tag "car4.jpeg" %></div>
+      </div>
+
+      <div class="caption center-align">
+        <h3></h3>
+
+        <div class="col s2">
+          <img class="resize circular z-depth-5 hoverable" align="center" src="https://avatars1.githubusercontent.com/u/11325650?v=3&s=400" height=100 width=100>
+          <br>
+          <br>
+          <h6 class="light bold white-text">"I love the car I'm borrowing from BMC so much that I don't think I'm going to return it! This service is incredible! But especially this homepage.</h6><h6 class="light bold white-text"> Quite frankly, whoever created it is a mad scientist and brilliant human...and you know this man!"</h6>
+          <h6 class="light bold white-text">-Edgar, member since August 2015</h6>
+        </div>
+
+        <br>
+      </div>
+    </body>
+
+    <div class="parallax-container">
+      <div class="parallax"><%= image_tag "car5.jpeg" %></div>
+    </div>
+
+    <div class="row">
+
+      <div class="col s4">
+        <h1>best cars</h1>
+      </div>
+      <div class="col s4">
+        sdfsdfsdfsdf
+      </div>
+      <div class="col s4">
+        sdfsdfsdfsdf
+      </div>
+
+    </div>
+
+    <div class="parallax-container">
+      <div class="parallax"><img src="https://images.unsplash.com/photo-1423439793616-f2aa4356b37e?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=12aca69b21491dd1555c92ec2e8e6112"</div>
+    </div>
+
+
+<script> $(document).ready(function(){
+  $('.parallax').parallax();
+});
+</script>
