@@ -166,6 +166,15 @@ module CategoryItemsSetup
     click_button "Request business approval"
   end
 
+  def create_and_deactivate_store
+    create_store_admin
+    login_platform_admin
+
+    visit stores_path
+
+    click_link "Deactivate"
+  end
+
   def logout_user
     click_link "Logout"
   end
