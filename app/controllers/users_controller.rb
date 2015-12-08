@@ -6,7 +6,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
-      redirect_to @user
+      redirect_to dashboard_path
       flash[:success] = "Logged in as #{@user.username}"
     else
       flash[:error] = 'Username and password are required.'
@@ -32,7 +32,7 @@ class UsersController < ApplicationController
       if @user.platform_admin?
         redirect_to admin_dashboard_index_path
       else
-        redirect_to @user
+        redirect_to dashboard_path
         flash[:success] = "You have successfully updated your profile."
       end
     else

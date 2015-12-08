@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   resources :cart_cars, only: [:create, :destroy, :update]
   resources :cars, only: [:index, :show]
   resources :locations, only: [:show, :index], param: :slug
-  resources :users, only: [:new, :create, :show, :edit, :update]
+  resources :users, only: [:new, :create, :edit, :update]
 
   namespace :admin do
     resources :items, only: [:index, :show, :new, :create, :destroy]

@@ -18,7 +18,7 @@
             </div>
             <div class="card-action">
               <%= link_to "SHOP", cars_path, class:"btn large" %>
-              <%= link_to "EDIT PROFILE", edit_user_path, class: "btn large" %>
+              <%= link_to "EDIT PROFILE", edit_user_path(id: current_user.id), class: "btn large" %>
               <%= link_to "YOUR ORDERS", orders_path, class: "btn large" %>
               <%= link_to "Lend a Car", new_store_path, class: "btn large" %>
             </div>

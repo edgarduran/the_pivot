@@ -56,7 +56,7 @@ class VisitorCannotViewOrdersAndAdminViewsTest < ActionDispatch::IntegrationTest
     create_user
     old_user = User.first
 
-    visit "/users/#{old_user.id}"
+    visit dashboard_path
 
     assert_equal "/", current_path
   end
