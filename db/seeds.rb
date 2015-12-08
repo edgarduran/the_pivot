@@ -2,6 +2,7 @@ class Seed
   def self.start
     seed = Seed.new
     seed.generate_platform_admin
+    seed.generate_store_admin
     seed.generate_users
     seed.generate_items
     # seed.generate_orders
@@ -16,6 +17,18 @@ class Seed
     puts "Platform admin created (username: admin, password: password)!"
   end
 
+  def generate_store_admin
+    user = User.create!(username: "storeadmin",
+                        password: "password")
+
+    user.roles.create!(name: "store_admin")
+
+    store = Store.create!(name: "Cars-o-rama")
+    store.users << user
+
+    puts "Store admin created (username: storeadmin, password: password)!"
+  end
+
   def generate_users
     50.times do |i|
       user = User.create!(username: Faker::Internet.user_name,
@@ -26,7 +39,8 @@ class Seed
   end
 
   def generate_items
-    store = Store.create!(name: "Cars-o-rama")
+    store = Store.last
+
     500.times do |i|
       car = store.cars.create!(make: Faker::Commerce.product_name,
                                model: Faker::Name.first_name,
