@@ -14,10 +14,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bcrypt', '~> 3.1.7'
 gem 'paperclip'
 gem 'figaro'
+gem 'faker'
 
 group :development, :test do
   # gem 'simplecov', :require => false, :group => :test
-  gem 'faker'
   gem 'byebug'
   gem 'mocha'
   gem 'pry'
