@@ -32,4 +32,6 @@ user_can_add_cars_to_garage_test.rb
 platform_admin_dashboard_test(with multi-tenant auth)
 
 write test to make sure that non-approvedd location cannot be added when
-creating a car 
+creating a car
+
+test store admin can only see their stores orders 

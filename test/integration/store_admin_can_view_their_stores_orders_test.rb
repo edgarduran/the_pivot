@@ -2,8 +2,11 @@ require 'test_helper'
 
 class StoreAdminCanViewTheirStoresOrdersTestTest < ActionDispatch::IntegrationTest
   test "store admin sees orders for their store" do
-    skip
+    skip 
+    create_cars(5)
     login_store_admin
+
+
   end
 
   test "store admin sees dashboard with their stores orders" do
