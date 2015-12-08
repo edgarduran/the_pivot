@@ -24,6 +24,7 @@ group :development, :test do
   gem 'capybara'
   gem 'launchy'
   gem 'rubocop'
+  gem 'brakeman'
 end
 
 group :development do
