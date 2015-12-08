@@ -22,7 +22,7 @@ class CannotViewAnotherUsersDashboardTest < ActionDispatch::IntegrationTest
     create_and_login_additional_user
     current_user = User.last
 
-    assert_equal 2, User.count
+    assert_equal 3, User.count
     assert_equal 'Molly', current_user.username
     assert_equal 'Matt', old_user.username
     assert_equal "/users/#{current_user.id}", current_path

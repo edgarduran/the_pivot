@@ -3,10 +3,8 @@ require "test_helper"
 class GuestViewsUserProfileTest < ActionDispatch::IntegrationTest
   test "guest can see store owner's profile" do
     create_cars(1)
-    create_user
 
     store = Store.last
-    store.users << User.first
 
     visit cars_path
     click_link "Dave's Cars"
