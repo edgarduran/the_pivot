@@ -7,6 +7,7 @@ class StoresController < ApplicationController
     store = Store.new(store_params)
     if store.save
       current_user.store = store
+      store.users << current_user
       flash[:notice] = "Your request to create '#{store.name}' has been received"
       redirect_to user_path(current_user)
     else
