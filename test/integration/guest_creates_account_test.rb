@@ -12,7 +12,7 @@ class GuestCreatesAccountTest < ActionDispatch::IntegrationTest
     fill_in 'Password', with: 'gnargnar'
     click_button 'Create Account'
 
-    assert_equal user_path(User.first), current_path
+    assert_equal dashboard_path, current_path
     assert page.has_content?('Logged in as Matt')
   end
 

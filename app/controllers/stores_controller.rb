@@ -9,7 +9,7 @@ class StoresController < ApplicationController
       current_user.store = store
       store.users << current_user
       flash[:notice] = "Your request to create '#{store.name}' has been received"
-      redirect_to user_path(current_user)
+      redirect_to dashboard_path
     else
       flash[:error] = "Try again."
       redirect_to new_store_path
