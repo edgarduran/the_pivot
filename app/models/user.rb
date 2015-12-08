@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   after_save :add_default_user_role
 
   def set_order(session)
-    order = orders.new(current_status: 'ordered')
+    order = orders.new
     order_items = session.each do |id, days|
       order.order_items.new(car_id: id, days: days)
     end

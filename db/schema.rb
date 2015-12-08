@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151207225110) do
+ActiveRecord::Schema.define(version: 20151208233033) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,7 +55,7 @@ ActiveRecord::Schema.define(version: 20151207225110) do
   add_index "order_items", ["order_id"], name: "index_order_items_on_order_id", using: :btree
 
   create_table "orders", force: :cascade do |t|
-    t.string   "current_status", default: "ordered"
+    t.string   "current_status", default: "pending"
     t.integer  "total_price"
     t.integer  "user_id"
     t.datetime "created_at",                         null: false

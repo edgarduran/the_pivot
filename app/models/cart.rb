@@ -56,7 +56,6 @@ class CartItem < SimpleDelegator
 
   def initialize(item, count)
     super(item)
-
     @count = count
   end
 end
