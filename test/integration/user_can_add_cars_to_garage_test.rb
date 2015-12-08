@@ -5,7 +5,7 @@ class UserCanAddCarsToGarageTest < ActionDispatch::IntegrationTest
     create_cars(1)
     visit cars_path
 
-    click_link "Add to my Garage"
+    click_button "Drive"
 
     within(".cart-count") do
       assert page.has_content?("1")
@@ -37,8 +37,8 @@ class UserCanAddCarsToGarageTest < ActionDispatch::IntegrationTest
   test "user can add item to cart from show page" do
     create_cars(1)
     visit store_car_path(Car.first, store:Store.first.slug)
-
-    click_link "Add to my Garage"
+    
+    click_button "Drive"
 
     within(".cart-count") do
       assert page.has_content?("1")
@@ -50,11 +50,11 @@ class UserCanAddCarsToGarageTest < ActionDispatch::IntegrationTest
     visit cars_path
 
     within("##{Car.first.id}") do
-      click_link "Add to my Garage"
+      click_button "Drive"
     end
 
     within("##{Car.last.id}") do
-      click_link "Add to my Garage"
+      click_button "Drive"
     end
 
     click_link "go-to-cart"
