@@ -1,10 +1,7 @@
-<script> $(document).ready(function(){
-  $('.parallax').parallax();
-});
-</script>
 
 <div class="parallax-container">
   <div class="parallax"><%= image_tag "car.jpeg" %></div>
+
   <div class="row">
     <div class="col s12 m12 offset-2">
 
@@ -15,7 +12,7 @@
         wide </h6><h6 class="white-text bold center-align" style="vertical-align: middle;">selection of some of the best designed cars on the planet and arrive at your destination in style.</h6></div>
       </div>
       <div class="center">
-        <a class="waves-effect white-text waves-dark btn-large deep-orange lighten-2 z-depth-5"><%= link_to "Drive Your Dream Car", cars_path %></a>
+        <a class="waves-effect wave-light white-text btn-large cyan accent-4 z-depth-5"><%= button_to "Drive Your Dream", cars_path, method: :get %></a>
       </div>
 
       <div class="valign-wrapper">
@@ -30,7 +27,8 @@
       </div>
     </div>
 
-    <body bgcolor="#37474f">
+    <body bgcolor="#212121">
+    <!-- <body bgcolor="#545459"> -->
       <div class="caption center-align">
         <h3></h3>
 
@@ -84,3 +82,27 @@
     <div class="parallax-container">
       <div class="parallax"><%= image_tag "car5.jpeg" %></div>
     </div>
+
+    <div class="row">
+
+      <div class="col s4">
+        <h1>best cars</h1>
+      </div>
+      <div class="col s4">
+        sdfsdfsdfsdf
+      </div>
+      <div class="col s4">
+        sdfsdfsdfsdf
+      </div>
+
+    </div>
+
+    <div class="parallax-container">
+      <div class="parallax"><img src="https://images.unsplash.com/photo-1423439793616-f2aa4356b37e?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=12aca69b21491dd1555c92ec2e8e6112"</div>
+    </div>
+
+
+<script> $(document).ready(function(){
+  $('.parallax').parallax();
+});
+</script>

@@ -14,6 +14,14 @@
  *= require_self
  */
 
+.body {
+  background-image: url("http://cosmicpenguin.com/911/wtc/burnedcars/car-fire-low-res.jpg")
+}
+
+.h3 {
+  text: white-text
+}
+
 .item-title {
   font-size: 18px !important;
 }
@@ -50,8 +58,8 @@
   border-radius: 2px;
 }
 
-span.badge.cart-count:after {
-  content: " in garage"; }
+  /*span.badge.cart-count:after {
+    content: " in garage"; }*/
 
 .cart-icon {
   margin-top: 20px;

@@ -14,7 +14,7 @@ class LoggedInUserCanUpdateAcctInfoTest < ActionDispatch::IntegrationTest
     fill_in 'Email', with: 'new@mail.com'
     click_button 'Save Changes'
 
-    assert page.has_content?('Email Address: new@mail.com')
+    assert page.has_content?('Email: new@mail.com')
     assert page.has_content?("Edgar's Profile")
     assert page.has_content?('You have successfully updated your profile.')
   end

@@ -5,7 +5,7 @@ class VisitorCanViewCarsTest < ActionDispatch::IntegrationTest
     create_cars(2)
     visit "/"
 
-    click_link "Drive Your Dream"
+    click_button "Drive Your Dream"
 
     assert_equal cars_path, current_path
 

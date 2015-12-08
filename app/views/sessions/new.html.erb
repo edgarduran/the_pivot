@@ -1,17 +1,19 @@
 <div class="center-box">
-  <h4>Login:</h4>
+  <body background="https://d1a3f4spazzrp4.cloudfront.net/web-fresh/home/map-web@2x.gif">
+
+  <h4>Login</h4>
 
   <div class="login_form">
     <%= form_for(:session, url: login_path) do |f| %>
       <%= f.label :username %>
-      <%= f.text_field :username %>
+      <%= f.text_field :username, class: "white-text" %>
       <%= f.label :password %>
-      <%= f.password_field :password %>
-      <%= f.submit "Login", class:"btn" %>
+      <%= f.password_field :password, class: "white-text" %>
+      <%= f.submit "Login", class:"btn cyan accent-4 center-align" %>
     <% end %>
   </div>
   <br>
   </br>
-  <h5>Not a registered user?</h5>
+  <h5 class="white-text thin">Not a registered user?</h5>
   <%= link_to "Create an account", new_user_path %>
 </div>
