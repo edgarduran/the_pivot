@@ -4,7 +4,7 @@ class RegisteredUserCanViewPastOrderDetailsTest < ActionDispatch::IntegrationTes
   test 'user can view past order details' do
     create_cars(1)
     login_user
-    current_user = User.first
+    current_user = User.last
 
     order = current_user.orders.create(current_status: 'ordered',
                                        total_price: 1335)
@@ -32,7 +32,7 @@ class RegisteredUserCanViewPastOrderDetailsTest < ActionDispatch::IntegrationTes
   test 'user can view past order details for multiple items' do
     create_cars(2)
     login_user
-    current_user = User.first
+    current_user = User.last
 
     order = current_user.orders.create(current_status: 'ordered',
                                        total_price: 1335)

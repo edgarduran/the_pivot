@@ -1,5 +1,5 @@
-# require 'simplecov'
-# SimpleCov.start 'rails'
+require 'simplecov'
+SimpleCov.start 'rails'
 
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
@@ -17,6 +17,7 @@ module CategoryItemsSetup
 
   def create_cars(num)
     store     = Store.create(name: "Dave's Cars")
+    store.users << User.create(username: "Dave", password: "cars")
     locations = [Location.create(name: 'Capitol Hill'),
                  Location.create(name: 'Five Points')]
 

@@ -1,6 +1,6 @@
 class Stores::CarsController < ApplicationController
   def index
-    @cars = Car.where(:slug == params[:store])
+    @store = Store.find_by(slug: params[:store])
   end
 
   def new
