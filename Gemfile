@@ -18,7 +18,7 @@ gem 'faker'
 
 gem 'mocha'
 group :development, :test do
-  # gem 'simplecov', :require => false, :group => :test
+  gem 'simplecov', :require => false, :group => :test
   gem 'byebug'
   gem 'pry'
   gem 'capybara'

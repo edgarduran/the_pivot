@@ -44,6 +44,10 @@ class PlatformAdminCanActivateAndDeactivateBusinessesTest < ActionDispatch::Inte
   end
 
   test "store admin cannot activate/deactivate stores" do
-    skip
+    create_store_admin
+
+    visit stores_path
+
+    assert_equal "/", current_path
   end
 end
