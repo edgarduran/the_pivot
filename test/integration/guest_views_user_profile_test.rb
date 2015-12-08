@@ -20,6 +20,8 @@ class GuestViewsUserProfileTest < ActionDispatch::IntegrationTest
 
   test "store owner can view users' profiles" do
     skip
+    # we need to imlement the "car owner approves requests" before we can do this
+
     # As a store owner,
     # when I click on a user,
     # I expect to see their public profile.
