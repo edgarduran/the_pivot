@@ -36,11 +36,6 @@ class Cart
     }
   end
 
-  def cars
-    car_ids = contents.keys
-    Car.find(car_ids)
-  end
-
   def total_price
     contents.map do |car_id, quantity|
       Car.find(car_id.to_i).daily_price * quantity
