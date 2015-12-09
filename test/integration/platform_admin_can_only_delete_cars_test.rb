@@ -13,6 +13,7 @@ class PlatformAdminCanOnlyDeleteCarsTest < ActionDispatch::IntegrationTest
     assert page.has_content?('Daily Price')
 
     click_link 'Delete Car'
+    assert_equal cars_path, current_path
 
     refute page.has_content?('Dave\'s Cars')
     refute page.has_content?(100)
