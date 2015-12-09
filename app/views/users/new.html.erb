@@ -1,14 +1,25 @@
+<head>
+  <body background="https://d1a3f4spazzrp4.cloudfront.net/web-fresh/home/map-web@2x.gif">
+</head>
+
 <div class="center-box">
-  <h3>Create a new account</h3>
+  <h3>Create a New Account</h3>
   <br>
 
   <%= form_for(User.new) do |f| %>
-    <%= f.label :username %>
-    <%= f.text_field :username %>
-    <%= f.label :password %>
-    <%= f.password_field :password %>
-    <%= f.label :email %>
-    <%= f.text_field :email %>
-    <%= f.submit "Create Account", class: "btn" %>
+    <%= f.label :username, class:"white-text" %>
+    <%= f.text_field :username, class:"white-text"  %>
+    <%= f.label :password, class:"white-text"  %>
+    <%= f.password_field :password, class:"white-text"  %>
+    <%= f.label :email, class:"white-text"  %>
+    <%= f.text_field :email, class:"white-text"  %>
+    <%= f.label :image, class:"white-text"  %>
+    <%= f.text_field :image, class:"white-text"  %>
+    <br>
+    <br>
+    <div class="center-align">
+
+    <%= f.submit "Create Account", class: "btn cyan accent-4 center" %>
+    </div>
   <% end %>
 </div>

@@ -8,4 +8,9 @@ class CarsController < ApplicationController
     #   @cars = Car.all
     # end
   end
+
+  def show
+    car = Car.find(params[:id])
+    redirect_to store_car_path(car.id, store: car.store.slug)
+  end
 end

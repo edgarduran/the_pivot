@@ -1,16 +1,23 @@
+<head>
+    <body background="https://d1a3f4spazzrp4.cloudfront.net/web-fresh/home/map-web@2x.gif">
+</head>
+
 <h1><%= @location.name %></h1>
 
+<div style="overflow: scrollbars-none;">
+  <div style="overflow:scroll; height:800px; width:1100px;">
 <div class="row cars">
   <% @location.cars.each do |car| %>
     <div class="col m4">
-      <div class="card">
+      <div class="card large">
         <div class="card-image waves-effect waves-block waves-light">
           <%= image_tag car.image.url, class: "activator" %>
         </div>
         <div class="card-content" id="car_<%= car.id %>">
-          <span class="card-title car-title activator grey-text text-darken-4"><%= car.full_name %><i class="material-icons right">more_vert</i></span>
+          <span class="card-title car-title activator grey-text text-darken-4"><%= car.year %> <%= car.model %><i class="material-icons right"></i></span>
+          <span class="card-title car-title activator grey-text text-darken-4"><%= car.make %><i class="material-icons right">more_vert</i></span>
           <p>Price: $<%= car.daily_price %></p>
-          <%= link_to 'View Car', car_path(car), class: "btn" %>
+          <%= link_to 'View Car', car_path(car), class: "btn cyan accent-4 black-text" %>
           <%= link_to "Add to my Garage", cart_cars_path(car_id: car.id), method: :post, class: "add-to-cart" %>
         </div>
         <div class="card-reveal">
@@ -21,4 +28,6 @@
       </div>
     </div>
   <% end %>
+</div>
+</div>
 </div>
