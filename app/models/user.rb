@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  has_attached_file :image, styles: { medium: '300x300>', thumb: '100x100>' }, default_url: 'user_image.png'
   has_secure_password
   validates :username, presence: true
 

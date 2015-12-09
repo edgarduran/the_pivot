@@ -16,11 +16,13 @@ class UserCanViewIndividualCarPageTest < ActionDispatch::IntegrationTest
     create_cars(1)
     visit store_car_path(Car.first, store: Store.first.slug)
 
-    within("h1") do
-      assert page.has_content?("1960 Chevy0 El Camino0")
+    within("h4") do
+      assert page.has_content?("1960")
+      assert page.has_content?("Chevy0")
+      assert page.has_content?("El Camino0")
     end
 
-    within("h2") do
+    within("h3") do
       assert page.has_content?("For rent by Dave's Cars")
     end
 
