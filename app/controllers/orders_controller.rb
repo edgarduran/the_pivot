@@ -23,9 +23,9 @@ class OrdersController < ApplicationController
       redirect_to login_path
     end
   end
-
-  def update
-    current_user.orders.find(params[:id]).update_attributes(current_status: params[:order_status])
-    redirect_to admin_dashboard_index_path
-  end
+  # 
+  # def update
+  #   current_user.orders.find(params[:id]).update_attributes(current_status: params[:order_status])
+  #   redirect_to admin_dashboard_index_path
+  # end
 end
