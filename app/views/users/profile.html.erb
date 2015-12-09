@@ -1,4 +1,3 @@
-<body background="https://d1a3f4spazzrp4.cloudfront.net/web-fresh/home/map-web@2x.gif">
 
 <h1> <%= @user.username.titleize %>'s Profile </h1>
 
@@ -28,3 +27,12 @@
         </div>
       </div>
     </div>
+    
+<% if @user.store_admin? %>
+  <h2>Available Cars</h2>
+  <%= render partial: 'partials/show_available_cars', locals: {user: @user} %>
+<% end %>
+
+<% if @user.registered_user? %>
+  <%= render partial: 'partials/user_order_history', locals: {user: @user} %>
+<% end %>

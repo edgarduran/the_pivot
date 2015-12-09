@@ -24,14 +24,15 @@
           <li><%= link_to "Logout", logout_path, method: :delete %></li>
 
           <% elsif current_user && store_admin? %>
-          <li><%= link_to "#{current_user.username}\'s profile", user_path(current_user.id) %></li>
-          <li><a href="/cars" class="thin">Cars</a></li>
-          <li><%= link_to "Logout", logout_path, method: :delete %></li>
+
+            <li><%= link_to "Profile", "/#{current_user.store.slug}/dashboard/#{current_user.store_id}" %></li>
+            <li><a href="/cars" class="thin">Cars</a></li>
+            <li><%= link_to "Logout", logout_path, method: :delete %></li>
 
           <% elsif current_user && registered_user? %>
-          <li><%= link_to "#{current_user.username}\'s profile", user_path(current_user.id) %></li>
-          <li><a href="/cars" class="thin">Cars</a></li>
-          <li><%= link_to "Logout", logout_path, method: :delete %></li>
+            <li><%= link_to "Profile", "/dashboard", class:"thin" %></li>
+            <li><a href="/cars" class="thin">Cars</a></li>
+            <li><%= link_to "Logout", logout_path, method: :delete, class:"thin" %></li>
 
           <% else %>
           <li><a href="/cars" class="thin">Cars</a></li>

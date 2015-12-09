@@ -3,11 +3,13 @@
 
 
 <%= form_for(@user) do |f| %>
-  <%= f.label :username %>
-  <%= f.text_field :username %>
-  <%= f.label :password %>
-  <%= f.password_field :password %>
-  <%= f.label :email %>
+  <%= f.label :username, class: "white-text" %>
+  <%= f.text_field :username, class: "white-text" %>
+  <%= f.label :password, class: "white-text" %>
+  <%= f.password_field :password, class: "white-text" %>
+  <%= f.label :email, class: "white-text" %>
   <%= f.text_field :email, class: "white-text" %>
+  <%= f.label :image, class: "white-text" %>
+  <%= f.text_field :image, class: "white-text" %>
   <%= f.submit "Save Changes", class: "btn" %>
 <% end %>

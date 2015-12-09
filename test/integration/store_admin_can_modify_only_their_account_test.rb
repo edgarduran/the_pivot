@@ -1,13 +1,10 @@
 require 'test_helper'
 
-class StoreAdminCanModifyOnlyTheirAccountTestTest < ActionDispatch::IntegrationTest
+class StoreAdminCanModifyOnlyTheirAccountTest < ActionDispatch::IntegrationTest
   test 'store admin can modify their account data' do
-    skip
     login_store_admin
 
-    visit admin_dashboard_index_path(User.first)
-
-    assert page.has_content?('Welcome, Admin!')
+    assert page.has_content?('Welcome, Dave!')
 
     click_link 'Edit Account'
 
@@ -17,6 +14,6 @@ class StoreAdminCanModifyOnlyTheirAccountTestTest < ActionDispatch::IntegrationT
     fill_in 'Password', with: 'newpassword'
     click_button 'Save Changes'
 
-    assert page.has_content?('Welcome, Newname!')
+    assert page.has_content?("New Name's Profile")
   end
 end

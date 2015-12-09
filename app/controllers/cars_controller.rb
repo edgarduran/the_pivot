@@ -1,12 +1,13 @@
 class CarsController < ApplicationController
   def index
     @cars = Car.all
+  end
 
-    # if params[:search]
-    #   @cars = Car.search(params[:search])
-    # else
-    #   @cars = Car.all
-    # end
+  def destroy
+    car = Car.find(params[:id])
+    car.destroy
+    flash[:deleted] = 'You have removed the car.'
+    redirect_to cars_path
   end
 
   def show
