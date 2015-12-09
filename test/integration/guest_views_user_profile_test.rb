@@ -46,7 +46,6 @@ class GuestViewsUserProfileTest < ActionDispatch::IntegrationTest
 
     assert page.has_content?("1960 Chevy0 El Camino0")
     assert page.has_link?("Dave's Cars")
-    save_and_open_page
     assert page.has_content?("Pending")
   end
 end
