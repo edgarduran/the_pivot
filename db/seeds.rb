@@ -39,18 +39,18 @@ class Seed
   end
 
   def generate_items
-    locations = [Location.create(name: 'Capitol Hill'),
-                 Location.create(name: 'Five Points'),
-                 Location.create(name: 'Highland'),
-                 Location.create(name: 'Five Points'),
-                 Location.create(name: 'Lodo'),
-                 Location.create(name: 'City Park'),
+    locations = [Location.create(name: 'Auraria'),
                  Location.create(name: 'Baker'),
-                 Location.create(name: 'Speer'),
-                 Location.create(name: 'Cherry Creek'),
+                 Location.create(name: 'Capitol Hill'),
+                 Location.create(name: 'City Park'),
                  Location.create(name: 'Cheeseman Park'),
-                 Location.create(name: 'Auraria'),
-                 Location.create(name: 'Washingto Park')]
+                 Location.create(name: 'Cherry Creek'),
+                 Location.create(name: 'Five Points'),
+                 Location.create(name: 'Highlands'),
+                 Location.create(name: 'Lodo'),
+                 Location.create(name: 'RiNo'),
+                 Location.create(name: 'Speer'),
+                 Location.create(name: 'Uptown')]
     store = Store.last
 
     500.times do |i|

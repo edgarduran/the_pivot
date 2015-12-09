@@ -14,6 +14,6 @@ class StoreAdminCanModifyOnlyTheirAccountTest < ActionDispatch::IntegrationTest
     fill_in 'Password', with: 'newpassword'
     click_button 'Save Changes'
 
-    assert page.has_content?("NewName's Profile")
+    assert page.has_content?("New Name's Profile")
   end
 end

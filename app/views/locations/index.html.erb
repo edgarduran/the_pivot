@@ -1,7 +1,14 @@
+<head>
+  <body background="https://d1a3f4spazzrp4.cloudfront.net/web-fresh/home/map-web@2x.gif">
+</head>
+
 <h1>Locations</h1>
+
+<div class="container">
 
 <div class="row cars">
   <% @locations.each do |location| %>
-    <%= link_to "#{location.name}", location_path(location.slug), class: "btn" %>
+    <%= link_to "#{location.name}", location_path(location.slug), class: "btn cyan accent-4 black-text" %>
   <% end %>
+</div>
 </div>
