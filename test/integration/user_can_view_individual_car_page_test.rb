@@ -22,13 +22,12 @@ class UserCanViewIndividualCarPageTest < ActionDispatch::IntegrationTest
       assert page.has_content?("El Camino0")
     end
 
-    within("h3") do
+    within(".for_rent_by") do
       assert page.has_content?("For rent by Dave's Cars")
     end
 
-    within("h3") do
+    within(".prices") do
       assert page.has_content?("Daily price: $100")
-      assert page.has_content?("Weekly price: $600")
     end
 
     within("p.description") do

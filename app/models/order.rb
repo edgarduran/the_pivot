@@ -4,7 +4,7 @@ class Order < ActiveRecord::Base
   has_many :cars, through: :order_items
 
   validates :current_status, presence: true,
-                             inclusion: { in: %w(completed ordered paid canceled) }
+                             inclusion: { in: %w(completed ordered paid canceled pending) }
 
   before_create :total_price
 
@@ -12,6 +12,7 @@ class Order < ActiveRecord::Base
   scope :paid,      -> { where(current_status: 'paid') }
   scope :canceled,  -> { where(current_status: 'canceled') }
   scope :ordered,   -> { where(current_status: 'ordered') }
+  scope :pending,   -> { where(current_status: 'pending') }
 
   def orders_hash
     {
