@@ -31,6 +31,7 @@ class StoreAdminCanViewTheirStoresOrdersTestTest < ActionDispatch::IntegrationTe
       assert page.has_content?("Ordered")
       assert page.has_content?("Canceled")
       assert page.has_content?("Completed")
+      assert page.has_content?("Pending")
       assert page.has_content?("2")
     end
   end

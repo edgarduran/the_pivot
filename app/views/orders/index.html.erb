@@ -15,7 +15,7 @@
         <tr>
           <td class="center-align"><%= order.id %></td>
           <td><%= order.created_at.time.strftime("%b %-d, %Y %-l:%M %p") %></td>
-          <td><%= order.current_status %></td>
+          <td><%= order.current_status.titleize %></td>
           <td><%= link_to "View Order", order_path(order) %></td>
         </tr>
   <% end %>

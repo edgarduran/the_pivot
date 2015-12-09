@@ -2,7 +2,6 @@ require 'test_helper'
 
 class StoreAdminCanCreateCarsTest < ActionDispatch::IntegrationTest
   test 'store admin can add cars to their store' do
-    create_store_admin
     login_store_admin
     locations = Location.create(name: 'Capitol Hill')
 

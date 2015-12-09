@@ -11,7 +11,7 @@ class UsersCanViewCarsByLocationTest < ActionDispatch::IntegrationTest
     assert_equal current_path, locations_path
     assert page.has_content?("Locations")
     assert page.has_content?("Capitol Hill")
-    assert page.has_content?("Highlands")
+    assert page.has_content?("Highland")
     assert page.has_content?("Five Points")
     assert page.has_content?("Lodo")
   end

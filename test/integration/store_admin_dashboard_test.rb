@@ -2,15 +2,10 @@ require 'test_helper'
 
 class StoreAdminDashboardTestTest < ActionDispatch::IntegrationTest
   test 'when store admin logs they see dashboard page' do
-    create_store_admin
-    visit login_path
-
-    fill_in 'Username', with: 'storeadmin'
-    fill_in 'Password', with: 'password'
-    click_button 'Login'
+    login_store_admin
 
     assert_equal "/#{Store.first.slug}/dashboard/#{User.first.store_id}", current_path
-    assert page.has_content?('Welcome, Storeadmin!')
+    assert page.has_content?('Welcome, Dave!')
   end
 
   test 'platform admin does not see admin dashboard' do
