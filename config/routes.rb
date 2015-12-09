@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   get '/profile/:id', to: 'users#profile'
 
   resources :cart_cars, only: [:create, :destroy, :update]
-  resources :cars, only: [:index, :show]
+  resources :cars, only: [:index, :show, :destroy]
   resources :locations, only: [:show, :index], param: :slug
   resources :users, only: [:new, :create, :edit, :update]
 

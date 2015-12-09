@@ -27,7 +27,11 @@
                 <td><%= link_to car.store.name, store_cars_path(store: car.store.slug), class: "bold" %></td>
                 <td class="card-content"><%= link_to car.full_name, store_car_path(car.id, store: car.store.slug) %></td>
                 <td><%= car.description %></td>
-                <td>$<%= car.daily_price %></td>
+                <td>$<%= car.daily_price %>
+                  <% if current_user && platform_admin? %>
+                    <%= link_to "Delete Car", car_path(car), method: :delete %>
+                  <% end %>
+                </td>
                 <td><a id="<%= car.id %>" class="waves-effect waves-light btn cyan accent-4"><%= button_to "Drive", cart_cars_path(car_id: car.id), method: :post, class: "add-to-cart center-align bold" %></a></td>
               </tr>
               <% end %>
