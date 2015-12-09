@@ -1,0 +1,23 @@
+<h2>Order History</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>
+        Car Ordered
+      </th>
+      <th>
+        Ordered From
+      </th>
+      <th>
+        Status
+      </th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% user.orders.each do |order| %>
+      <%= render partial: "partials/display_order_items", locals: {order: order} %>
+    <% end %>
+  </tbody>
+</table>
