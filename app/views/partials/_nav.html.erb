@@ -1,28 +1,41 @@
+<head>
+  <link rel="stylesheet" type="text/css" href="assets/stylesheets/new.css">
+</head>
+
 <div class="navbar-fixed" style="opacity:.8;">
   <nav>
     <div class="nav-wrapper grey darken-4">
       <a href="/" class="thin white-text" id="here">BORROW MY CARRO<i class="material-icons left">group_work</i></a>
       <ul class="right hide-on-med-and-down">
         <li>
+          <ul id="dropdown1" class="dropdown-content">
+            <li><a href="/locations" class="cyan-text text-accent-4">All</a></li>
+            <% @locations.each do |location|%>
+            <% if location.name.present? %>
+            <li><a href="/locations/<%= location.name.parameterize %>" class="cyan-text text-accent-4"><%= location.name %></a></li>
+            <% end %>
+            <% end  %>
+          </ul>
+          <li><a class="dropdown-button thin" data-activates="dropdown1">Locations<i class="material-icons right"></i></a></li>
+
           <% if current_user && platform_admin? %>
-            <li><%= link_to "Dashboard", admin_dashboard_index_path %></li>
-            <li><a href="/cars" class="thin">Cars</a></li>
-            <li><%= link_to "Locations", locations_path %></li>
-            <li><%= link_to "Logout", logout_path, method: :delete %></li>
+          <li><%= link_to "Dashboard", admin_dashboard_index_path %></li>
+          <li><a href="/cars" class="thin">Cars</a></li>
+          <li><%= link_to "Logout", logout_path, method: :delete %></li>
+
           <% elsif current_user && store_admin? %>
-            <li><%= link_to "#{current_user.username}\'s profile", user_path(current_user.id) %></li>
-            <li><a href="/cars" class="thin">Cars</a></li>
-            <li><%= link_to "Locations", locations_path %></li>
-            <li><%= link_to "Logout", logout_path, method: :delete %></li>
+          <li><%= link_to "#{current_user.username}\'s profile", user_path(current_user.id) %></li>
+          <li><a href="/cars" class="thin">Cars</a></li>
+          <li><%= link_to "Logout", logout_path, method: :delete %></li>
+
           <% elsif current_user && registered_user? %>
-            <li><%= link_to "#{current_user.username}\'s profile", user_path(current_user.id) %></li>
-            <li><a href="/cars" class="thin">Cars</a></li>
-            <li><%= link_to "Locations", locations_path %></li>
-            <li><%= link_to "Logout", logout_path, method: :delete %></li>
+          <li><%= link_to "#{current_user.username}\'s profile", user_path(current_user.id) %></li>
+          <li><a href="/cars" class="thin">Cars</a></li>
+          <li><%= link_to "Logout", logout_path, method: :delete %></li>
+
           <% else %>
-            <li><a href="/cars" class="thin">Cars</a></li>
-            <li><%= link_to "Locations", locations_path %></li>
-            <li><%= link_to "Login", login_path, class: "thin" %></li>
+          <li><a href="/cars" class="thin">Cars</a></li>
+          <li><%= link_to "Login", login_path, class: "thin" %></li>
           <% end %>
         </li>
         <li>
@@ -32,3 +45,7 @@
     </div>
   </nav>
 </div>
+
+<script type="text/javascript">
+$(".dropdown-button").dropdown();
+</script>
