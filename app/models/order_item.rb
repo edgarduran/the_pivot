@@ -19,4 +19,8 @@ class OrderItem < ActiveRecord::Base
   def current_status
     self.order.current_status.capitalize
   end
+
+  def total_price
+    Car.find(self.car_id).daily_price * self.days
+  end
 end
