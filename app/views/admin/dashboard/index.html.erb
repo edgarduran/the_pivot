@@ -23,6 +23,7 @@
       <th>Paid</th>
       <th>Canceled</th>
       <th>Completed</th>
+      <th>Pending</th>
     </tr>
   </thead>
   <tbody>
@@ -31,6 +32,7 @@
       <td><%= Order.paid.count %></td>
       <td><%= Order.canceled.count %></td>
       <td><%= Order.completed.count %></td>
+      <td><%= Order.pending.count %></td>
     </tr>
     <tr class="white-text">
       <td><%= link_to "View Ordered", admin_dashboard_path('ordered'), :order_status => 'ordered', class: "btn cyan accent-4" %></td>

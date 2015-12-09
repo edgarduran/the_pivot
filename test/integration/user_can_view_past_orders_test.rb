@@ -8,7 +8,7 @@ class UserCanViewPastOrdersTest < ActionDispatch::IntegrationTest
     visit '/orders'
 
     assert page.has_content?('Your Orders')
-    assert page.has_content?('ordered')
+    assert page.has_content?('Pending')
   end
 
   test 'user can view a list of all past orders' do
@@ -22,7 +22,6 @@ class UserCanViewPastOrdersTest < ActionDispatch::IntegrationTest
     visit '/orders'
 
     assert page.has_content?('Your Orders')
-    assert page.has_content?('ordered')
-    assert page.has_content?('paid')
+    assert page.has_content?('Paid')
   end
 end

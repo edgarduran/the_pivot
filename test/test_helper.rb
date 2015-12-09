@@ -75,6 +75,7 @@ module CategoryItemsSetup
 
     admin.roles.create(name: 'store_admin')
     store.users << admin
+    admin.store = store
   end
 
   def login_store_admin
@@ -125,7 +126,7 @@ module CategoryItemsSetup
     end
   end
 
-  def create_user_order(num, status = "ordered")
+  def create_user_order(num, status = "pending")
     create_cars(1)
     current_user = User.first
 
