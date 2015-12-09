@@ -8,7 +8,7 @@ class VisitorCannotViewOrdersAndAdminViewsTest < ActionDispatch::IntegrationTest
     visit "/orders"
 
     assert page.has_content?("Your Orders")
-    assert page.has_content?("ordered")
+    assert page.has_content?("Pending")
 
     click_link("View Order")
 

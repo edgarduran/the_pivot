@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class AnExistingUserCanCheckOutToPlaceAnOrderTest < ActionDispatch::IntegrationTest
+class UserCanCheckOutToPlaceAnOrderTest < ActionDispatch::IntegrationTest
   test 'a visitor must log in before checking out' do
     add_car_to_cart
 
@@ -28,8 +28,8 @@ class AnExistingUserCanCheckOutToPlaceAnOrderTest < ActionDispatch::IntegrationT
     assert_equal '/orders', current_path
 
     within('table') do
-      assert page.has_content?('ordered')
-      assert page.has_content?('View Order')
+      assert page.has_content?('Pending')
+      assert page.has_link?('View Order')
     end
 
     within('.cart-count') do
