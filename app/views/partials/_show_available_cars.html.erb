@@ -1,0 +1,3 @@
+<% user.store.cars.each do |car| %>
+  <%= link_to car.full_name, store_car_path(car.id, store: car.store.slug) %>
+<% end %>

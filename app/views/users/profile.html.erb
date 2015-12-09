@@ -2,6 +2,10 @@
 
 <h2>Available Cars</h2>
 
-<% @user.store.cars.each do |car| %>
-  <%= link_to car.full_name, store_car_path(car.id, store: car.store.slug) %>
+<% if @user.store_admin? %>
+  <%= render partial: 'partials/show_available_cars', locals: {user: @user} %>
+<% end %>
+
+<% if @user.registered_user? %>
+  <%= render partial: 'partials/user_order_history', locals: {user: @user} %>
 <% end %>

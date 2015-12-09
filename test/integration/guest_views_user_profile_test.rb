@@ -15,6 +15,8 @@ class GuestViewsUserProfileTest < ActionDispatch::IntegrationTest
     create_cars(1)
 
     store = Store.last
+    user = User.first
+    user.roles.create(name: 'store_admin')
 
     visit cars_path
     click_link "Dave's Cars"
@@ -29,7 +31,6 @@ class GuestViewsUserProfileTest < ActionDispatch::IntegrationTest
   end
 
   test "store owner can view users' profiles" do
-    skip
     create_user
     create_user_order(1)
     login_store_admin
@@ -45,6 +46,7 @@ class GuestViewsUserProfileTest < ActionDispatch::IntegrationTest
 
     assert page.has_content?("1960 Chevy0 El Camino0")
     assert page.has_link?("Dave's Cars")
+    save_and_open_page
     assert page.has_content?("Pending")
   end
 end
