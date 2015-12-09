@@ -1,11 +1,11 @@
 <body background="https://d1a3f4spazzrp4.cloudfront.net/web-fresh/home/map-web@2x.gif">
-<h1><%= @user.store.name %> Dashboard</h1>
+<h1 class="grey-text"><%= @user.store.name %> Dashboard</h1>
 
 <h4 class="grey-text">Welcome, <%= current_user.username.capitalize %>!</h4>
 <br>
 
 <% if current_user.store_admin? %>
-  <h2>Pending Orders</h2>
+  <h2 class="grey-text">Pending Orders</h2>
   <table>
     <thead>
       <tr>
@@ -30,6 +30,7 @@
 <div class="center">
 <%= link_to "Edit Account", edit_user_path(current_user), class:"btn indigo lighten-3 nudge-left"%>
 <%= link_to "Add car to store", new_store_car_path(store: @user.store.slug), class: "btn blue-grey darken-1 nudge-right" %>
+<%= link_to "Edit Store Info", edit_store_path(current_user.store), class:"btn red nudge-left"%>
 <br>
 <br>
 </div>
