@@ -8,6 +8,15 @@ require 'capybara/rails'
 require 'mocha/mini_test'
 
 module CategoryItemsSetup
+  def create_locations
+    locations = [Location.create(name: 'Capitol Hill'),
+                 Location.create(name: 'Five Points'),
+                 Location.create(name: 'Highland'),
+                 Location.create(name: 'Five Points'),
+                 Location.create(name: 'Lodo'),
+                 Location.create(name: 'Washington Park')]
+  end
+
   def add_car_to_cart
     create_cars(1)
     visit cars_path
