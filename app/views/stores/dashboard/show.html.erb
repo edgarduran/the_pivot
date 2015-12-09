@@ -72,9 +72,9 @@
         </tr>
       </thead>
       <tbody>
-        <% if @orders.nil? || @orders == [] %>
+        <% if @user.store.order_items.nil? || @user.store.order_items == [] %>
           <p>You have no orders</p>
-        <% else @orders.each do |order| %>
+        <% else @user.store.order_items.each do |order| %>
         <tr id="order_<%= order.id %>">
           <td class="center-align"><%= order.id %></td>
           <td><%= order.created_at.time.strftime("%b %-d, %Y %-l:%M %p") %></td>
