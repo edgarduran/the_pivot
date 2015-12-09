@@ -4,7 +4,7 @@
   <body background="https://d1a3f4spazzrp4.cloudfront.net/web-fresh/home/map-web@2x.gif">
 </head>
 
-<%= link_to "View pending business requests", stores_path %>
+<%= link_to "View pending business requests", stores_path if current_user.platform_admin? %>
 
 <h4>Welcome, <%= current_user.username.capitalize %>!</h4>
 <h4 class="thin center-align white-text">Admin Dashboard</h4>

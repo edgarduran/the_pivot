@@ -1,5 +1,5 @@
-# require 'simplecov'
-# SimpleCov.start 'rails'
+require 'simplecov'
+SimpleCov.start 'rails'
 
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
@@ -70,21 +70,21 @@ module CategoryItemsSetup
 
   def create_store_admin
     store = Store.create(name: "Dave's Cars")
-    admin = User.create(username: 'storeadmin',
-                        password: 'password')
+    admin = User.create(username: 'Dave',
+                        password: 'pw')
 
     admin.roles.create(name: 'store_admin')
     store.users << admin
-    admin.store = store
   end
 
   def login_store_admin
     create_store_admin
+    Store.first.update(approved: true)
 
     visit login_path
 
-    fill_in 'Username', with: 'storeadmin'
-    fill_in 'Password', with: 'password'
+    fill_in 'Username', with: 'Dave'
+    fill_in 'Password', with: 'pw'
     click_button 'Login'
   end
 
@@ -107,7 +107,6 @@ module CategoryItemsSetup
     fill_in 'Password', with: 'password'
     click_button 'Login'
   end
-
 
   def add_items_to_cart
     item_1 = Car.create
@@ -134,6 +133,8 @@ module CategoryItemsSetup
       current_user_order = current_user.orders.create(current_status: status)
       current_user_order.order_items.create(car_id: Car.first.id,
                                             order_id: current_user_order.id,
+                                            store_id: Store.first.id,
+                                            user_id: current_user.id,
                                             days: 2)
     end
   end
@@ -157,7 +158,6 @@ module CategoryItemsSetup
     fill_in 'Password', with: 'password'
     click_button 'Login'
   end
-
 
   def create_business_approval_request
     login_user
