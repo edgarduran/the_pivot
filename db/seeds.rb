@@ -39,6 +39,18 @@ class Seed
   end
 
   def generate_items
+    locations = [Location.create(name: 'Capitol Hill'),
+                 Location.create(name: 'Five Points'),
+                 Location.create(name: 'Highland'),
+                 Location.create(name: 'Five Points'),
+                 Location.create(name: 'Lodo'),
+                 Location.create(name: 'City Park'),
+                 Location.create(name: 'Baker'),
+                 Location.create(name: 'Speer'),
+                 Location.create(name: 'Cherry Creek'),
+                 Location.create(name: 'Cheeseman Park'),
+                 Location.create(name: 'Auraria'),
+                 Location.create(name: 'Washingto Park')]
     store = Store.last
 
     500.times do |i|
@@ -46,6 +58,7 @@ class Seed
                                model: Faker::Name.first_name,
                                year: Faker::Number.between(from = 1900, to = 2015),
                                description: Faker::Hipster.paragraph,
+                               location_id: rand(Location.first.id..Location.last.id),
                                daily_price: Faker::Commerce.price(range = 50..100))
 
       puts "Car #{i}: #{car.full_name} created!"

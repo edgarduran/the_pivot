@@ -7,21 +7,21 @@
           <% if current_user && platform_admin? %>
             <li><%= link_to "Dashboard", admin_dashboard_index_path %></li>
             <li><a href="/cars" class="thin">Cars</a></li>
-            <li><a href="/cars" class="thin">Locations</a></li>
+            <li><%= link_to "Locations", locations_path %></li>
             <li><%= link_to "Logout", logout_path, method: :delete %></li>
           <% elsif current_user && store_admin? %>
             <li><%= link_to "#{current_user.username}\'s profile", user_path(current_user.id) %></li>
             <li><a href="/cars" class="thin">Cars</a></li>
-            <li><a href="/cars" class="thin">Locations</a></li>
+            <li><%= link_to "Locations", locations_path %></li>
             <li><%= link_to "Logout", logout_path, method: :delete %></li>
           <% elsif current_user && registered_user? %>
             <li><%= link_to "#{current_user.username}\'s profile", user_path(current_user.id) %></li>
             <li><a href="/cars" class="thin">Cars</a></li>
-            <li><a href="/cars" class="thin">Locations</a></li>
+            <li><%= link_to "Locations", locations_path %></li>
             <li><%= link_to "Logout", logout_path, method: :delete %></li>
           <% else %>
             <li><a href="/cars" class="thin">Cars</a></li>
-            <li><a href="/cars" class="thin">Locations</a></li>
+            <li><%= link_to "Locations", locations_path %></li>
             <li><%= link_to "Login", login_path, class: "thin" %></li>
           <% end %>
         </li>
