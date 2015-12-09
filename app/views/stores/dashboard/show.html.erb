@@ -18,8 +18,8 @@
     <% @user.store.order_items.each do |item| %>
       <tr>
         <td><%= item.user.username %></td>
-        <td><%=  %></td>
-        <td><%=  %></td>
+        <td><%= link_to "Approve Order", order_item_path(item, current_status: "ordered", store_slug: @user.store.slug, store_id: @user.store.id), method: :put %></td>
+        <td><%= link_to "Decline Order", order_item_path(item, current_status: "canceled", store_slug: @user.store.slug, store_id: @user.store.id), method: :put %></td>
       </tr>
     <% end %>
     </tbody>

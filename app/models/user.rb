@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
     order_items = session.each do |id, days|
       order.order_items.new(car_id: id,
                             days: days,
-                            store_id: Car.find(id).store,
+                            store_id: Car.find(id).store.id,
                             user_id: order.user_id)
     end
     order.total_price = order.order_items.map { |order_item| Car.find(order_item.car_id).daily_price * order_item.days }.sum
