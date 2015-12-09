@@ -6,8 +6,9 @@ class UsersCanViewCarsByLocationTest < ActionDispatch::IntegrationTest
     visit "/"
 
     within(".nav-wrapper") do
-      click_link "Locations"
+      click_link "All"
     end
+
     assert_equal current_path, locations_path
     assert page.has_content?("Locations")
     assert page.has_content?("Capitol Hill")
@@ -20,7 +21,9 @@ class UsersCanViewCarsByLocationTest < ActionDispatch::IntegrationTest
     create_cars(4)
     visit locations_path
 
-    click_link "Capitol Hill"
+    within(".cars") do
+      click_link "Capitol Hill"
+    end
 
     assert_equal current_path, location_path(Location.first.slug)
     assert page.has_content?("Capitol Hill")

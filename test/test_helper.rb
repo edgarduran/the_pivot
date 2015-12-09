@@ -37,9 +37,7 @@ module CategoryItemsSetup
                          daily_price: 100 + i,
                          weekly_price: 600 + i,
                          description: "Dave met his wife ##{i} in this car.",
-                         image: File.open('app/assets/images/gnar_possum.jpg'),
-                         location_id: locations[i % 2].id
-                       )
+                         location_id: locations[i % 2].id)
     end
   end
 
