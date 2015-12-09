@@ -29,5 +29,6 @@ Rails.application.routes.draw do
     resources :dashboard, only: [:show]
   end
 
-  resources :stores, only: [:new, :create, :index, :edit]
+  resources :stores, only: [:new, :create, :index, :edit, :update]
+  get 'stores/:id/validate', to: 'stores#validate', as: "validate"
 end
