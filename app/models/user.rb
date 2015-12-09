@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  has_attached_file :image, styles: { medium: '300x300>', thumb: '100x100>' }, default_url: 'user_image.png'
   has_secure_password
   validates :username, presence: true
 
@@ -6,13 +7,17 @@ class User < ActiveRecord::Base
   has_many :roles, through: :user_roles
 
   has_many :orders
+  has_many :order_items
   belongs_to :store
   after_save :add_default_user_role
 
   def set_order(session)
-    order = orders.new(current_status: 'ordered')
+    order = orders.new
     order_items = session.each do |id, days|
-      order.order_items.new(car_id: id, days: days)
+      order.order_items.new(car_id: id,
+                            days: days,
+                            store_id: Car.find(id).store.id,
+                            user_id: order.user_id)
     end
     order.total_price = order.order_items.map { |order_item| Car.find(order_item.car_id).daily_price * order_item.days }.sum
     session.delete(:cart) if order.save

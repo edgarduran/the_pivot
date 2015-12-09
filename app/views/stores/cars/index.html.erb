@@ -1,48 +1,50 @@
-<script> $(document).ready(function(){
-  $(".button-collapse").sideNav();
-});
-</script>
+<head>
+  <link rel="stylesheet" type="text/css" href="assets/stylesheets/new.css">
+  <body background="https://d1a3f4spazzrp4.cloudfront.net/web-fresh/home/map-web@2x.gif">
+</head>
 
-<h1 class="thin center align">Cars</h1>
-<h2>Store owned by: <%= link_to @store.owner.username, "/profile/#{@store.owner.id}" %></h2>
-<nav>
-  <ul class="right hide-on-med-and-down">
-    <li><a href="#!">First Sidebar Link</a></li>
-    <li><a href="#!">Second Sidebar Link</a></li>
-  </ul>
-  <ul id="slide-out" class="side-nav">
-    <li><a href="#!">First Sidebar Link</a></li>
-    <li><a href="#!">Second Sidebar Link</a></li>
-  </ul>
-  <a href="#" data-activates="slide-out" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
-</nav>
+
+  <h1 class="thin center-align">Store owned by: <%= link_to @store.owner.username.titleize, "/profile/#{@store.owner.id}" %></h1>
+  <h3 class="thin center-align">Available Cars</h3>
 
   <div class="row">
 
-    <div class="col s2">
-      asdfasdfsdf
-    </div>
+    <div style="overflow: scrollbars-none;">
+      <div style="overflow:scroll; height:600px; width:900px;">
 
-    <div class="col s5">
-      <% @store.cars.each do |car| %>
-      <div class="card small" id= "<%= car.id %>">
-        <div class="card-image waves-effect waves-block waves-light">
-          <img class="activator" src="https://images.unsplash.com/photo-1445020569771-3f8531cf7a4b?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=e49f8ca7482a01413754982eaa3438ac" >
+        <table class="white-text bordered center-align">
+          <thead>
+            <tr>
+              <th data-field="car-image"></th>
+              <th data-field="name">Owner</th>
+              <th data-field="price">Type</th>
+              <th data-field="price">Description</th>
+              <th data-field="price">Daily Price</th>
+              <th data-field="price"></th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <div class="">
+              <% @store.cars.each do |car| %>
+
+              <tr>
+                <td><img src="https://images.unsplash.com/photo-1445020569771-3f8531cf7a4b?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=e49f8ca7482a01413754982eaa3438ac" height="100px" width="130px"/></td>
+                <td><%= link_to car.store.name, store_cars_path(store: car.store.slug), class: "bold" %></td>
+                <td class="card-content"><%= link_to car.full_name, store_car_path(car.id, store: car.store.slug) %></td>
+                <td><%= car.description %></td>
+                <td>$<%= car.daily_price %></td>
+                <td><a id="<%= car.id %>" class="waves-effect waves-light btn cyan accent-4"><%= button_to "Drive", cart_cars_path(car_id: car.id), method: :post, class: "add-to-cart center-align bold black-text" %></a></td>
+              </tr>
+              <% end %>
+
+            </tbody>
+          </table>
+
         </div>
-        <div class="card-content">
-          <span class="card-title activator grey-text text-darken-4"><%= link_to car.full_name, store_car_path(car.id, store: car.store.slug) %><i class="material-icons right">more_vert</i></span>
-          <p><a href="#"> <%= link_to car.store.name, store_cars_path(store: car.store.slug) %> </a></p>
-        </div>
-        <div class="card-reveal">
-          <span class="card-title grey-text text-darken-4"><%= link_to car.full_name, store_car_path(car.id, store: car.store.slug) %><i class="material-icons right">close</i></span>
-          <p><%= car.description %></p>
-          $<%= car.daily_price %>
-        </div>
-      <%= link_to "Add to my Garage", cart_cars_path(car_id: car.id), method: :post, class: "add-to-cart" %>
       </div>
-      <% end %>
-    <div class="col s5">
-      asdfsdfsdf
-    </div>
-    </div>
-  </div>
+
+      <script> $(document).ready(function(){
+        $(".button-collapse").sideNav();
+      });
+      </script>

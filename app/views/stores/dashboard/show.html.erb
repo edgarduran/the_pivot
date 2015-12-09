@@ -3,6 +3,30 @@
 
 <h4 class="grey-text">Welcome, <%= current_user.username.capitalize %>!</h4>
 <br>
+
+<% if current_user.store_admin? %>
+  <h2>Pending Orders</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Requested By</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @user.store.order_items.each do |item| %>
+      <% next unless item.current_status == "Pending" %>
+      <tr>
+        <td><%= link_to item.user.username, "/profile/#{item.user.id}" %></td>
+        <td><%= link_to "Approve Order", order_item_path(item, current_status: "ordered", store_slug: @user.store.slug, store_id: @user.store.id), method: :put %></td>
+        <td><%= link_to "Decline Order", order_item_path(item, current_status: "canceled", store_slug: @user.store.slug, store_id: @user.store.id), method: :put %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+<% end %>
+
 <div class="center">
 <%= link_to "Edit Account", edit_user_path(current_user), class:"btn indigo lighten-3 nudge-left"%>
 <%= link_to "Add car to store", new_store_car_path(store: @user.store.slug), class: "btn blue-grey darken-1 nudge-right" %>

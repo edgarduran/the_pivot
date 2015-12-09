@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :cars, only: [:index, :show, :destroy]
   resources :locations, only: [:show, :index], param: :slug
   resources :users, only: [:new, :create, :edit, :update]
+  resources :order_items, only: [:update]
 
   namespace :admin do
     resources :items, only: [:index, :show, :new, :create, :destroy]

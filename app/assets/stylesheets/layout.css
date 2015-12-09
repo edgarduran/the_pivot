@@ -2,18 +2,21 @@ h1 {
     text-align: center;
     color: white;
     font-weight: lighter ;
+    font-weight: 200;
 }
 
 h2 {
     text-align: center;
     color: white;
     font-weight: lighter ;
+    font-weight: 200;
 }
 
 h3 {
     text-align: center;
     color: white;
     font-weight: lighter ;
+    font-weight: 200;
 
 }
 
@@ -21,13 +24,14 @@ h4 {
     text-align: center;
     color: white;
     font-weight: lighter ;
+    font-weight: 200;
 
 }
 
 td {
   text-align: center;
   color: white;
-  font-weight: lighter ;
+  font-weight: 300;
 }
 
 th {
@@ -41,4 +45,8 @@ tbody {
   color: white;
   font-weight: lighter ;
 
+}
+
+tr {
+  font-weight: bold;
 }

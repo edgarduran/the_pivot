@@ -2,6 +2,6 @@
 
 <div class="row cars">
   <% @locations.each do |location| %>
-    <%= link_to "#{location.title}", location_path(location.slug), class: "btn" %>
+    <%= link_to "#{location.name}", location_path(location.slug), class: "btn" %>
   <% end %>
 </div>
