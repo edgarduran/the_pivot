@@ -12,7 +12,7 @@ class BusinessCreationTest < ActionDispatch::IntegrationTest
     fill_in "Name", with: "Matt's Cars"
     click_button "Request business approval"
 
-    assert_equal user_path(User.first), current_path
+    assert_equal dashboard_path, current_path
     assert page.has_content?("Your request to create 'Matt's Cars' has been received")
 
     assert_equal 1, Store.count - original_store_count

@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
         redirect_to "/#{@user.store.slug}/dashboard/#{@user.store_id}"
         flash[:success] = "Logged in as #{@user.username}"
       else
-        redirect_to @user
+        redirect_to dashboard_path
         flash[:success] = "Logged in as #{@user.username}"
       end
     else

@@ -8,6 +8,12 @@ class UserLoginTest < ActionDispatch::IntegrationTest
     assert page.has_content?('Logout')
   end
 
+  test "registered user is redirected to their dashboard when they log in" do
+    login_user
+
+    assert_equal "/dashboard", current_path
+  end
+
   test 'an unregistered guest cannot login' do
     visit login_path
     fill_in 'Username', with: 'GnarBro'

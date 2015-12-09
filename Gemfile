@@ -17,13 +17,14 @@ gem 'figaro'
 gem 'faker'
 
 group :development, :test do
-  gem 'simplecov', :require => false, :group => :test
+  # gem 'simplecov', :require => false, :group => :test
   gem 'byebug'
   gem 'mocha'
   gem 'pry'
   gem 'capybara'
   gem 'launchy'
   gem 'rubocop'
+  gem 'brakeman'
 end
 
 group :development do
