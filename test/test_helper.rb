@@ -60,7 +60,7 @@ module CategoryItemsSetup
 
   def create_platform_admin
     admin = User.create(username: 'admin',
-                        password: 'password')
+                          password: 'password')
 
     admin.roles.create(name: "platform_admin")
   end
@@ -144,26 +144,6 @@ module CategoryItemsSetup
                                             user_id: current_user.id,
                                             days: 2)
     end
-  end
-
-  def admin_order_setup(status)
-    admin = User.create(username: 'admin',
-                        password: 'password',
-                        role:      1)
-
-    ApplicationController.any_instance.stubs(:current_user).returns(admin)
-
-    create_categories_and_cars
-    order = Order.create(current_status: status)
-    order_item = OrderItem.new(item_id: Car.last.id, order_id: order.id, quantity: 2)
-    order.order_items << order_item
-    order.save
-
-    visit login_path
-
-    fill_in 'Username', with: 'admin'
-    fill_in 'Password', with: 'password'
-    click_button 'Login'
   end
 
   def create_business_approval_request
