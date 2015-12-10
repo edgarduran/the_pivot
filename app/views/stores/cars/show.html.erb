@@ -9,6 +9,7 @@
       <%= @car.description.capitalize %>
     </p>
     <%= button_to "Drive", cart_cars_path(car_id: @car.id), method: :post, class: "btn center-align cyan accent-4 black-text" %>
+    <br>
     <% if current_user && current_user.platform_admin? %>
       <%= link_to "Delete Car", car_path(car_id: @car.id), method: :delete, class: "btn center-align cyan accent-4 black-text" %>
     <% end %>
