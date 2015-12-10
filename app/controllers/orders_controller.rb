@@ -6,7 +6,13 @@ class OrdersController < ApplicationController
   end
 
   def show
-    @order_data = current_user.orders.find(params[:id]).orders_hash
+    if current_user.platform_admin?
+      @order_data = Order.find(params[:id]).orders_hash
+    elsif current_user.store_admin?
+      @order_data = Order.find(params[:id]).orders_hash
+    else
+      @order_data = current_user.orders.find(params[:id]).orders_hash
+    end
   end
 
   def create
@@ -23,9 +29,5 @@ class OrdersController < ApplicationController
       redirect_to login_path
     end
   end
-  # 
-  # def update
-  #   current_user.orders.find(params[:id]).update_attributes(current_status: params[:order_status])
-  #   redirect_to admin_dashboard_index_path
-  # end
+
 end

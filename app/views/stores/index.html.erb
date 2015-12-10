@@ -1,13 +1,17 @@
 <body background="https://d1a3f4spazzrp4.cloudfront.net/web-fresh/home/map-web@2x.gif">
+  <br>
+  <br>
+<div class="cars-index center-align">
 
 <% @stores.each do |store| %>
-  <%= store.name %>
-  <br>
+  <h3 class="white-text bold"><%= store.name %></h3>
+  <h5>
     <%= approve_store_link(store) %>
     |
-    <%= decline_store_link(store) %>
-  <br>
-  <div class="activate-link">
+    <%= decline_store_link(store) %></h5>
+
+  <h5 class="activate-link">
     <%= activate_or_deactivate_store_link(store) %>
-  </div>
+  </h5>
 <% end %>
+</div>
