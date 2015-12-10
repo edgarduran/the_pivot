@@ -101,14 +101,15 @@ class Seed
     end
 
     def car_images
-      [ "https://images.unsplash.com/photo-1444598664632-8403d0237760?crop=entropy&dpr=0.67&fit=crop&fm=jpg&h=1175&ixjsv=2.1.0&ixlib=rb-0.3.5&q=80&w=2175",
-        "https://images.unsplash.com/photo-1441148345475-03a2e82f9719?crop=entropy&dpr=0.67&fit=crop&fm=jpg&h=1175&ixjsv=2.1.0&ixlib=rb-0.3.5&q=80&w=2175",
-        "https://images.unsplash.com/photo-1417444419095-aae558146a39?crop=entropy&dpr=0.67&fit=crop&fm=jpg&h=1175&ixjsv=2.1.0&ixlib=rb-0.3.5&q=80&w=2175",
-        "https://images.unsplash.com/12/car.jpg?crop=entropy&dpr=0.67&fit=crop&fm=jpg&h=1175&ixjsv=2.1.0&ixlib=rb-0.3.5&q=80&w=2175",
-        "https://images.unsplash.com/19/bad-ass.JPG?crop=entropy&dpr=0.67&fit=crop&fm=jpg&h=1175&ixjsv=2.1.0&ixlib=rb-0.3.5&q=80&w=2175",
-        "https://images.unsplash.com/photo-1446891549729-620bb632b9d1?crop=entropy&dpr=0.67&fit=crop&fm=jpg&h=1175&ixjsv=2.1.0&ixlib=rb-0.3.5&q=80&w=2175",
-        "https://images.unsplash.com/uploads/1413686514683468a35c4/bcccfd71?crop=entropy&dpr=0.67&fit=crop&fm=jpg&h=1175&ixjsv=2.1.0&ixlib=rb-0.3.5&q=80&w=2175",
-        "https://images.unsplash.com/photo-1445098344978-4080e28b6355?crop=entropy&dpr=0.67&fit=crop&fm=jpg&h=1175&ixjsv=2.1.0&ixlib=rb-0.3.5&q=80&w=2175" ]
+      [ "car_one.jpeg",
+        "car_two.jpeg",
+        "car_three.jpeg",
+        "car_four.jpeg",
+        "car_five.jpeg",
+        "car_six.jpeg",
+        "car_seven.jpeg",
+        "car_eight.jpeg"
+       ]
     end
 
     def denver_neighbourhoods

@@ -11,15 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151209213812) do
+ActiveRecord::Schema.define(version: 20151210200626) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "cars", force: :cascade do |t|
     t.text     "description"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",                                     null: false
+    t.datetime "updated_at",                                     null: false
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 20151209213812) do
     t.integer  "daily_price"
     t.integer  "weekly_price"
     t.integer  "store_id"
+    t.string   "image",              default: "car_default.png"
   end
 
   add_index "cars", ["location_id"], name: "index_cars_on_location_id", using: :btree

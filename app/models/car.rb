@@ -1,6 +1,4 @@
 class Car < ActiveRecord::Base
-  has_attached_file :image, styles: { medium: '200x200>', thumb: '100x100>' }, default_url: 'car_default.png'
-  validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
   validates :model, :make, :year, :description, :daily_price, presence: true
   validates :daily_price, :year, numericality: true
 
