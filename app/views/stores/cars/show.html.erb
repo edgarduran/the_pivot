@@ -1,6 +1,8 @@
 <body background="https://d1a3f4spazzrp4.cloudfront.net/web-fresh/home/map-web@2x.gif">
   <h3 class="for_rent_by">For rent by <%= link_to @car.store.name, store_cars_path(store: @car.store.slug) %></h3>
-  <div class="center-align"><%= image_tag @car.image.url %></div>
+  <div class="container">
+  <div class="center-align" ><%= image_tag @car.image.url, :size => "520x360" %></div>
+  </div>
   <br>
   <div class="center-align col s12 m4 offset-4">
     <p class="description white-text center-align">

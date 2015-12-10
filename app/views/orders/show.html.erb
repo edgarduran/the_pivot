@@ -1,7 +1,20 @@
-<h5>Order Number: <%= @order_data[:order_object].id %></h5>
-<h6>Order Status: <%= @order_data[:order_object].current_status %></h6>
-<h6>Submitted on: <%= @order_data[:order_object].created_at.time.strftime("%b %-d, %Y %-l:%M %p") %></h6>
+<head>
+  <body background="https://d1a3f4spazzrp4.cloudfront.net/web-fresh/home/map-web@2x.gif">
+</head>
+<br>
+<br>
+<br>
+<br>
+<br>
+<h4 class="white-text center-align">Order Number: <%= @order_data[:order_object].id %></h5>
+<h5 class="white-text center-align">Order Status: <%= @order_data[:order_object].current_status %></h6>
+<h5 class="white-text center-align">Submitted on: <%= @order_data[:order_object].created_at.time.strftime("%b %-d, %Y %-l:%M %p") %></h6>
 
+<br>
+<br>
+<br>
+<br>
+<div class="cars-index">
 
 <table class="orders-table">
   <thead>
@@ -29,3 +42,4 @@
     </tr>
   </tbody>
 </table>
+</div>

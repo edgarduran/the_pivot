@@ -9,7 +9,7 @@ class PlatformAdminCanActivateAndDeactivateBusinessesTest < ActionDispatch::Inte
     visit stores_path
     assert_equal stores_path, current_path
 
-    within("div.activate-link") do
+    within("h5.activate-link") do
       refute page.has_content?("Activate")
     end
 
@@ -18,7 +18,7 @@ class PlatformAdminCanActivateAndDeactivateBusinessesTest < ActionDispatch::Inte
     assert_equal stores_path, current_path
     assert_equal 1, previous_activated_store_count - Store.where("activated = true").count
 
-    within("div.activate-link") do
+    within("h5.activate-link") do
       assert page.has_content?("Activate")
     end
   end
@@ -29,7 +29,7 @@ class PlatformAdminCanActivateAndDeactivateBusinessesTest < ActionDispatch::Inte
 
     visit stores_path
 
-    within("div.activate-link") do
+    within("h5.activate-link") do
       refute page.has_content?("Deactivate")
     end
 
@@ -38,7 +38,7 @@ class PlatformAdminCanActivateAndDeactivateBusinessesTest < ActionDispatch::Inte
     assert_equal stores_path, current_path
     assert_equal 1, Store.where("activated = true").count - previous_activated_store_count
 
-    within("div.activate-link") do
+    within("h5.activate-link") do
       assert page.has_content?("Deactivate")
     end
   end

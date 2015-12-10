@@ -45,8 +45,17 @@
 
 }
 
+.card-sizes {
+  height: 10%;
+}
+
 .card .card-content p {
   margin-bottom: 15px !important;
+}
+
+.card {
+  background-color: rgba(35,39,39,.9);
+  border-radius: 3px;
 }
 
 .cars-index {

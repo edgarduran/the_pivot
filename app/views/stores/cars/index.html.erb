@@ -3,6 +3,8 @@
   <body background="https://d1a3f4spazzrp4.cloudfront.net/web-fresh/home/map-web@2x.gif">
 </head>
 
+<div class="cars-index">
+
 
   <h1 class="thin center-align">Store owned by: <%= link_to @store.owner.username.titleize, "/profile/#{@store.owner.id}" %></h1>
   <h3 class="thin center-align">Available Cars</h3>
@@ -43,6 +45,7 @@
 
         </div>
       </div>
+</div>
 
       <script> $(document).ready(function(){
         $(".button-collapse").sideNav();
