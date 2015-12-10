@@ -16,18 +16,19 @@
             <% end %>
             <% end  %>
           </ul>
-          <li><a class="dropdown-button thin" data-activates="dropdown1">Locations<i class="material-icons right"></i></a></li>
+          <li><a class="dropdown-button thin" href='#' data-activates="dropdown1">Locations<i class="material-icons right"></i></a></li>
 
           <% if current_user && platform_admin? %>
           <li><%= link_to "Dashboard", admin_dashboard_index_path %></li>
+            <li><%= link_to "Profile", "/#{current_user.store.slug}/dashboard/#{current_user.store_id}", class:"thin" %></li>
           <li><a href="/cars" class="thin">Cars</a></li>
           <li><%= link_to "Logout", logout_path, method: :delete %></li>
 
           <% elsif current_user && store_admin? %>
 
-            <li><%= link_to "Profile", "/#{current_user.store.slug}/dashboard/#{current_user.store_id}" %></li>
+            <li><%= link_to "Profile", "/#{current_user.store.slug}/dashboard/#{current_user.store_id}", class:"thin" %></li>
             <li><a href="/cars" class="thin">Cars</a></li>
-            <li><%= link_to "Logout", logout_path, method: :delete %></li>
+            <li><%= link_to "Logout", logout_path, method: :delete, class:"thin"  %></li>
 
           <% elsif current_user && registered_user? %>
             <li><%= link_to "Profile", "/dashboard", class:"thin" %></li>

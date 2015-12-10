@@ -1,17 +1,23 @@
-<%= form_for(@car, url: store_cars_path(@car.id, store: @store_slug), method: :post) do |f| %>
-  <%= f.label :make %>
-  <%= f.text_field :make %>
-  <%= f.label :model %>
-  <%= f.text_field :model %>
-  <%= f.label :year %>
-  <%= f.text_field :year %>
-  <%= f.label :description %>
-  <%= f.text_field :description %>
-  <%= f.label :location_id, "Location" %>
-  <%= f.text_field :location_id %>
-  <%= f.label :daily_price %>
-  <%= f.text_field :daily_price %>
-  <%= f.label :image %><br>
-  <%= f.file_field :image %><br>
-  <%= f.submit "Add Car" %>
-<% end %>
+<body background="https://d1a3f4spazzrp4.cloudfront.net/web-fresh/home/map-web@2x.gif">
+  <h2>Add New Car</h2>
+<div class="cars-index">
+  <%= form_for(@car, url: store_cars_path(@car.id, store: @store_slug), method: :post) do |f| %>
+    <%= f.label :make, class: "white-text" %>
+    <%= f.text_field :make, class: "white-text" %>
+    <%= f.label :model, class: "white-text" %>
+    <%= f.text_field :model, class: "white-text" %>
+    <%= f.label :year, class: "white-text" %>
+    <%= f.text_field :year, class: "white-text" %>
+    <%= f.label :description, class: "white-text" %>
+    <%= f.text_field :description, class: "white-text" %>
+    <%= f.label :location_id, "Location", class: "white-text" %>
+    <%= f.text_field :location_id, class: "white-text" %>
+    <%= f.label :daily_price, class: "white-text" %>
+    <%= f.text_field :daily_price, class: "white-text" %>
+    <%= f.label :image, class: "white-text" %><br><br>
+    <%= f.file_field :image, class: "white-text" %><br>
+    <div class="center-align">
+    <%= f.submit "Add Car", class: "btn cyan accent-4 black-text" %>
+    </div>
+  <% end %>
+</div>

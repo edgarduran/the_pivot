@@ -19,6 +19,8 @@ class GuestViewsUserProfileTest < ActionDispatch::IntegrationTest
     user.roles.create(name: 'store_admin')
 
     visit cars_path
+    
+    click_link "View Car"
     click_link "Dave's Cars"
 
     assert_equal store_cars_path(store: Store.first.slug), current_path

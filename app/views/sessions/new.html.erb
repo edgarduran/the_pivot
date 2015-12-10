@@ -3,13 +3,16 @@
 
   <h4>Login</h4>
 
-  <div class="login_form">
+  <div class="login_form cars-index">
     <%= form_for(:session, url: login_path) do |f| %>
       <%= f.label :username %>
       <%= f.text_field :username, class: "white-text" %>
       <%= f.label :password %>
       <%= f.password_field :password, class: "white-text" %>
-      <%= f.submit "Login", class:"btn cyan accent-4 center-align" %>
+<div class="center-align">
+
+      <%= f.submit "Login", class:"btn cyan accent-4" %>
+</div>
     <% end %>
   </div>
   <br>

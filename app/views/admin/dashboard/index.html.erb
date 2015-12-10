@@ -1,17 +1,24 @@
 <!DOCTYPE html>
 <head class="white-text">
-  <link rel="stylesheet" type="text/css" href="assets/stylesheets/layout.css">
+  <!-- <link rel="stylesheet" type="text/css" href="assets/stylesheets/layout.css"> -->
   <body background="https://d1a3f4spazzrp4.cloudfront.net/web-fresh/home/map-web@2x.gif">
 </head>
 
-<%= link_to "View pending business requests", stores_path if current_user.platform_admin? %>
 
 <h4>Welcome, <%= current_user.username.capitalize %>!</h4>
 <h4 class="thin center-align white-text">Admin Dashboard</h4>
 <br>
 <div class="center">
-  <%= link_to "Edit Account", edit_user_path(current_user), class:"btn cyan accent-4 thin"%>
-  <%= link_to "Add items to store", new_admin_item_path, class: "btn cyan accent-4 thin" %>
+  <%= link_to "Edit Account", edit_user_path(current_user), class:"btn cyan accent-4 black-text"%>
+  <%= link_to "Add items to store", new_admin_item_path, class: "btn cyan accent-4 black-text" %>
+  <br>
+  <br>
+  <br>
+  <br>
+  <%  if current_user.platform_admin? %>
+    <%= button_to "View pending business requests", stores_path, method: :get, class:"btn cyan accent-4 black-text" %>
+  <% end %>
+
 <br>
 <br>
 </div>
@@ -35,10 +42,10 @@
       <td><%= Order.pending.count %></td>
     </tr>
     <tr class="white-text">
-      <td><%= link_to "View Ordered", admin_dashboard_path('ordered'), :order_status => 'ordered', class: "btn cyan accent-4" %></td>
-      <td><%= link_to "View Paid", admin_dashboard_path('paid'), :order_status => 'paid', class: "btn cyan accent-4" %></td>
-      <td><%= link_to "View Canceled", admin_dashboard_path('canceled'), class: "btn canceled cyan accent-4" %></td>
-      <td><%= link_to "View Completed", admin_dashboard_path('completed'), class: "btn cyan accent-4" %></td>
+      <td><%= link_to "View Ordered", admin_dashboard_path('ordered'), :order_status => 'ordered', class: "btn-large cyan accent-4 black-text" %></td>
+      <td><%= link_to "View Paid", admin_dashboard_path('paid'), :order_status => 'paid', class: "btn-large cyan accent-4 black-text" %></td>
+      <td><%= link_to "View Canceled", admin_dashboard_path('canceled'), class: "btn-large cyan accent-4 black-text" %></td>
+      <td><%= link_to "View Completed", admin_dashboard_path('completed'), class: "btn-large cyan accent-4 black-text" %></td>
     </tr>
   </tbody>
 </table>

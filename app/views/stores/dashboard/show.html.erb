@@ -1,17 +1,24 @@
 <body background="https://d1a3f4spazzrp4.cloudfront.net/web-fresh/home/map-web@2x.gif">
-<h1 class="grey-text"><%= @user.store.name %> Dashboard</h1>
+<h2 class="white-text"><%= @user.store.name %> Dashboard</h2>
 
-<h4 class="grey-text">Welcome, <%= current_user.username.capitalize %>!</h4>
+<h4 class="white-text">Welcome, <%= current_user.username.capitalize %>!</h4>
 <br>
 
 <% if current_user.store_admin? %>
-  <h2 class="grey-text">Pending Orders</h2>
+<div class="center-align">
+
+<%= link_to "Edit Store Info", edit_store_path(current_user.store), class:"btn-large white cyan-text text-accent-4"%>
+</div>
+  <h3 class="white-text">Pending Orders</h3>
   <table>
     <thead>
       <tr>
-        <th>Requested By</th>
+        <div class="center-align"><th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Requested By</th></div>
         <th></th>
         <th></th>
+        <br>
+        <br>
+        <br>
       </tr>
     </thead>
     <tbody>
@@ -26,11 +33,12 @@
     </tbody>
   </table>
 <% end %>
-
+<br>
+<br>
 <div class="center">
-<%= link_to "Edit Account", edit_user_path(current_user), class:"btn indigo lighten-3 nudge-left"%>
-<%= link_to "Add car to store", new_store_car_path(store: @user.store.slug), class: "btn blue-grey darken-1 nudge-right" %>
-<%= link_to "Edit Store Info", edit_store_path(current_user.store), class:"btn red nudge-left"%>
+<%= link_to "Edit Account", edit_user_path(current_user), class:"btn-large cyan accent-4 black-text"%>
+<%= link_to "Add car to store", new_store_car_path(store: @user.store.slug), class:"btn-large cyan accent-4 black-text"%>
+<br>
 <br>
 <br>
 </div>
@@ -52,10 +60,10 @@
       <td><%= Order.completed.count %></td>
     </tr>
     <tr>
-      <td><%= link_to "View Ordered", admin_dashboard_path('ordered'), :order_status => 'ordered', class: "btn orange" %></td>
-      <td><%= link_to "View Paid", admin_dashboard_path('paid'), :order_status => 'paid', class: "btn light-blue lighten-1" %></td>
-      <td><%= link_to "View Canceled", admin_dashboard_path('canceled'), class: "btn canceled red lighten-1" %></td>
-      <td><%= link_to "View Completed", admin_dashboard_path('completed'), class: "btn green lighten-1" %></td>
+      <td><%= link_to "View Ordered", admin_dashboard_path('ordered'), :order_status => 'ordered', class:"btn-large cyan accent-4 black-text"%></td>
+      <td><%= link_to "View Paid", admin_dashboard_path('paid'), :order_status => 'paid', class:"btn-large cyan accent-4 black-text"%></td>
+      <td><%= link_to "View Canceled", admin_dashboard_path('canceled'), class:"btn-large cyan accent-4 black-text" %></td>
+      <td><%= link_to "View Completed", admin_dashboard_path('completed'), class:"btn-large cyan accent-4 black-text"%></td>
     </tr>
   </tbody>
 </table>

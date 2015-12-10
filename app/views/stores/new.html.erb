@@ -1,9 +1,28 @@
-<p>
+<head>
+  <body background="https://d1a3f4spazzrp4.cloudfront.net/web-fresh/home/map-web@2x.gif">
+</head>
+
+<br>
+<br>
+<h2>Apply Here</h2>
+<br>
+<div class="center-align cars-index">
+<h6 class="white-text center-align">
   Before you can lend a car, you must be approved. Apply here.
-</p>
+</h6>
+<br>
+<br>
+<br>
 
 <%= form_for @store do |f| %>
-<%= f.label :name %>
-<%= f.text_field :name %>
-<%= f.submit "Request business approval", class: "btn" %>
+<%= f.label :name, "Business Name", class: "white-text large-text" %>
+<%= f.text_field :name, class:"white-text" %>
+<br>
+<br>
+<%= f.submit "Request business approval", class: "btn-large cyan accent-4 black-text" %>
+<br>
+<br>
+<br>
+</div>
 <% end %>
+<br>

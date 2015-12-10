@@ -1,14 +1,30 @@
 <head>
   <body background="https://d1a3f4spazzrp4.cloudfront.net/web-fresh/home/map-web@2x.gif">
-</head>
+  </head>
 
-<h1>Locations</h1>
+  <h1>Locations</h1>
 
-<div class="container">
+  <div class="container">
 
-<div class="row cars">
-  <% @locations.each do |location| %>
-    <%= link_to "#{location.name}", location_path(location.slug), class: "btn cyan accent-4 black-text" %>
-  <% end %>
-</div>
-</div>
+    <div class="center-align">
+      <div style="overflow: scrollbars-none;">
+        <div style="overflow:scroll; height:600px;">
+
+          <div class="cars">
+            <% @locations.each do |location| %>
+            <div class="row center-align">
+              <div class="col s12 offset-4">
+                <div class="card grey darken-2 location-card">
+                  <div class="card-content white-text bold">
+                    <span class="card-title"><%= link_to "#{location.name}", location_path(location.slug), class:"text-cyan text-accent-4 krista" %></span>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
