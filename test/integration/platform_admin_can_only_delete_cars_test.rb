@@ -13,7 +13,7 @@ class PlatformAdminCanOnlyDeleteCarsTest < ActionDispatch::IntegrationTest
     assert page.has_content?('El Camino')
     assert page.has_content?('Daily price:')
     assert page.has_content?("Dave's Cars")
-save_and_open_page
+
     click_link 'Delete Car'
     assert_equal cars_path, current_path
 
