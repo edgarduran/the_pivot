@@ -37,7 +37,7 @@
           <% @complete_cart[:cars].each do |car| %>
           <tbody>
             <tr>
-              <td><%= image_tag car.image.url(:thumb), width: 200%></td>
+              <td><%= image_tag car.image, width: 200%></td>
               <td><%= link_to car.full_name.upcase %></td>
               <!-- <td><%= car.description %></td> -->
               <td>$<%= car.daily_price %></td>
@@ -55,7 +55,7 @@
                 <br>
                 <% end %>
               </td>
-              <td class="center-align"><%= link_to "Remove Car", cart_car_path(car.id), method: :delete, id:"Remove Car", class: "btn cyan accent-4 black-text" %></td>
+              <td class="center-align"><%= link_to "Remove", cart_car_path(car.id), method: :delete, id:"Remove Car", class: "btn cyan accent-4 black-text" %></td>
             </tr>
             <% end %>
             <tr>
