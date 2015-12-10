@@ -1,15 +1,13 @@
-<head>
-  <body background="https://d1a3f4spazzrp4.cloudfront.net/web-fresh/home/map-web@2x.gif">
-</head>
-
+ <body background="https://d1a3f4spazzrp4.cloudfront.net/web-fresh/home/map-web@2x.gif"></body>
 <div class="center-box">
   <h3>Create a New Account</h3>
   <br>
+<div class="cars-index">
 
   <%= form_for(User.new) do |f| %>
     <%= f.label :username, class:"white-text" %>
     <%= f.text_field :username, class:"white-text"  %>
-    <%= f.label :password, class:"white-text"  %>
+    <%= f.label :password, class:"white-text large"  %>
     <%= f.password_field :password, class:"white-text"  %>
     <%= f.label :email, class:"white-text"  %>
     <%= f.text_field :email, class:"white-text"  %>
@@ -19,7 +17,8 @@
     <br>
     <div class="center-align">
 
-    <%= f.submit "Create Account", class: "btn cyan accent-4 center" %>
+    <%= f.submit "Create Account", class: "btn cyan accent-4 center black-text" %>
     </div>
   <% end %>
+</div>
 </div>

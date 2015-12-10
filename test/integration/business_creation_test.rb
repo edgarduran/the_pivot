@@ -33,7 +33,7 @@ class BusinessCreationTest < ActionDispatch::IntegrationTest
     create_business_approval_request
     login_platform_admin
 
-    click_link "View pending business requests"
+    click_button "View pending business requests"
     assert_equal stores_path, current_path
 
     click_link "Approve"
@@ -47,8 +47,8 @@ class BusinessCreationTest < ActionDispatch::IntegrationTest
 
     create_business_approval_request
     login_platform_admin
+    click_button "View pending business requests"
 
-    click_link "View pending business requests"
     assert_equal stores_path, current_path
 
     click_link "Decline"

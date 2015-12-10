@@ -1,46 +1,39 @@
 <!DOCTYPE html>
 <head>
-  <body height="1000px">
+  <h2></h2>
+      <h1 class="thin center-align white-text">Cars</h1>
     <!-- <body bgcolor="blue-grey darken-3"> -->
     <body background="https://d1a3f4spazzrp4.cloudfront.net/web-fresh/home/map-web@2x.gif">
 
-      <h1 class="thin center-align white-text">Cars</h1>
-      <div style="overflow: scrollbars-none;">
-        <div style="overflow:scroll; height:600px; width:900px;">
+      <div class="cars-index">
+        <div class="">
 
-          <table class="white-text bordered center-align">
-            <thead>
-              <tr>
-                <th data-field="car-image"></th>
-                <th data-field="name">Owner</th>
-                <th data-field="price">Type</th>
-                <th data-field="price">Description</th>
-                <th data-field="price">Daily Price</th>
-                <th data-field="price">Purchase</th>
-              </tr>
-            </thead>
-
-            <tbody>
+        <div style="overflow: scrollbars-none;">
+          <div style="overflow:scroll; height:800px">
+            <div class="row cars">
               <% @cars.each do |car| %>
-              <tr>
-                <td><img src="https://images.unsplash.com/photo-1445020569771-3f8531cf7a4b?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=e49f8ca7482a01413754982eaa3438ac" height="100px" width="130px"/></td>
-                <td><%= link_to car.store.name, store_cars_path(store: car.store.slug), class: "bold" %></td>
-                <td class="card-content"><%= link_to car.full_name, store_car_path(car.id, store: car.store.slug) %></td>
-                <td><%= car.description %></td>
-                <td>$<%= car.daily_price %>
-                  <% if current_user && platform_admin? %>
-                    <%= link_to "Delete Car", car_path(car), method: :delete %>
-                  <% end %>
-                </td>
-                <td><a id="<%= car.id %>" class="waves-effect waves-light btn cyan accent-4"><%= button_to "Drive", cart_cars_path(car_id: car.id), method: :post, class: "add-to-cart center-align bold" %></a></td>
-              </tr>
+            <div class="col m4">
+                <div class="card large">
+                  <div class="card-image waves-effect waves-block waves-light">
+                    <%= image_tag car.image.url, class: "activator" %>
+                  </div>
+                  <div class="card-content" id="<%= car.id %>">
+                    <span class="card-title car-title activator grey-text text-darken-4"><%= car.year %> <%= car.model %><i class="material-icons right"></i></span>
+                    <span class="card-title car-title activator grey-text text-darken-4"><%= car.make %><i class="material-icons right">more_vert</i></span>
+                    <p>Price: $<%= car.daily_price %></p>
+                    <%= link_to 'View Car', car_path(car), class: "btn cyan accent-4 black-text" %>
+                    <%= link_to "Add to my Garage", cart_cars_path(car_id: car.id), method: :post, class: "add-to-cart" %>
+                  </div>
+                  <div class="card-reveal">
+                    <span class="card-title grey-text text-darken-4">Description: <i class="material-icons right">close</i></span>
+                    <p><%= car.description.capitalize %></p>
+                    <p>Price: $<%= car.daily_price %></p>
+                  </div>
+                </div>
+              </div>
               <% end %>
-
-            </tbody>
-          </table>
-
+            </div>
+          </div>
         </div>
       </div>
-    </head>
-  </div>
-</div>
+        </div>

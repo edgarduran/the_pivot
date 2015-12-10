@@ -5,9 +5,11 @@ class UserCanViewIndividualCarPageTest < ActionDispatch::IntegrationTest
     create_cars(1)
     visit cars_path
 
-    within(".card-content") do
-      click_link "1960 Chevy0 El Camino0"
-    end
+    assert page.has_content? "1960 El Camino0 Chevy0"
+
+    click_link "View Car"
+    
+    assert page.has_content? "1960 El Camino0 Chevy0"
 
     assert_equal store_car_path(Car.first, store: Store.first.slug), current_path
   end

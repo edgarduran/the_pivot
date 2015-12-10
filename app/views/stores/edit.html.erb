@@ -1,12 +1,17 @@
 <h2>Edit Store Information</h2>
 <body background="https://d1a3f4spazzrp4.cloudfront.net/web-fresh/home/map-web@2x.gif">
 
-<div class="white-text">
+<div class="white-text cars-index">
 <%= form_for(@store) do |f| %>
   <%= f.label :name %>
   <%= f.text_field :name %>
   <%= f.label :about %>
   <%= f.text_area :about %>
-  <%= f.submit "Submit Changes", class: "btn" %>
+  <br>
+  <br>
+  <div class="center-align">
+
+  <%= f.submit "Submit Changes", class: "btn cyan accent-4 black-text" %>
 <% end %>
+  </div>
 </div>

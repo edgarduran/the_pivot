@@ -14,6 +14,14 @@
  *= require_self
  */
 
+ .btn {
+   border-radius: 5px;
+ }
+
+.location-card {
+  border-radius: 10px;
+}
+
 .body {
   background-image: url("http://cosmicpenguin.com/911/wtc/burnedcars/car-fire-low-res.jpg")
 }
@@ -34,11 +42,29 @@
     width: 100%;
     text-align: center;
     opacity: 0.7;
+
 }
 
 .card .card-content p {
   margin-bottom: 15px !important;
 }
+
+.cars-index {
+  width: 100%;
+  padding: 2%;
+  background-color: rgba(256,256, 256, 0.1);
+  border-radius: 15px;
+
+}
+  /*background-color: rgba(93, 99, 100, 0.3);*/
+
+.container {
+  width: 80%;
+}
+
+.style {
+  background-color: rgba(93, 99, 100, 0.3);
+  border-radius: 15px}
 
 .add-to-cart {
   margin-left: 10px;

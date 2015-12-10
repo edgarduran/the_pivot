@@ -1,6 +1,7 @@
 <h2>Edit User Profile</h2>
 <body background="https://d1a3f4spazzrp4.cloudfront.net/web-fresh/home/map-web@2x.gif">
 
+<div class="cars-index">
 
 <%= form_for(@user) do |f| %>
   <%= f.label :username, class: "white-text" %>
@@ -11,5 +12,8 @@
   <%= f.text_field :email, class: "white-text" %>
   <%= f.label :image, class: "white-text" %>
   <%= f.text_field :image, class: "white-text" %>
-  <%= f.submit "Save Changes", class: "btn" %>
+  <div class="center-align">
+  <%= f.submit "Save Changes", class: "btn-large cyan accent-4 black-text" %>
+  </div>
 <% end %>
+</div>
