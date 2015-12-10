@@ -71,16 +71,18 @@ class Seed
   def generate_orders
     car_count = Car.count
 
-    User.all.each_with_index do |user, i|
-      order = Order.create!(user_id: user.id)
-      car = Car.find(rand(1..car_count))
+    User.all.each_with_index do |user, n|
+      10.times do |i|
+        order = Order.create!(user_id: user.id)
+        car = Car.find(rand(1..car_count))
 
-      order.order_items.create!( user_id: user.id,
-                                 store_id: car.store.id,
-                                 days: 2,
-                                 car_id: car.id )
+        order.order_items.create!( user_id: user.id,
+                                   store_id: car.store.id,
+                                   days: 2,
+                                   car_id: car.id )
 
-      puts "Order #{i}: Order for #{user.username} created!"
+        puts "Order #{(i+1) * (n+1)}: Order for #{user.username} created!"
+      end
     end
   end
 
